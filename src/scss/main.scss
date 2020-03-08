@@ -86,6 +86,7 @@ section{
     font-family: $font_family_corp;
     margin: 20px auto 0;
       @include mq() {
+        width: 100%;
         text-align: left;
         font-size: 16px;
         padding: 30px 0;
@@ -151,7 +152,7 @@ section{
 }
 .panel{
   box-sizing: border-box;
-  float: left;
+  // float: left;
   width: calc(96%/3);
   min-height: 550px;
   margin: 20px auto 0;
@@ -160,9 +161,8 @@ section{
   border-radius: $radius_m;
   border: 3px $color_sub solid;
   @include mq() {
-    width: 100%;
-    margin-right: 0;
-    margin-bottom: 15px;
+    width: 85%;
+    margin: 0 auto 10px;
     text-align: center;
     min-height: 400px;
   }
@@ -172,6 +172,7 @@ section{
     width: 100%;
     @include mq() {
       margin-right: 0;
+      display: block;
     }
   }
   &-head{
@@ -185,7 +186,7 @@ section{
       object-fit: cover;
       vertical-align: bottom;
       @include mq(md) {
-        height: 200px;
+        // height: 00px;
       }
     }
   }

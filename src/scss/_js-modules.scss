@@ -1,0 +1,35 @@
+.js-slideRight-target{
+  transition: all 1s;
+  opacity: 1;
+}
+.js-slideRight{
+  transform: translate(-100px, 0);
+  opacity: 0;
+}
+
+.js-slideLeft-target{
+  transition: all 1s;
+  opacity: 1;
+}
+.js-slideLeft{
+  transform: translate(100px, 0);
+  opacity: 0;
+}
+
+.js-slideTop-target{
+  transition: all 1s;
+  opacity: 1;
+}
+.js-slideTop{
+  transform: translate(0, 150px);
+  opacity: 0;
+}
+
+.js-slideZoom-target{
+  transition: all 1s;
+  opacity: 1;
+}
+.js-slideZoom{
+  transform: translate(0, 0) scale(0.8);
+  opacity: 0;
+}
