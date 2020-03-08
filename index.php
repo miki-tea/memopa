@@ -25,8 +25,8 @@ $subtitle = "TOP";
   <section id="about" class="bg-color-sub">
     <div class="container">
       <div class="container-about">
-        <h2 class="container-title js-fadein"><span class="container-ornament">"memopa!"とは？</span></h2>
-        <p class="container-body js-fadein">シンプルで使いやすいメモアプリです。<br>
+        <h2 class="container-title js-slideLeft-target"><span class="container-ornament">"memopa!"とは？</span></h2>
+        <p class="container-body js-slideRight-target">シンプルで使いやすいメモアプリです。<br>
         「さっきいいアイデアが浮かんだのに、忘れてしまった・・・」なんて、<br>悔しい思いをしたことはありませんか？<br>
         「memopa!」を始めたら、メモする場所にはもう困りません。<br>全てのアイデアは「ぱっとメモ」できるから。<br>
         登録も退会も簡単。ノンストレスなメモライフをお楽しみください。</p>
@@ -37,13 +37,13 @@ $subtitle = "TOP";
   <!-- ここからよくある質問 -->
     <section id="question">
       <div class="container container-question">
-        <h2 class="container-title js-fadein">
+        <h2 class="container-title js-slideLeft-target">
           <spann class="container-ornament">FAQ</span>
         </h2>
         <div class="container-body">
           <div class="panel-group panel-group-flex">
     
-            <div class="panel panel-border js-fadein">
+            <div class="panel panel-border">
                 <h3 class="panel-head">有料？</h3>
               <div class="panel-body">
                 <img src="./dist/melissa-walker-horn-Pp8bKaL5JFI-unsplash.jpg" alt="">
@@ -53,7 +53,7 @@ $subtitle = "TOP";
               </div>
             </div>
     
-            <div class="panel panel-border js-fadein">
+            <div class="panel panel-border">
                 <h3 class="panel-head">使い方は？</h3>
               <div class="panel-body">
                 <img src="./dist/tim-gouw-KigTvXqetXA-unsplash.jpg" alt="">
@@ -63,7 +63,7 @@ $subtitle = "TOP";
               </div>
             </div>
     
-            <div class="panel panel-border js-fadein">
+            <div class="panel panel-border">
                 <h3 class="panel-head">退会は簡単？</h3>
               <div class="panel-body">
                 <img src="./dist/jan-tinneberg-gJJhG4gM7NA-unsplash.jpg" alt="">
@@ -79,7 +79,7 @@ $subtitle = "TOP";
 
   <section id="sign_up" class="bg-color-sub">
     <div class="container container-sign_up">
-      <h1 class="container-title js-fadein">
+      <h1 class="container-title js-slideZoom-target">
         <span class="container-ornament">Let's "memopa!"</span>
       </h1>
       <div class="container-body js-fadein">
