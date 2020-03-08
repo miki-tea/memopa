@@ -189,7 +189,7 @@ ul {
 
 .nav-menu {
   display: block; }
-  @media (max-width: 768px) {
+  @media (max-width: 480px) {
     .nav-menu {
       display: none; } }
   .nav-menu .menu {
@@ -208,7 +208,7 @@ ul {
       margin-left: 15px;
       border-radius: 30px;
       transition: .3s; }
-      @media (max-width: 768px) {
+      @media (max-width: 480px) {
         .nav-menu .menu .menu-link {
           display: none; } }
       .nav-menu .menu .menu-link:hover {
@@ -223,7 +223,7 @@ ul {
   width: 40px;
   height: 32px;
   z-index: 3; }
-  @media (max-width: 768px) {
+  @media (max-width: 480px) {
     .menu-trigger {
       display: inline-block; } }
   .menu-trigger span {

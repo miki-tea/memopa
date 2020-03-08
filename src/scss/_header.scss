@@ -37,7 +37,7 @@
 }
 .nav-menu{
   display: block;
-  @include mq(md) {
+  @include mq() {
     display: none;
   }
   // @include mq() {
@@ -74,7 +74,7 @@
       margin-left: 15px;
       border-radius: 30px;
       transition: .3s;
-      @include mq(md){
+      @include mq(){
         display: none;
       }
       &:hover{
@@ -86,7 +86,7 @@
 }
 .menu-trigger {
   display: none;
-  @include mq(md) {
+  @include mq() {
     display: inline-block;
   }
   transition: all .4s;
