@@ -217,6 +217,15 @@ ul {
   .menu-trigger.active span:nth-of-type(3) {
     transform: translateY(-15px) rotate(45deg); }
 
+footer {
+  background-color: #2b1d0c;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  footer span {
+    color: #F4E23A; }
+
 .mypage .container-memoSub {
   float: left;
   background: #4e3515;
