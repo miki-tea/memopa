@@ -46,7 +46,7 @@ $subtitle = "TOP";
             <div class="panel panel-border js-fadein">
                 <h3 class="panel-head">有料？</h3>
               <div class="panel-body">
-                <img src="./images/money.jpg" alt="">
+                <img src="./dist/melissa-walker-horn-Pp8bKaL5JFI-unsplash.jpg" alt="">
               </div>
               <div>
                 <p class="panel-foot">ご利用はずっと無料です。一部課金もありませんので、ご安心ください。</p>
@@ -56,7 +56,7 @@ $subtitle = "TOP";
             <div class="panel panel-border js-fadein">
                 <h3 class="panel-head">使い方は？</h3>
               <div class="panel-body">
-                <img src="./images/simple.jpg" alt="">
+                <img src="./dist/tim-gouw-KigTvXqetXA-unsplash.jpg" alt="">
               </div>
               <div>
                 <p class="panel-foot">直感的な操作が可能で、使いにくいところはありません。もし分からないところがあっても、ヘルプ機能があるのでご安心ください。</p>
@@ -66,7 +66,7 @@ $subtitle = "TOP";
             <div class="panel panel-border js-fadein">
                 <h3 class="panel-head">退会は簡単？</h3>
               <div class="panel-body">
-                <img src="./images/exit.jpg" alt="">
+                <img src="./dist/jan-tinneberg-gJJhG4gM7NA-unsplash.jpg" alt="">
               </div>
               <div>
                 <p class="panel-foot">もし気に入らなくても、退会はマイページからワンステップで可能です。</p>
