@@ -1,0 +1,20 @@
+//メディアクエリ
+$xl: 1200px;
+$lg: 992px;
+$md: 768px;
+$sm: 544px;
+$xs: 480px;
+
+$breakpoints: (
+ xs: screen and (max-width: #{$xs}),
+ sm: screen and (max-width: #{$sm}),
+ md: screen and (max-width: #{$md}),
+ lg: screen and (max-width: #{$lg}),
+ xl: screen and (max-width: #{$xl})
+) !default;
+
+@mixin mq($bp:xs) {
+ @media #{map-get($breakpoints, $bp)} {
+  @content;
+ }
+}
