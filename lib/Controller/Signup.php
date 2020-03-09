@@ -19,19 +19,24 @@ class Signup extends \memopa\Controller {
     try {
       $this->_validate();
     } catch (\memopa\Exception\InvalidEmail $e){
-      echo $e->getMessage();
-      exit;
+      $this->setErr('email',$e->getMessage());
+      
     } catch (\memopa\Exception\InvalidPassword $e){
-      echo $e->getMessage();
-      exit;
+      $this->setErr('pass',$e->getMessage());
+
     } catch (\memopa\Exception\UnmatchPass $e){
-      echo $e->getMessage();
-      exit;
+      $this->setErr('pass_re',$e->getMessage());
     }
-    echo "success";
-    exit;
-    //create user
-    //redirect to mypage
+
+
+    if($this->hasErr()){ // Fail to validate
+      return;
+    }else{ //Success to validate
+
+      //create user
+      //redirect to mypage
+
+    }
   }
 
   private function _validate() {

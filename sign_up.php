@@ -88,10 +88,10 @@ $app->run();
             <label for="email">
               <p class="container-formItem-name">
               Eメール
-              <span class="err"><?php if(!empty($err['email'])) echo $err['email']; ?></span>
+              <span class="err"><?= h($app->getErr('email')); ?></span>
               </p>
               <input type="email" name="email" class="<?php if(!empty ($err['email'])) echo 'err' ?>" 
-              value="<?php if(!empty($_POST['email'])) echo $_POST['email']; ?>" >
+              value="<?php if(!empty($err['email'])) echo $err['email']; ?>" >
             </label>
       
           </div>
@@ -99,7 +99,7 @@ $app->run();
             <label for="pass">
               <p class="container-formItem-name">
                 パスワード
-                <span class="err"><?php if(!empty($err['pass'])) echo $err['pass']; ?></span>
+                <span class="err"><?= h($app->getErr('pass')); ?></span>
               </p>
               <input type="pass" name="pass" >
       
@@ -110,7 +110,7 @@ $app->run();
             <label for="pass_re">
               <p class="container-formItem-name">
                 パスワード(再入力)
-                <span class="err"><?php if(!empty($err['pass_re'])) echo $err['pass_re']; ?></span>
+                <span class="err"><?= h($app->getErr('pass_re')); ?></span>
               </p>
               <input type="pass" name="pass_re">
       
