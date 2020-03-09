@@ -5,8 +5,8 @@ require_once(__DIR__ . '/config/config.php');
 // $app = new memopa\Controller\Mypage();
 
 // $app->run();
-echo "login screen";
-exit;
+// echo "login screen";
+// exit;
 
 // require('function.php');
 // debug('LOCATION::::mypage.php');
