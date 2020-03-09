@@ -1,47 +1,54 @@
 <?php
 
+require_once(__DIR__ . '/config/config.php');
 
-require('function.php');
-debug('LOCATION::::mypage.php');
-debugLogStart();
+// $app = new memopa\Controller\Mypage();
 
-require('auth.php');
-debug('セッションの中身：'.print_r($_SESSION,true));
+// $app->run();
+echo "login screen";
+exit;
 
-$u_id = $_SESSION['user_id'];
-if(!empty($_POST['new_memo'])){
-  $formContent = $_POST['new_memo'];
-}
+// require('function.php');
+// debug('LOCATION::::mypage.php');
+// debugLogStart();
+
+// require('auth.php');
+// debug('セッションの中身：'.print_r($_SESSION,true));
+
+// $u_id = $_SESSION['user_id'];
+// if(!empty($_POST['new_memo'])){
+//   $formContent = $_POST['new_memo'];
+// }
 
 
-//TODO: POST情報のバリデーション
+// //TODO: POST情報のバリデーション
 
-//メモをDBにインサートする
-if(!empty($formContent)){
-  debug('post送信がありました。');
-  debug(print_r($_POST,true));
-  //debug('バリデーションOK。DBへの登録を試みます。');  
-  if($_SESSION['new_memo'] !== $_POST['new_memo']){
-    try{
-      $_SESSION['new_memo'] = $formContent;
-      $dbh = dbConnect();
-      $sql = 'INSERT INTO post (`content`, `user_id`, `create_date`) 
-              VALUES (:content, :user_id, :date)';
-      $data = array( ':content' =>$formContent, ':user_id' =>$u_id, ':date' => date('Y-m-d H:i:s') );
-      $stmt = queryPost($dbh, $sql, $data);
+// //メモをDBにインサートする
+// if(!empty($formContent)){
+//   debug('post送信がありました。');
+//   debug(print_r($_POST,true));
+//   //debug('バリデーションOK。DBへの登録を試みます。');  
+//   if($_SESSION['new_memo'] !== $_POST['new_memo']){
+//     try{
+//       $_SESSION['new_memo'] = $formContent;
+//       $dbh = dbConnect();
+//       $sql = 'INSERT INTO post (`content`, `user_id`, `create_date`) 
+//               VALUES (:content, :user_id, :date)';
+//       $data = array( ':content' =>$formContent, ':user_id' =>$u_id, ':date' => date('Y-m-d H:i:s') );
+//       $stmt = queryPost($dbh, $sql, $data);
       
-    }catch(Exception $e){
-      error_log('エラーが発生しました。'.$e->getMessage());
-    }
-  }
-} 
-  debug('post送信はありません。');
+//     }catch(Exception $e){
+//       error_log('エラーが発生しました。'.$e->getMessage());
+//     }
+//   }
+// } 
+//   debug('post送信はありません。');
 
-//メモリストの表示処理
-$dbMemoList = getMemoList($u_id);
-// debug('$dbMemoListの中身:'.print_r($dbMemoList,true));
+// //メモリストの表示処理
+// $dbMemoList = getMemoList($u_id);
+// // debug('$dbMemoListの中身:'.print_r($dbMemoList,true));
 
-?>
+// ?>
 
 <!DOCTYPE html>
 <html lang="ja">
