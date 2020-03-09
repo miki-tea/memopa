@@ -1,6 +1,6 @@
 <?php
 
-namespace memopa\Exception;
+namespace MyApp\Exception;
 
 class InvalidEmail extends \Exception{
   // protected $message = 'Invalid Email!';
