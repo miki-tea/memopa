@@ -8,10 +8,22 @@ class Signup extends \memopa\Controller {
       header('Location:' .SITE_URL . '/mypage.php');
       exit;
     }
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
-      //accept $_POST
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){  //start validation
+      $this->_validate();
+      $this->setVal('email',$_POST['email']);
+    }
 
-      // All: Required
+    if($this->hasErr()){ // Fail to validate
+      return;
+    }else{ //Success to validate
+
+      //create user
+      //redirect to mypage
+
+    }
+  }
+  protected function _validate(){
+  // All: Required
       $this->InvalidRequired($_POST['email'],'email');
       $this->InvalidRequired($_POST['pass'],'pass');
       $this->InvalidRequired($_POST['pass_re'],'pass_re');
@@ -37,13 +49,14 @@ class Signup extends \memopa\Controller {
       if(empty($this->getErr('pass'))){
         $this->diffVal($_POST['pass'],$_POST['pass_re'],'pass');
       }
-    }
   }
-  private function diffVal($str1, $str2, $key) {
+
+  protected function diffVal($str1, $str2, $key) {
     if($str1 !== $str2){
       $this->setErr($key,'パスワード(再)と一致しません。');
     }
   }
+}
 
   // protected function postProcess(){
   //   //validation
@@ -87,5 +100,3 @@ class Signup extends \memopa\Controller {
   //     throw new \memopa\Exception\UnmatchPass();
   //   }
   // }
-
-}

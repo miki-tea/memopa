@@ -91,7 +91,7 @@ $app->run();
               <span class="err"><?= h($app->getErr('email')); ?></span>
               </p>
               <input type="email" name="email" class="<?php if(!empty ($err['email'])) echo 'err' ?>" 
-              value="<?php if(!empty($err['email'])) echo $err['email']; ?>" >
+              value="<?= isset($app->getVal()->email)? h($app->getVal()->email) : '' ?>" >
             </label>
       
           </div>
