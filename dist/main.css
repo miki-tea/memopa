@@ -13,7 +13,6 @@ html, body {
 
 a {
   text-decoration: none;
-  color: white;
   transition: 1s;
   font-size: 14px; }
 
@@ -74,7 +73,7 @@ ul {
       background-color: #F4E23A; }
 
 .bg-theme {
-  background-image: url("../images/hero.jpg");
+  background-image: url("../../memopa/dist/anastasiia-kamil--uQZPtoJ8nk-unsplash.jpg");
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
