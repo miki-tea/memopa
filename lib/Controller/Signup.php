@@ -10,12 +10,41 @@ class Signup extends \memopa\Controller {
     }
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
       //accept $_POST
-      $this->validRequired($_POST['email'],'email');
-      $this->validRequired($_POST['pass'],'pass');
-      $this->validRequired($_POST['pass_re'],'pass_re');
-      // $this->validEmail();
+
+      // All: Required
+      $this->InvalidRequired($_POST['email'],'email');
+      $this->InvalidRequired($_POST['pass'],'pass');
+      $this->InvalidRequired($_POST['pass_re'],'pass_re');
+
+      // Email:type
+      if(empty($this->getErr('email'))){
+        $this->InvalidEmail($_POST['email'],'email');
+      }
+      // Email:Max Length
+      if(empty($this->getErr('email'))){
+        $this->InvalidMaxLen($_POST['email'],'email');
+      }
+      // Pass:Max/Min Length
+      if(empty($this->getErr('pass'))){
+        $this->InvalidMaxLen($_POST['pass'],'pass');
+      }
+      if(empty($this->getErr('pass'))){
+        $this->InvalidMinLen($_POST['pass'],'pass');
+      }
+      // Pass: Half size str
+
+      // Pass = Pass_re
+      if(empty($this->getErr('pass'))){
+        $this->diffVal($_POST['pass'],$_POST['pass_re'],'pass');
+      }
     }
   }
+  private function diffVal($str1, $str2, $key) {
+    if($str1 !== $str2){
+      $this->setErr($key,'パスワード(再)と一致しません。');
+    }
+  }
+
   // protected function postProcess(){
   //   //validation
   //   try {

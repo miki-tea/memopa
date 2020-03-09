@@ -3,7 +3,7 @@
 namespace memopa\Exception;
 
 class InvalidEmail extends \Exception{
-  protected $message = 'Invalid Email!';
+  // protected $message = 'Invalid Email!';
 }
 
 ?>

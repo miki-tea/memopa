@@ -124,6 +124,7 @@ $app->run();
 
         </form>
         <p><a href="login.php">ログインの方はこちらへ</a></p>
+        <?php var_dump($app->getErr('email')); ?>
       </div>
     
 </div>
