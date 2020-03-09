@@ -22,10 +22,14 @@ class Controller {
    return !empty(get_object_vars($this->_errors));
   }
   
-
-
   protected function isLoggedIn(){
     //$_SESSION['user_id'];
     return isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
+  }
+
+  protected function validRequired($str, $key){
+    if($str === ''){
+      $this->setErr($key, '入力必須です。');
+    }
   }
 }
