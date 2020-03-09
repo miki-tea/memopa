@@ -1,6 +1,6 @@
 <?php
 
-namespace memopa;
+namespace MyApp;
 
 class Controller {
 
@@ -11,6 +11,9 @@ class Controller {
   public function __construct() {
     $this->_errors = new \stdClass();
     $this->_values = new \stdClass();
+    if(!isset($_SESSION['token'])){
+      $_SESSION['token'] = bin2hex(openssl_random_pseudo_bytes(16));
+    }
   }
   // Set/Get error
   protected function setErr($key, $error){
@@ -36,6 +39,7 @@ class Controller {
     return isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
   }
 
+  // validation
   protected function InvalidRequired($str, $key){
     if($str === ''){
       $this->setErr($key, '入力必須です。');
@@ -45,6 +49,12 @@ class Controller {
   protected function InvalidEmail($str, $key){
     if(!preg_match("/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/",$str)){
       $this->setErr($key, 'メール形式が正しくありません。');
+    }
+  }
+
+  protected function InvalidPass($str, $key){
+    if(!preg_match("/^[0-9a-zA-Z]*$/",$str) && mb_strlen($str) < $min){
+      $this->setErr($key, '半角英数字６文字以上で。');
     }
   }
   protected function InvalidMaxLen($str, $key, $max=256){
