@@ -1,7 +1,7 @@
 <?php
 
 require_once(__DIR__ . '/config/config.php');
-$app = new memopa\Controller\Signup();
+$app = new MyApp\Controller\Signup();
 $app->run();
 
 // require('functions.php');
@@ -82,7 +82,7 @@ $app->run();
       <div class="form">
 
         <form action="" method="POST" class="container-form" novalidate>
-          <div class="err"><?php if(!empty($err['common'])) echo $err['common']; ?></div>
+          <div class="err"><?= h($app->getErr('common')); ?></div>
       
           <div class="container-formItem">
             <label for="email">
@@ -121,10 +121,10 @@ $app->run();
               <input type="submit" value="登録する" name="submit" class="btn btn-submit">
 
             </div>
-
+          <input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
         </form>
         <p><a href="login.php">ログインの方はこちらへ</a></p>
-        <?php var_dump($app->getErr('email')); ?>
+        <?php var_dump(filter_input(INPUT_POST,'email')); ?>
       </div>
     
 </div>
