@@ -71,9 +71,19 @@ class Signup extends \MyApp\Controller {
       $this->InvalidMaxLen($email,'email');
     }
     // Email:Duplicate
-    // if(empty($this->getErr('email'))){
-    //   $this->emailDup($email,'email');
-    // }
+    if(empty($this->getErr('email'))){
+      debug('Eメール重複確認のため接続します。');
+      try{ 
+        $userModel = new \MyApp\Model\User();
+        $user = $userModel->emailDup([
+          'email' => $email
+        ]);
+      }catch(\MyApp\Exception\DuplicateEmail $e) {
+        debug('データベース内で重複するEメールを見つけました。');
+        $this->setErr('email',$e->getMessage());
+        return;
+      }
+    }
     // Pass:Max Length
     if(empty($this->getErr('pass'))){
       $this->InvalidMaxLen($pass,'pass');
@@ -84,7 +94,7 @@ class Signup extends \MyApp\Controller {
     }
     // Pass: Half size str
     if(empty($this->getErr('pass'))){
-      $this->InvalidPass($pass, 'pass');
+      $this->InvalidHalf($pass, 'pass');
     }
     // Pass = Pass_re
     if(empty($this->getErr('pass'))){
