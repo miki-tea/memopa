@@ -3,6 +3,7 @@
 namespace MyApp;
 
 class Model {
+
   protected $db;
 
   public function __construct(){
@@ -13,4 +14,5 @@ class Model {
       exit;
     }
   }
+  
 }
