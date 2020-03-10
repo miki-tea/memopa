@@ -12,6 +12,7 @@ class User extends \MyApp\Model {
       ':login_time' => date('Y-m-d H:i:s'),
       ':create_date' => date('Y-m-d H:i:s')
     ]);
+    $_SESSION['user_id'] = $user['user_id'];
     if($res === false){
       throw new \MyApp\Exception\DuplicateEmail();
     }

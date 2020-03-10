@@ -35,7 +35,7 @@ class Controller {
   }
   
   protected function isLoggedIn(){
-    return isset($_SESSION['me']) && !empty($_SESSION['me']);
+    return isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
   }
 
   // validation
