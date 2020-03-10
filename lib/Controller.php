@@ -35,8 +35,7 @@ class Controller {
   }
   
   protected function isLoggedIn(){
-    //$_SESSION['user_id'];
-    return isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
+    return isset($_SESSION['me']) && !empty($_SESSION['me']);
   }
 
   // validation
@@ -52,8 +51,8 @@ class Controller {
     }
   }
 
-  protected function InvalidPass($str, $key){
-    if(!preg_match("/^[0-9a-zA-Z]*$/",$str) && mb_strlen($str) < $min){
+  protected function InvalidHalf($str, $key){
+    if(!preg_match("/^[0-9a-zA-Z]*$/",$str)){
       $this->setErr($key, '半角英数字６文字以上で。');
     }
   }
