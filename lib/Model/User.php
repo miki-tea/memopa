@@ -23,21 +23,20 @@ class User extends \MyApp\Model {
     $stmt->execute([
       ':email' => $values['email']
     ]);
-    $stmt->setFetchMode(\PDO::FETCH_CLASS, 
-    'stdClass');
-    $user = $stmt->fetch();
+    $user = $stmt->fetch(\PDO::FETCH_ASSOC);
+    debug('$userの中身' . print_r($user, true));
+    $_SESSION['user_id'] = $user['user_id'];
     
     if(empty($user)){
       throw new \MyApp\Exception\UnmatchDbInfo();
     }
-    if(!password_verify($values['password'], $user->pass)){
+    if(!password_verify($values['password'], $user['pass'])){
       throw new \MyApp\Exception\UnmatchDbInfo();
     }
-
+    if($user === false){
+      throw new \MyApp\Exception\UnmatchDbInfo();
+    }
     return $user;
-    if($res === false){
-      throw new \MyApp\Exception\UnmatchDbInfo();
-    }
   }
 
   //Eメール重複が無いか照会

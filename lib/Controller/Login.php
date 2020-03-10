@@ -109,6 +109,6 @@ class Login extends \MyApp\Controller {
     }else{
       $_SESSION['login_limit'] = $sesLimit;
     }
-    $_SESSION['me'] = $user;
+    debug('$_SESSIONの中身：' . print_r($_SESSION,true));
   }
 }

@@ -1,6 +1,6 @@
 <?php
-
 require_once(__DIR__ . '/config/config.php');
+debug('HELLO:mypage.php');
 
 $app = new MyApp\Controller\Mypage();
 
@@ -65,8 +65,10 @@ $app->run();
   <div class="console__wrap">
     <div class="form-wrap">
       <form action="" method="POST" class="form">
-        <textarea name="new_memo" class="form__inputArea" placeholder="新規投稿"></textarea>
+        <textarea name="memo" class="form__inputArea" placeholder="新規投稿"></textarea>
         <input class="form__submitBtn"type="submit" name="submit" value="投稿する">
+        <input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
+        <span class="err"><?= $app->getErr('common');?></span>
       </form>
     </div>
     <div class="nav__wrap">

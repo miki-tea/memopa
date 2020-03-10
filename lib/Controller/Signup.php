@@ -9,7 +9,6 @@ class Signup extends \MyApp\Controller {
     $pass = filter_input(INPUT_POST,'pass');
     $pass_re = filter_input(INPUT_POST,'pass_re');
 
-        debug(filter_input(INPUT_POST,'email'));
     debug('$emailのなかみ：'.$email);
     debug('$passのなかみ：'.$pass);
     debug('$pass_reのなかみ：'.$pass_re);

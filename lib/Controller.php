@@ -56,9 +56,9 @@ class Controller {
       $this->setErr($key, '半角英数字６文字以上で。');
     }
   }
-  protected function InvalidMaxLen($str, $key, $max=256){
-    if(mb_strlen($str) > $max){
-      $this->setErr($key, '255文字以内で。');
+  protected function InvalidMaxLen($str, $key, $max=255){
+    if(mb_strlen($str) >= $max){
+      $this->setErr($key, $max.'文字未満で。');
     }
   }
 
