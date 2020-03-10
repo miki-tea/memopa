@@ -1,6 +1,7 @@
 <?php
 require_once(__DIR__ . '/config/config.php');
-
+$app = new MyApp\Controller\Login();
+$app->run();
 // $app = new memopa\Controller\Signup();
 
 // $app->run();
@@ -86,27 +87,26 @@ require_once(__DIR__ . '/config/config.php');
   <h1 class="container-title title">ログイン</h1>
       <div class="form">
 
-        <form action="" method="POST" class="container-form">
+        <form action="" method="POST" class="container-form" novalidate>
           <div class="err"><?php if(!empty($err['common'])) echo $err['common']; ?></div>
       
           <div class="container-formItem">
+            <span class="err"><?= h($app->getErr('login')); ?></span>
             <label for="email">
               <p class="container-formItem-name">
-              Eメール
-              <span class="err"><?php if(!empty($err['email'])) echo $err['email']; ?></span>
+                Eメール
+                <span class="err"><?= h($app->getErr('email')); ?></span>
               </p>
-              <input type="email" name="email" class="<?php if(!empty ($err['email'])) echo 'err' ?>" 
-              value="<?php if(!empty($_POST['email'])) echo $_POST['email']; ?>" >
+              <input type="email" name="email" value="<?= isset($app->getVal()->email)? h($app->getVal()->email) : '' ?>">
             </label>
-      
           </div>
           <div class="container-formItem">
             <label for="pass">
               <p class="container-formItem-name">
                 パスワード
-                <span class="err"><?php if(!empty($err['pass'])) echo $err['pass']; ?></span>
+                <span class="err"><?= $app->getErr('pass');?></span>
               </p>
-              <input type="pass" name="pass" >
+              <input type="pass" name="pass">
       
             </label>
           </div>
@@ -118,6 +118,7 @@ require_once(__DIR__ . '/config/config.php');
               <input type="submit" value="ログイン" name="submit" class="btn btn-submit">
             </div>
             <p><a href="sign_up.php">新規登録の方はこちらへ</a></p>
+            <input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
 
         </form>
       </div>
