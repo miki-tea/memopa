@@ -2,11 +2,10 @@
 
 require_once(__DIR__ . '/config/config.php');
 
-// $app = new memopa\Controller\Mypage();
+$app = new MyApp\Controller\Mypage();
 
-// $app->run();
-// echo "login screen";
-// exit;
+$app->run();
+
 
 // require('function.php');
 // debug('LOCATION::::mypage.php');
@@ -62,44 +61,113 @@ require_once(__DIR__ . '/config/config.php');
   <?php require('header.php'); ?>
   <!-- メイン -->
 <main class="mypage">
-    <!-- <div class="bg-theme"> -->
-    <div class="container">
-      <div class="container-memoSub">
-        <form action="" method="POST" class="input">
-            <label>
-                <textarea name="new_memo" class="input-form" placeholder="新規投稿"></textarea>
-            </label>
-            <div class="container-btn">
-              <input class="btn"type="submit" name="submit" value="投稿">
-            </div>
-        </form>
-        <ul class="container-config">
-          <li class="container-configItem configItem"><a href="profile.php" >プロフィール編集</a></li>
-          <li class="container-configItem configItem"><a href="logout.php">ログアウト</a></li>
-          <li class="container-configItem configItem"><a href="withdraw.php">退会する</a></li>
-        </ul>
-      </div>
-      <!-- 記事一覧部分 -->
-
-      <div class="flex">
-        <div class="container-memoList">
-          <h1>Memo List</h1>
-          <?php foreach($dbMemoList as $key => $val): ?>
-          <a href="memoDetail.php<?php echo '?post_id='.$val['post_id']; ?>">
-            <div class="memoList card">
-              <span><?php echo $val['content']; ?></span>
-            </div>
-          </a>
-          <?php endforeach; ?>
-
-          
-        </div>
-        <div class="paging"><< 1 2 3 >></div>
-      </div>
+<div class="console">
+  <div class="console__wrap">
+    <div class="form-wrap">
+      <form action="" method="POST" class="form">
+        <textarea name="new_memo" class="form__inputArea" placeholder="新規投稿"></textarea>
+        <input class="form__submitBtn"type="submit" name="submit" value="投稿する">
+      </form>
     </div>
-    <!-- 投稿機能部分 -->
-  <!-- </div> -->
-  
+    <div class="nav__wrap">
+      <ul class="nav">
+        <li class="nav__list"><a class="nav__link"href="profile.php" >プロフィール編集</a></li>
+        <li class="nav__list"><a class="nav__link"href="logout.php">ログアウト</a></li>
+        <li class="nav__list"><a class="nav__link"href="withdraw.php">退会する</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- 記事一覧部分 -->
+  <div class="memoList">
+    <h1 class="memoList__title">Memo List</h1>
+    <div class="cardList">
+      <!-- <?php //foreach($dbMemoList as $key => $val): ?> -->
+      <div class="card">
+        <a href="memoDetail.php<?php echo '?post_id='.$val['post_id']; ?>">
+          <span class="card_body">メモメモ</span>
+        </a>
+      </div>
+      <div class="card">
+        <a href="memoDetail.php<?php echo '?post_id='.$val['post_id']; ?>">
+          <span class="card_body">メモメモ</span>
+        </a>
+      </div>
+      <div class="card">
+        <a href="memoDetail.php<?php echo '?post_id='.$val['post_id']; ?>">
+          <span class="card_body">メモメモ</span>
+        </a>
+      </div>
+      <div class="card">
+        <a href="memoDetail.php<?php echo '?post_id='.$val['post_id']; ?>">
+          <span class="card_body">メモメモ</span>
+        </a>
+      </div>
+      <div class="card">
+        <a href="memoDetail.php<?php echo '?post_id='.$val['post_id']; ?>">
+          <span class="card_body">メモメモ</span>
+        </a>
+      </div>
+      <div class="card">
+        <a href="memoDetail.php<?php echo '?post_id='.$val['post_id']; ?>">
+          <span class="card_body">メモメモ</span>
+        </a>
+      </div>
+      <div class="card">
+        <a href="memoDetail.php<?php echo '?post_id='.$val['post_id']; ?>">
+          <span class="card_body">メモメモ</span>
+        </a>
+      </div>
+      <div class="card">
+        <a href="memoDetail.php<?php echo '?post_id='.$val['post_id']; ?>">
+          <span class="card_body">メモメモ</span>
+        </a>
+      </div>
+      <div class="card">
+        <a href="memoDetail.php<?php echo '?post_id='.$val['post_id']; ?>">
+          <span class="card_body">メモメモ</span>
+        </a>
+      </div>
+      <div class="card">
+        <a href="memoDetail.php<?php echo '?post_id='.$val['post_id']; ?>">
+          <span class="card_body">メモメモ</span>
+        </a>
+      </div>
+      <div class="card">
+        <a href="memoDetail.php<?php echo '?post_id='.$val['post_id']; ?>">
+          <span class="card_body">メモメモ</span>
+        </a>
+      </div>
+      <div class="card">
+        <a href="memoDetail.php<?php echo '?post_id='.$val['post_id']; ?>">
+          <span class="card_body">メモメモ</span>
+        </a>
+      </div>
+      <div class="card">
+        <a href="memoDetail.php<?php echo '?post_id='.$val['post_id']; ?>">
+          <span class="card_body">メモメモ</span>
+        </a>
+      </div>
+      <div class="card">
+        <a href="memoDetail.php<?php echo '?post_id='.$val['post_id']; ?>">
+          <span class="card_body">メモメモ</span>
+        </a>
+      </div>
+      <div class="card">
+        <a href="memoDetail.php<?php echo '?post_id='.$val['post_id']; ?>">
+          <span class="card_body">メモメモ</span>
+        </a>
+      </div>
+
+
+
+      <!-- <?php //endforeach; ?> -->
+    </div>
+    <div class=""></div>
+    <div class=" memoList-paging"><< 1 2 3 >></div>
+  </div>  
 </main>
 
 <!-- フッター -->

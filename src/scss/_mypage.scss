@@ -1,133 +1,144 @@
+textarea{
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  border-radius: 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1em;
+  height: 100px;
+  width: 100%;
+}
+
+
+textarea:focus {
+  border: 1px solid rgba(0, 0, 0, 0.32);
+  box-shadow: none;
+  outline: none;
+}
 $form-width: 300px;
 .mypage{
-  // .bg-theme {
-  //   // overflow: hidden;
-  //   // margin-top: $header-height;
-  //   background-image: url("../images/hero-rotate.jpg");
-  //   background-attachment: fixed;
-  //   background-position: center;
-  //   background-size: cover;
-  //   background-repeat: no-repeat;
-  //   // height: 100vh;
-  //   margin-top: $header-height;
-  //   padding-top: 0;
-  //   @include mq() {
-  //     padding-top: 0;
-  //   }
-  // }
+  margin-top: 60px;
 }
-
-.mypage{
-  .container{
-    &-memoSub{
-      // float: left;
-      background: $color_main;
-      height: 100vh;
-      width: $form-width;
-      position: fixed;
-      top: 0;
-      left: 0;
+.console{
+  background-color: $color_main;
+  margin-top: 60px;
+  &__wrap {
+    overflow: hidden;
+    max-width: 768px;
+    height: 275px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
+}
+.nav{
+  @include mq(sm) {
+    display: none;
+  }
+  &__list{
+    
+  }
+  &__link{
+    color: $color_sub;
+  }
+}
+.form-wrap{
+  float: left;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.form{
+  overflow: hidden;
+  width: 480px;
+    max-width: 100%;
+  &__inputArea{
+    background-color: #fff;
+    height: 15vh;
+    display: block;
+    box-sizing:border-box;
+    border:none;
+    padding: 10px;
+    border-radius: 5px;
+    @include mq(sm){
+      width: 100%;
     }
-    &-memoList{
-      margin-left: $form-width;
-      text-align: center;
+  }
+  &__submitBtn{
+    float: right;
+    background: $color_sub;
+    font-size: 20px;
+    color: $color_main;
+    transition: all 0.5s;
+    padding: 10px 30px;
+    margin-top: 20px;
+    border-radius: 100px;
+    @include mq(sm){
+      width: 100%;
+      padding:20px 0;
+    margin-top: 12px;
 
-
-    }
-    &-btn{
-      width: $form-width;
-      height: 80px;
-    }
-    &-config{
-      padding: 0;
-      margin: 50px 0 0;
       
     }
-    &-configItem{
-      text-align: center;
-      padding-bottom: 10px;
-    }
-  }
-  .btn{
-    background-color: #f4e23a;
-    color: #4e3515;
-    display: block;
-    width: 100px;
-    margin: 20px;
-    box-sizing: border-box;
-    border: none;
-    padding: 5px 0;
-  }
-  .configItem{
-    a{
-      color: $color_sub;
-    }
-  }
-.memoList-card_wrap{
-        padding: 0 20px;
-        overflow: hidden;
-        margin-right: -10px;
-      }
-  
-  .input{
-    width: 100%;
-    border-radius: 10px;
-    .container{
-      width: 50%;
-      margin: 0 auto;
-      overflow: hidden;
-    }
-  
-    &-form{
-    border: 2px solid $color_main;
-    width: $form-width;
-    display: block;
-    height: $form-width;
-    box-sizing: border-box;
-    margin-top: 80px;
-    }
-  }
-  input[type="submit"]{
-    box-sizing: border-box;
-    background-color: #F4E23A;
-    width: 100px;
-    margin: 20px auto 0px;
-    font-size: 14px;
-    border-radius: 30px;
-    line-height: 30px;
-    transition: .3s;
-    float: right;
-    margin-right: 20px;
-    border: 1px #4e3515 solid;
     &:hover{
-      border: $color_main 1px solid;
-      color: $color_main;
-      background-color: $color_sub;
+      background-color: lighten($color_sub, 20%);
     }
   }
-  .card{
+}
+.memoList{
+  max-width: 1200px;
+  margin: 0 auto;
+  @include mq(md){
+    margin-right: 5px;
+
+  }
+
+  &__title{
     box-sizing: border-box;
-    float: left;
-    width: calc(100% / 3 - 10px);
-    margin: 1px 10px 10px 0;
-    height: 220px;
-    background-color: #fff;
-    border-radius: 10px;
-    display: block;
-    text-overflow: ellipsis;
-    overflow-wrap: anywhere;
-    box-shadow: 0 0 2px rgba($color_main, 0.6);
-    padding: 15px;
-  }
-  
-  a{
-    color: $color_main;
-  }
-}
-.paging {
-  width: 1000px;
+    padding: 10px 0;
     text-align: center;
+  }
 }
-.under_element{
-  clear: both;
+.cardList{
+  overflow: hidden;
+  padding: 0 0 0 10px;
+  // margin-right: -5px;
+  margin-bottom: -5px;
+}
+.card{
+  box-sizing: border-box;
+  background-color: #fff;
+  border: $color_main 1px solid;
+  height: 200px;
+  float: left;
+  width: calc(100% / 4 - 15px);
+  margin-right: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  @include mq(md) {
+    width: calc(100% / 3 - 10px);
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  @include mq(sm) {
+    width: calc(100% / 2 - 5px);
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+  &__body{
+    box-sizing: border-box;
+  }
+}
+.nav__wrap{
+     // 縦に積む
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  // 中央寄せ
+  justify-content: center;
+  align-items: center;
 }

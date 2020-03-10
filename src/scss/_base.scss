@@ -1,4 +1,4 @@
-h2, h3, h4, h5, p {
+h1,h2, h3, h4, h5, p {
   font-family: "AvenirNext", "Lato", "Hirago KakuGothic ProN", Meiryo, sans-serif; }
   
 html, body {
@@ -52,5 +52,9 @@ main{
 
 ul{
   list-style: none;
+}
+
+h1{
+  margin: 0;
 }
 
