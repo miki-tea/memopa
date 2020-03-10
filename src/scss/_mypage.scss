@@ -1,4 +1,4 @@
-$add-form-width: 290px;
+$form-width: 300px;
 .mypage{
   // .bg-theme {
   //   // overflow: hidden;
@@ -20,19 +20,22 @@ $add-form-width: 290px;
 .mypage{
   .container{
     &-memoSub{
-      float: left;
+      // float: left;
       background: $color_main;
       height: 100vh;
-      width: $add-form-width;
+      width: $form-width;
+      position: fixed;
+      top: 0;
+      left: 0;
     }
     &-memoList{
-      width: 1000px;
-      float: left;
+      margin-left: $form-width;
+      text-align: center;
 
-      padding: 20px;
+
     }
     &-btn{
-      width: $add-form-width;
+      width: $form-width;
       height: 80px;
     }
     &-config{
@@ -60,6 +63,11 @@ $add-form-width: 290px;
       color: $color_sub;
     }
   }
+.memoList-card_wrap{
+        padding: 0 20px;
+        overflow: hidden;
+        margin-right: -10px;
+      }
   
   .input{
     width: 100%;
@@ -72,9 +80,9 @@ $add-form-width: 290px;
   
     &-form{
     border: 2px solid $color_main;
-    width: $add-form-width;
+    width: $form-width;
     display: block;
-    height: $add-form-width;
+    height: $form-width;
     box-sizing: border-box;
     margin-top: 80px;
     }
@@ -97,37 +105,29 @@ $add-form-width: 290px;
       background-color: $color_sub;
     }
   }
-  .memo_list{
-    width: 960px;
-    overflow: hidden;
-    
-  }
   .card{
     box-sizing: border-box;
     float: left;
-    width: calc(25% - 10px);
-    margin: 10px 10px 0 0 ;
+    width: calc(100% / 3 - 10px);
+    margin: 1px 10px 10px 0;
     height: 220px;
     background-color: #fff;
     border-radius: 10px;
     display: block;
-    overflow: hidden;
     text-overflow: ellipsis;
     overflow-wrap: anywhere;
     box-shadow: 0 0 2px rgba($color_main, 0.6);
     padding: 15px;
   }
-  span{
-    // margin: 20px;
-  }
+  
   a{
     color: $color_main;
   }
 }
-.flex{
-  overflow: hidden;
-}
 .paging {
   width: 1000px;
     text-align: center;
+}
+.under_element{
+  clear: both;
 }

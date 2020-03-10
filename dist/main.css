@@ -258,18 +258,19 @@ footer {
     color: #F4E23A; }
 
 .mypage .container-memoSub {
-  float: left;
   background: #4e3515;
   height: 100vh;
-  width: 290px; }
+  width: 300px;
+  position: fixed;
+  top: 0;
+  left: 0; }
 
 .mypage .container-memoList {
-  width: 1000px;
-  float: left;
-  padding: 20px; }
+  margin-left: 300px;
+  text-align: center; }
 
 .mypage .container-btn {
-  width: 290px;
+  width: 300px;
   height: 80px; }
 
 .mypage .container-config {
@@ -293,6 +294,11 @@ footer {
 .mypage .configItem a {
   color: #F4E23A; }
 
+.mypage .memoList-card_wrap {
+  padding: 0 20px;
+  overflow: hidden;
+  margin-right: -10px; }
+
 .mypage .input {
   width: 100%;
   border-radius: 10px; }
@@ -302,9 +308,9 @@ footer {
     overflow: hidden; }
   .mypage .input-form {
     border: 2px solid #4e3515;
-    width: 290px;
+    width: 300px;
     display: block;
-    height: 290px;
+    height: 300px;
     box-sizing: border-box;
     margin-top: 80px; }
 
@@ -325,20 +331,15 @@ footer {
     color: #4e3515;
     background-color: #F4E23A; }
 
-.mypage .memo_list {
-  width: 960px;
-  overflow: hidden; }
-
 .mypage .card {
   box-sizing: border-box;
   float: left;
-  width: calc(25% - 10px);
-  margin: 10px 10px 0 0;
+  width: calc(100% / 3 - 10px);
+  margin: 1px 10px 10px 0;
   height: 220px;
   background-color: #fff;
   border-radius: 10px;
   display: block;
-  overflow: hidden;
   text-overflow: ellipsis;
   overflow-wrap: anywhere;
   box-shadow: 0 0 2px rgba(78, 53, 21, 0.6);
@@ -347,12 +348,12 @@ footer {
 .mypage a {
   color: #4e3515; }
 
-.flex {
-  overflow: hidden; }
-
 .paging {
   width: 1000px;
   text-align: center; }
+
+.under_element {
+  clear: both; }
 
 .hero {
   margin-top: 60px;
