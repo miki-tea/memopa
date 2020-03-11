@@ -418,7 +418,10 @@ textarea:focus {
   justify-content: center;
   align-items: center;
   z-index: 1; }
-  .hero-circle {
+  @media (max-width: 544px) {
+    .hero {
+      height: 450px; } }
+  .hero__circle {
     width: 500px;
     height: 500px;
     border-radius: 50%;
@@ -428,14 +431,14 @@ textarea:focus {
     transition: all 0.5s;
     background: #240d00;
     background: linear-gradient(0deg, #240d00 0%, #401d0a 29%, #986627 100%); }
-    @media (max-width: 480px) {
-      .hero-circle {
-        width: 400px;
-        height: 400px; } }
-    .hero-circle:hover {
+    @media (max-width: 544px) {
+      .hero__circle {
+        width: 300px;
+        height: 300px; } }
+    .hero__circle:hover {
       transform: scale(1.03) rotate(-0.01turn);
       cursor: pointer; }
-  .hero-title {
+  .hero__title {
     font-size: 45px;
     font-weight: bold;
     line-height: 1.5em;
@@ -443,9 +446,9 @@ textarea:focus {
     z-index: 3;
     color: #F4E23A;
     font-family: "Arial Rounded MT Bold", "Arial Black", sans-serif; }
-    @media (max-width: 480px) {
-      .hero-title {
-        font-size: 35px; } }
+    @media (max-width: 544px) {
+      .hero__title {
+        font-size: 30px; } }
 
 section {
   width: 100%; }
@@ -462,15 +465,15 @@ section {
       section .container-question {
         width: 100%; } }
     section .container-body {
-      width: 1000px;
       line-height: 1.8em;
       font-size: 19px;
       padding-top: 80px;
       text-align: center;
       color: #4e3515;
       font-family: "Arial Rounded MT Bold", "Arial Black", sans-serif;
-      margin: 20px auto 0; }
-      @media (max-width: 480px) {
+      margin: 20px auto 0;
+      width: 90vw; }
+      @media (max-width: 544px) {
         section .container-body {
           width: 100%;
           text-align: left;
@@ -484,6 +487,9 @@ section {
       font-weight: bold;
       color: #4e3515;
       font-family: "Arial Rounded MT Bold", "Arial Black", sans-serif; }
+      @media (max-width: 544px) {
+        section .container-title {
+          font-size: 29px; } }
     section .container-ornament {
       padding-bottom: 10px;
       border-bottom: 2px #4e3515 dashed; }
@@ -536,11 +542,19 @@ section {
   .panel-head {
     font-size: 25px;
     font-weight: bold; }
-  .panel-body img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    vertical-align: bottom; }
+  .panel-body {
+    overflow: hidden; }
+    .panel-body img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      vertical-align: bottom;
+      transition: all 1s ease-out; }
+      .panel-body img:hover {
+        transform: scale(1.05) rotate(1deg); }
+      @media (max-width: 544px) {
+        .panel-body img {
+          height: 250px; } }
   .panel-foot {
     padding: 10px 15px;
     font-size: 19px;
