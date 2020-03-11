@@ -287,7 +287,6 @@ textarea:focus {
   .console__wrap {
     overflow: hidden;
     max-width: 768px;
-    height: 275px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -362,7 +361,9 @@ textarea:focus {
   width: calc(100% / 4 - 15px);
   margin-right: 15px;
   margin-bottom: 15px;
-  border-radius: 10px; }
+  border-radius: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis; }
   @media (max-width: 768px) {
     .card {
       width: calc(100% / 3 - 10px);
@@ -374,7 +375,11 @@ textarea:focus {
       margin-right: 5px;
       margin-bottom: 5px; } }
   .card__body {
-    box-sizing: border-box; }
+    overflow-wrap: anywhere;
+    box-sizing: border-box;
+    line-height: 1.2em;
+    display: block;
+    padding: 8px; }
 
 .nav__wrap {
   display: flex;

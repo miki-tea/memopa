@@ -33,10 +33,6 @@ class Controller {
   protected function hasErr(){
    return !empty(get_object_vars($this->_errors));
   }
-  
-  protected function isLoggedIn(){
-    return isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
-  }
 
   // validation
   protected function InvalidRequired($str, $key){
@@ -66,5 +62,14 @@ class Controller {
     if(mb_strlen($str) < $min){
       $this->setErr($key, '6文字以上で。');
     }
+  }
+  // End of validation functions
+
+  protected function isLoggedIn(){
+  return isset($_SESSION['me']) && !empty($_SESSION['me']);
+  }
+
+  public function me() {
+  return $this->isLoggedIn()? $_SESSION['me'] : null;
   }
 }

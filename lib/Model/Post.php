@@ -15,4 +15,15 @@ class Post extends \MyApp\Model {
       throw new \MyApp\Exception\ResistError();
     }
   }
+
+  public function getDbMemo($values) {
+    $stmt = $this->db->prepare('SELECT content FROM post WHERE user_id = :user_id AND delete_flg = 0 ORDER BY post_id DESC');
+    $stmt->execute([
+      ':user_id' => $values['user_id']
+    ]);
+    $stmt->setFetchMode(\PDO::FETCH_CLASS, 'stdClass');
+    // debug('$userの中身' . print_r($user, true));
+    $res = $stmt->fetchAll();
+    return $res;
+  }
 }

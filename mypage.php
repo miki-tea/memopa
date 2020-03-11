@@ -2,9 +2,14 @@
 require_once(__DIR__ . '/config/config.php');
 debug('HELLO:mypage.php');
 
+
 $app = new MyApp\Controller\Mypage();
 
 $app->run();
+// $app->me();
+// $app->getvValues()->users;
+$app->loadMemo();
+
 
 
 // require('function.php');
@@ -53,8 +58,8 @@ $app->run();
 <html lang="ja">
   <!-- ヘッダー 情報 -->
 <head>
-  <?php $subtitle = 'マイページ'; ?>
   <?php require('head.php'); ?>
+  <?php $subtitle = 'マイページ'; ?>
 </head>
 <body>
   <!-- ヘッダー  -->
@@ -87,84 +92,13 @@ $app->run();
     <h1 class="memoList__title">Memo List</h1>
     <div class="cardList">
       <!-- <?php //foreach($dbMemoList as $key => $val): ?> -->
-      <div class="card">
-        <a href="memoDetail.php<?php echo '?post_id='.$val['post_id']; ?>">
-          <span class="card_body">メモメモ</span>
-        </a>
-      </div>
-      <div class="card">
-        <a href="memoDetail.php<?php echo '?post_id='.$val['post_id']; ?>">
-          <span class="card_body">メモメモ</span>
-        </a>
-      </div>
-      <div class="card">
-        <a href="memoDetail.php<?php echo '?post_id='.$val['post_id']; ?>">
-          <span class="card_body">メモメモ</span>
-        </a>
-      </div>
-      <div class="card">
-        <a href="memoDetail.php<?php echo '?post_id='.$val['post_id']; ?>">
-          <span class="card_body">メモメモ</span>
-        </a>
-      </div>
-      <div class="card">
-        <a href="memoDetail.php<?php echo '?post_id='.$val['post_id']; ?>">
-          <span class="card_body">メモメモ</span>
-        </a>
-      </div>
-      <div class="card">
-        <a href="memoDetail.php<?php echo '?post_id='.$val['post_id']; ?>">
-          <span class="card_body">メモメモ</span>
-        </a>
-      </div>
-      <div class="card">
-        <a href="memoDetail.php<?php echo '?post_id='.$val['post_id']; ?>">
-          <span class="card_body">メモメモ</span>
-        </a>
-      </div>
-      <div class="card">
-        <a href="memoDetail.php<?php echo '?post_id='.$val['post_id']; ?>">
-          <span class="card_body">メモメモ</span>
-        </a>
-      </div>
-      <div class="card">
-        <a href="memoDetail.php<?php echo '?post_id='.$val['post_id']; ?>">
-          <span class="card_body">メモメモ</span>
-        </a>
-      </div>
-      <div class="card">
-        <a href="memoDetail.php<?php echo '?post_id='.$val['post_id']; ?>">
-          <span class="card_body">メモメモ</span>
-        </a>
-      </div>
-      <div class="card">
-        <a href="memoDetail.php<?php echo '?post_id='.$val['post_id']; ?>">
-          <span class="card_body">メモメモ</span>
-        </a>
-      </div>
-      <div class="card">
-        <a href="memoDetail.php<?php echo '?post_id='.$val['post_id']; ?>">
-          <span class="card_body">メモメモ</span>
-        </a>
-      </div>
-      <div class="card">
-        <a href="memoDetail.php<?php echo '?post_id='.$val['post_id']; ?>">
-          <span class="card_body">メモメモ</span>
-        </a>
-      </div>
-      <div class="card">
-        <a href="memoDetail.php<?php echo '?post_id='.$val['post_id']; ?>">
-          <span class="card_body">メモメモ</span>
-        </a>
-      </div>
-      <div class="card">
-        <a href="memoDetail.php<?php echo '?post_id='.$val['post_id']; ?>">
-          <span class="card_body">メモメモ</span>
-        </a>
-      </div>
-
-
-
+      <?php foreach($app->getVal()->post as $post) : ?>
+        <div class="card">
+          <a href="memoDetail.php< echo '?post_id='.$val['post_id']; ">
+            <span class="card__body"><?= h($post->content); ?></span>
+          </a>
+        </div>
+      <?php endforeach; ?>
       <!-- <?php //endforeach; ?> -->
     </div>
     <div class=""></div>

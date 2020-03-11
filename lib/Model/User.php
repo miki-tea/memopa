@@ -12,7 +12,7 @@ class User extends \MyApp\Model {
       ':login_time' => date('Y-m-d H:i:s'),
       ':create_date' => date('Y-m-d H:i:s')
     ]);
-    $_SESSION['user_id'] = $user['user_id'];
+    $_SESSION['me'] = $res['user_id'];
     if($res === false){
       throw new \MyApp\Exception\DuplicateEmail();
     }
@@ -20,18 +20,18 @@ class User extends \MyApp\Model {
 
   // ログイン
   public function login($values){
-    $stmt = $this->db->prepare('SELECT pass,user_id FROM users WHERE email = :email AND delete_flg = 0');
+    $stmt = $this->db->prepare('SELECT user_id,pass FROM users WHERE email = :email AND delete_flg = 0');
     $stmt->execute([
       ':email' => $values['email']
     ]);
-    $user = $stmt->fetch(\PDO::FETCH_ASSOC);
-    debug('$userの中身' . print_r($user, true));
-    $_SESSION['user_id'] = $user['user_id'];
+    $stmt->setFetchMode(\PDO::FETCH_CLASS, 'stdClass');
+    $user = $stmt->fetch();
+     debug('$user->passの中身:' . $user->pass);
     
     if(empty($user)){
       throw new \MyApp\Exception\UnmatchDbInfo();
     }
-    if(!password_verify($values['password'], $user['pass'])){
+    if(!password_verify($values['password'], $user->pass)){
       throw new \MyApp\Exception\UnmatchDbInfo();
     }
     if($user === false){

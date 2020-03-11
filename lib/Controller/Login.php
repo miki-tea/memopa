@@ -46,6 +46,8 @@ class Login extends \MyApp\Controller {
               'email' => $email,
               'password' => $pass
             ]);
+            $_SESSION['me'] = $user;
+            debug('$userの中身:' . var_dump($_SESSION['me']->pass));
           }catch(\MyApp\Exception\UnmatchDbInfo $e) {
             debug('DB接続でエラーが発生しました。');
             $this->setErr('login',$e->getMessage());
@@ -53,7 +55,17 @@ class Login extends \MyApp\Controller {
           }
 
         // Login
-        $this->_login();
+            session_regenerate_id(true);
+            $sesLimit = 60*60;
+            $_SESSION['login_date'] = time();
+            if($pass_skip){
+              debug('次回ログインスキップを希望。');
+              $_SESSION['login_limit'] = $sesLimit * 24 * 30;
+            }else{
+              $_SESSION['login_limit'] = $sesLimit;
+            }
+            
+            debug('$_SESSION["me"]の中身' . var_dump($user));
 
         // redirect to mypage
         header('location: ' . SITE_URL . '/memopa/mypage.php');
@@ -97,18 +109,5 @@ class Login extends \MyApp\Controller {
     if(empty($this->getErr('pass'))){
       $this->InvalidHalf($pass, 'pass');
     }
-  }
-
-  private function _login(){
-    session_regenerate_id(true);
-    $sesLimit = 60*60;
-    $_SESSION['login_date'] = time();
-    if($pass_skip){
-      debug('次回ログインスキップを希望。');
-      $_SESSION['login_limit'] = $sesLimit * 24 * 30;
-    }else{
-      $_SESSION['login_limit'] = $sesLimit;
-    }
-    debug('$_SESSIONの中身：' . print_r($_SESSION,true));
   }
 }
