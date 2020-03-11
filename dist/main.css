@@ -388,6 +388,24 @@ textarea:focus {
   justify-content: center;
   align-items: center; }
 
+.editMemo__wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px; }
+  @media (max-width: 544px) {
+    .editMemo__wrapper {
+      margin: 0 0; } }
+
+.editMemo__container {
+  width: 500px;
+  border: 2px solid #4e3515;
+  box-shadow: 1px 1px 7px #4e3515;
+  min-height: 300px; }
+  @media (max-width: 544px) {
+    .editMemo__container {
+      min-height: calc(100vh - 260px); } }
+
 .hero {
   margin-top: 60px;
   background-image: url("../../memopa/dist/anastasiia-kamil--uQZPtoJ8nk-unsplash.jpg");
