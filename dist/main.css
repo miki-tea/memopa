@@ -40,9 +40,6 @@ input[type="checkbox"] {
   top: 2px;
   left: 5px; }
 
-main {
-  margin-top: 60px; }
-
 ul {
   list-style: none; }
 
@@ -444,7 +441,6 @@ textarea:focus {
       min-height: calc(100vh - 260px); } }
 
 .hero {
-  margin-top: 60px;
   background-image: url("../../memopa/dist/anastasiia-kamil--uQZPtoJ8nk-unsplash.jpg");
   background-attachment: fixed;
   background-position: center;
