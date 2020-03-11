@@ -17,8 +17,8 @@ $subtitle = "TOP";
 <main>
   <!-- ここからヒーローセクション -->
   <section class="hero container-fluid js-float-menu-target">
-    <div class="hero-circle">
-      <h2 class="hero-title">"memopa!"で、<br>気楽にメモしよう!</h2>
+    <div class="hero__circle">
+      <h2 class="hero__title">"memopa!"で、<br>気楽にメモしよう!</h2>
     </div>
   </section>
   <!-- ここからABOUT -->
@@ -41,7 +41,7 @@ $subtitle = "TOP";
           <spann class="container-ornament">FAQ</span>
         </h2>
         <div class="container-body">
-          <div class="panel-group panel-group-flex">
+          <div class="panel-group panel-group-flex js-slideRight-target">
     
             <div class="panel panel-border">
                 <h3 class="panel-head">有料？</h3>
