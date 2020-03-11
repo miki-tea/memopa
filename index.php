@@ -16,7 +16,7 @@ $subtitle = "TOP";
 <!-- ここからメインコンテンツ -->
 <main>
   <!-- ここからヒーローセクション -->
-  <section class="hero container-fluid js-float-menu-target">
+  <section class="hero container-fluid">
     <div class="hero__circle">
       <h2 class="hero__title">"memopa!"で、<br>気楽にメモしよう!</h2>
     </div>
@@ -25,8 +25,8 @@ $subtitle = "TOP";
   <section id="about" class="bg-color-sub">
     <div class="container">
       <div class="container-about">
-        <h2 class="container-title js-slideLeft-target"><span class="container-ornament">"memopa!"とは？</span></h2>
-        <p class="container-body js-slideRight-target">シンプルで使いやすいメモアプリです。<br>
+        <h2 class="container-title"><span class="container-ornament">"memopa!"とは？</span></h2>
+        <p class="container-body">シンプルで使いやすいメモアプリです。<br>
         「さっきいいアイデアが浮かんだのに、忘れてしまった・・・」なんて、<br>悔しい思いをしたことはありませんか？<br>
         「memopa!」を始めたら、メモする場所にはもう困りません。<br>全てのアイデアは「ぱっとメモ」できるから。<br>
         登録も退会も簡単。ノンストレスなメモライフをお楽しみください。</p>
@@ -37,11 +37,11 @@ $subtitle = "TOP";
   <!-- ここからよくある質問 -->
     <section id="question">
       <div class="container container-question">
-        <h2 class="container-title js-slideLeft-target">
+        <h2 class="container-title">
           <spann class="container-ornament">FAQ</span>
         </h2>
         <div class="container-body">
-          <div class="panel-group panel-group-flex js-slideRight-target">
+          <div class="panel-group panel-group-flex ">
     
             <div class="panel panel-border">
                 <h3 class="panel-head">有料？</h3>
