@@ -53,10 +53,10 @@ class MyPage extends \MyApp\Controller {
     $user_id = $this->me()->user_id;
     debug('user_idー＞'. $user_id);
     $postModel = new \MyApp\Model\Post();
-    $post = $postModel->getDbMemo([
+    $load = $postModel->getDbMemo([
       'user_id' => $user_id
     ]);
-    $this->setVal('post',$post);
+    $this->setVal('load',$load);
   }
 
 

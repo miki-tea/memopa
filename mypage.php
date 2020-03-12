@@ -91,15 +91,14 @@ $app->loadMemo();
   <div class="memoList">
     <h1 class="memoList__title">Memo List</h1>
     <div class="cardList">
-      <!-- <?php //foreach($dbMemoList as $key => $val): ?> -->
-      <?php foreach($app->getVal()->post as $post) : ?>
+      <?php foreach($app->getVal()->load as $load) : ?>
         <div class="card">
-          <a href="memoDetail.php< echo '?post_id='.$val['post_id']; ">
-            <span class="card__body"><?= h($post->content); ?></span>
+          <a href="memoDetail.php<?php echo ( !empty(appendGetParam()) ? appendGetParam() . '&p_id=' . h($load->post_id) : '?p_id=' . h($load->post_id) ); ?> ">
+          <!-- もし既にあるパラメーターがあるならその'パラメーター'＋'&p_id=~~'をつける。ないなら'?p_id=~~'だけ -->
+            <span class="card__body"><?= h($load->content); ?></span>
           </a>
         </div>
       <?php endforeach; ?>
-      <!-- <?php //endforeach; ?> -->
     </div>
     <div class=""></div>
     <div class=" memoList-paging"><< 1 2 3 >></div>

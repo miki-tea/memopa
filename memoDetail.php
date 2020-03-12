@@ -1,3 +1,9 @@
+<?php
+  require_once(__DIR__ . '/config/config.php');
+  $app = new MyApp\Controller\MemoDetail();
+  $app->run();
+  // $app->loadOnePost();
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -28,9 +34,9 @@
 </div>
 <div class="editMemo editMemo__wrapper">
   <div class="editMemo__container">
+    <div class="err"><span><?= h($app->getErr('common')); ?></span></div>
     <div class="editMemo__body">
-      今日は食パン８枚切りを焼いて８枚食べました。
-    </div>
+      <? h($this->me()->content); ?>
     <div class="info editMemo__info">
       <ul class="info__list">
         <li class="info__item">更新日：2020/03/11 12:00:00</li>
