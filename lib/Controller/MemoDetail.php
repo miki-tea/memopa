@@ -49,7 +49,7 @@ class MemoDetail extends \MyApp\Controller {
       $res = $PostDetail->getOneDbMemo([
         'post_id' => $p_id
       ]);
-      $this->setVal('content', $res['content']);
+      $this->setVal('res', $res);
     }catch ( \MyApp\Exception\LoadError $e){
       debug('DB接続にエラーが起きました。');
       $this->setErr('common', $e->getMessage());

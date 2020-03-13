@@ -43,12 +43,12 @@
 <div class="editMemo editMemo__wrapper">
   <div class="editMemo__container">
     <div class="editMemo__body">
-      <?= h($app->getVal()->content); ?>
+      <?= h($app->getVal()->res['content']); ?>
     </div>
     <div class="info editMemo__info">
       <ul class="info__list">
-        <li class="info__item">更新日：2020/03/11 12:00:00</li>
-        <li class="info__item">作成日：2020/03/11 12:00:00</li>
+        <li class="info__item">更新日：<?= h($app->getVal()->res['update_date']); ?></li>
+        <li class="info__item">作成日：<?= h($app->getVal()->res['create_date']); ?></li>
       </ul>
     </div>
   </div>

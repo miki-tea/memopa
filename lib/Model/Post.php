@@ -43,12 +43,14 @@ class Post extends \MyApp\Model {
 
   public function getOneDbMemo($values) {
     //TODO:命名リファクタリング
-    $stmt = $this->db->prepare('SELECT content FROM post WHERE post_id = :post_id AND delete_flg = 0 ');
+    $stmt = $this->db->prepare('SELECT content,create_date,update_date FROM post WHERE post_id = :post_id AND delete_flg = 0 ');
     $stmt->execute([
       ':post_id' => $values['post_id']
     ]);
     $res = $stmt->fetch(\PDO::FETCH_ASSOC);
     debug('$res[content]の中身：' . $res['content']);
+    debug('$res[create_date]の中身：' . $res['create_date']);
+    
     return $res;
   }
 }
