@@ -1,3 +1,93 @@
+textarea{
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  border-radius: 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1em;
+  height: 100px;
+  width: 100%;
+}
+
+
+textarea:focus {
+  border: 1px solid rgba(0, 0, 0, 0.32);
+  box-shadow: none;
+  outline: none;
+}
+$form-width: 300px;
+.mypage{
+  margin-top: 60px;
+}
+.console{
+  background-color: $color_main;
+  overflow: hidden;
+  max-width: 768px;
+  margin: 59px auto 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  &__wrapper{
+    background-color: $color_main;
+  }
+}
+.nav{
+  @include mq(sm) {
+    display: none;
+  }
+  &__list{
+    
+  }
+  &__link{
+    color: $color_sub;
+  }
+}
+.form-wrap{
+  float: left;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.form{
+  overflow: hidden;
+  width: 480px;
+    max-width: 100%;
+  &__inputArea{
+    background-color: #fff;
+    height: 15vh;
+    display: block;
+    box-sizing:border-box;
+    border:none;
+    padding: 10px;
+    border-radius: 5px;
+    @include mq(sm){
+      width: 100%;
+    }
+  }
+  &__submitBtn{
+    float: right;
+    background: $color_sub;
+    font-size: 20px;
+    color: $color_main;
+    transition: all 0.5s;
+    padding: 10px 30px;
+    margin-top: 20px;
+    border-radius: 100px;
+    @include mq(sm){
+      width: 100%;
+      padding:20px 0;
+    margin-top: 12px;
+
+      
+    }
+    &:hover{
+      background-color: lighten($color_sub, 20%);
+    }
+  }
+}
 .btn{
   display: block;
   line-height: 50px;

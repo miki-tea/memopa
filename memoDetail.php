@@ -30,23 +30,21 @@
   </div>
 </header>
 <main>
-<div class="console">
-  <div class="console__wrap">
-    <div class="form-wrap">
-      <form action="" method="POST" class="form">
-        <textarea name="memo" class="form__inputArea" placeholder="編集内容"></textarea>
-        <input class="form__submitBtn"type="submit" name="submit" value="編集する">
-        <!-- <input type="hidden" name="token" value="< h($_SESSION['token']); ?>"> -->
-        <!-- <span class="err">< $app->getErr('common');?></span> -->
-      </form>
-    </div>
+<div class="console__wrapper">
+  <div class="console">
+    <form action="" method="POST" class="form">
+      <textarea name="memo" class="form__inputArea" placeholder="編集内容"></textarea>
+      <input class="form__submitBtn"type="submit" name="submit" value="編集する">
+      <!-- <input type="hidden" name="token" value="< h($_SESSION['token']); ?>"> -->
+      <span class="err"><?= h($app->getErr('common')); ?></span>
+    </form>
   </div>
 </div>
 <div class="editMemo editMemo__wrapper">
   <div class="editMemo__container">
-    <div class="err"><span><?= h($app->getErr('common')); ?></span></div>
     <div class="editMemo__body">
-      <?= $app->getVal()->content; ?>
+      <?= h($app->getVal()->content); ?>
+    </div>
     <div class="info editMemo__info">
       <ul class="info__list">
         <li class="info__item">更新日：2020/03/11 12:00:00</li>
@@ -54,7 +52,6 @@
       </ul>
     </div>
   </div>
-</div>
 </main>
 <?php require('footer.php'); ?>
 </body>

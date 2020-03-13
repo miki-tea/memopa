@@ -46,6 +46,83 @@ ul {
 h1 {
   margin: 0; }
 
+textarea {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  border-radius: 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1em;
+  height: 100px;
+  width: 100%; }
+
+textarea:focus {
+  border: 1px solid rgba(0, 0, 0, 0.32);
+  box-shadow: none;
+  outline: none; }
+
+.mypage {
+  margin-top: 60px; }
+
+.console {
+  background-color: #4e3515;
+  overflow: hidden;
+  max-width: 768px;
+  margin: 59px auto 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center; }
+  .console__wrapper {
+    background-color: #4e3515; }
+
+@media (max-width: 544px) {
+  .nav {
+    display: none; } }
+
+.nav__link {
+  color: #F4E23A; }
+
+.form-wrap {
+  float: left;
+  max-width: 100%;
+  box-sizing: border-box; }
+
+.form {
+  overflow: hidden;
+  width: 480px;
+  max-width: 100%; }
+  .form__inputArea {
+    background-color: #fff;
+    height: 15vh;
+    display: block;
+    box-sizing: border-box;
+    border: none;
+    padding: 10px;
+    border-radius: 5px; }
+    @media (max-width: 544px) {
+      .form__inputArea {
+        width: 100%; } }
+  .form__submitBtn {
+    float: right;
+    background: #F4E23A;
+    font-size: 20px;
+    color: #4e3515;
+    transition: all 0.5s;
+    padding: 10px 30px;
+    margin-top: 20px;
+    border-radius: 100px; }
+    @media (max-width: 544px) {
+      .form__submitBtn {
+        width: 100%;
+        padding: 20px 0;
+        margin-top: 12px; } }
+    .form__submitBtn:hover {
+      background-color: #f9f09b; }
+
 .btn {
   display: block;
   line-height: 50px;
@@ -313,83 +390,6 @@ footer {
   footer span {
     color: #F4E23A; }
 
-textarea {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: transparent;
-  background-image: none;
-  border: 1px solid rgba(0, 0, 0, 0.16);
-  border-radius: 0;
-  color: inherit;
-  font-family: inherit;
-  font-size: 1em;
-  height: 100px;
-  width: 100%; }
-
-textarea:focus {
-  border: 1px solid rgba(0, 0, 0, 0.32);
-  box-shadow: none;
-  outline: none; }
-
-.mypage {
-  margin-top: 60px; }
-
-.console {
-  background-color: #4e3515;
-  margin-top: 60px; }
-  .console__wrap {
-    overflow: hidden;
-    max-width: 768px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    padding: 20px; }
-
-@media (max-width: 544px) {
-  .nav {
-    display: none; } }
-
-.nav__link {
-  color: #F4E23A; }
-
-.form-wrap {
-  float: left;
-  max-width: 100%;
-  box-sizing: border-box; }
-
-.form {
-  overflow: hidden;
-  width: 480px;
-  max-width: 100%; }
-  .form__inputArea {
-    background-color: #fff;
-    height: 15vh;
-    display: block;
-    box-sizing: border-box;
-    border: none;
-    padding: 10px;
-    border-radius: 5px; }
-    @media (max-width: 544px) {
-      .form__inputArea {
-        width: 100%; } }
-  .form__submitBtn {
-    float: right;
-    background: #F4E23A;
-    font-size: 20px;
-    color: #4e3515;
-    transition: all 0.5s;
-    padding: 10px 30px;
-    margin-top: 20px;
-    border-radius: 100px; }
-    @media (max-width: 544px) {
-      .form__submitBtn {
-        width: 100%;
-        padding: 20px 0;
-        margin-top: 12px; } }
-    .form__submitBtn:hover {
-      background-color: #f9f09b; }
-
 .memoList {
   max-width: 1200px;
   margin: 0 auto; }
@@ -451,14 +451,25 @@ textarea:focus {
     .editMemo__wrapper {
       margin: 0 0; } }
 
-.editMemo__container {
-  width: 500px;
-  border: 2px solid #4e3515;
-  box-shadow: 1px 1px 7px #4e3515;
-  min-height: 300px; }
+.editMemo__body {
+  width: 480px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #765020;
+  min-height: 300px;
+  background: #fff;
+  padding: 15px; }
   @media (max-width: 544px) {
-    .editMemo__container {
+    .editMemo__body {
       min-height: calc(100vh - 260px); } }
+
+.info {
+  overflow: hidden; }
+  .info__list {
+    float: right;
+    margin: 5px 0; }
+  .info__item {
+    color: #c78735; }
 
 .hero {
   background-image: url("../../memopa/dist/anastasiia-kamil--uQZPtoJ8nk-unsplash.jpg");
