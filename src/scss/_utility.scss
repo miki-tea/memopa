@@ -39,9 +39,6 @@ $form-width: 300px;
   @include mq(sm) {
     display: none;
   }
-  &__list{
-    
-  }
   &__link{
     color: $color_sub;
   }

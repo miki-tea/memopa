@@ -27,15 +27,13 @@ $app->run();
   </div>
 </header>
 <main>
-<div class="withdraw__wrapper">
-  <div class="withdraw">
-    <h1 class="withdraw__title">本当に退会しますか？</h1>
-    <form action="" method="POST" class="form withdraw__form">
-      <input type="submit" class="withdraw__btn" value="退会する">
-      <input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
-    </form>
-    <span><?= isset($app->getVal()->common) ? h($app->getVal()->common) : ''; ?></span>
-  </div>
+<div class="withdraw">
+  <h1 class="withdraw__title">本当に退会しますか？</h1>
+  <form action="" method="POST" class="form withdraw__form">
+    <input type="submit" class="withdraw__btn" value="退会する">
+    <input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
+  </form>
+  <span><?= isset($app->getVal()->common) ? h($app->getVal()->common) : ''; ?></span>
 </div>
 
 </main>

@@ -1,0 +1,6 @@
+.psr{
+  width: 500px;
+  @include mq(sm) {
+    width: 90%;
+  }
+}

@@ -147,7 +147,7 @@ textarea:focus {
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh; }
-  @media (max-width: 480px) {
+  @media (max-width: 414px) {
     .bg-theme {
       padding-top: 0; } }
 
@@ -191,7 +191,7 @@ textarea:focus {
 .editPage {
   width: 400px;
   margin: 0 auto; }
-  @media (max-width: 480px) {
+  @media (max-width: 414px) {
     .editPage {
       width: 100%; } }
   .editPage .container-title {
@@ -201,7 +201,7 @@ textarea:focus {
   .editPage .container-form {
     width: 90%;
     margin: 10px auto; }
-    @media (max-width: 480px) {
+    @media (max-width: 414px) {
       .editPage .container-form {
         width: 100%; } }
   .editPage .container-formItem {
@@ -217,7 +217,7 @@ textarea:focus {
     font-weight: bold;
     text-align: center;
     font-size: 36px; }
-    @media (max-width: 480px) {
+    @media (max-width: 414px) {
       .editPage .container .title {
         font-size: 30px; } }
 
@@ -555,6 +555,12 @@ footer {
   border-bottom: 2px solid red;
   border-right: 2px solid red; }
 
+.psr {
+  width: 500px; }
+  @media (max-width: 544px) {
+    .psr {
+      width: 90%; } }
+
 .hero {
   background-image: url("../../memopa/dist/anastasiia-kamil--uQZPtoJ8nk-unsplash.jpg");
   background-attachment: fixed;
@@ -605,10 +611,10 @@ section {
     padding-top: 80px;
     padding-bottom: 100px;
     z-index: 4; }
-    @media (max-width: 480px) {
+    @media (max-width: 414px) {
       section .container {
         width: 80%; } }
-    @media (max-width: 480px) {
+    @media (max-width: 414px) {
       section .container-question {
         width: 100%; } }
     section .container-body {
@@ -646,7 +652,7 @@ section {
       text-align: center; }
       section .container-sign_up .head br {
         display: none; }
-      @media (max-width: 480px) {
+      @media (max-width: 414px) {
         section .container-sign_up .head br {
           display: block; } }
     section .container-btn {
@@ -672,7 +678,7 @@ section {
   background-color: rgba(255, 255, 255, 0.6);
   border-radius: 25px;
   border: 3px #F4E23A solid; }
-  @media (max-width: 480px) {
+  @media (max-width: 414px) {
     .panel {
       width: 85%;
       margin: 0 auto 10px;
@@ -682,7 +688,7 @@ section {
     display: flex;
     justify-content: space-between;
     width: 100%; }
-    @media (max-width: 480px) {
+    @media (max-width: 414px) {
       .panel-group {
         margin-right: 0;
         display: block; } }
