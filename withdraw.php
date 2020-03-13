@@ -22,13 +22,14 @@
   </div>
 </header>
 <main>
-
-  <div class="withdraw__container">
+<div class="withdraw__wrapper">
+  <div class="withdraw">
     <h1 class="withdraw__title">本当に退会しますか？</h1>
-    <form action="" method="POST">
-      <input type="submit" class="withdraw__body btn" value="退会する">
+    <form action="" method="POST" class="form withdraw__form">
+      <input type="submit" class="withdraw__btn" value="退会する">
     </form>
   </div>
+</div>
 
 </main>
 <?php require('footer.php'); ?>

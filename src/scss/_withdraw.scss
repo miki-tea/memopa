@@ -1,0 +1,31 @@
+.withdraw{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%)translateY(-50%);
+  text-align: center;
+  &__wrapper{
+  }
+  &__title{
+    font-size: 30px;
+  }
+  &__form{
+    margin-top: 20px;
+  }
+  &__btn{
+    box-sizing: border-box;
+    display: block;
+    padding: 10px 20px;
+    background: $color_main;
+    color: $color_sub;
+    border: 1px solid $color_main;
+    border-radius: 100px;
+    transition: all .3s;
+    margin: 0 auto;
+    &:hover{
+      background-color: $color_sub;
+      color: $color_main;
+      border: 1px solid $color_main;
+    }
+  }
+}

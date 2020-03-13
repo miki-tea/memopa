@@ -107,6 +107,7 @@ textarea:focus {
       .form__inputArea {
         width: 100%; } }
   .form__submitBtn {
+    display: block;
     float: right;
     background: #F4E23A;
     font-size: 20px;
@@ -156,8 +157,7 @@ textarea:focus {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
-  padding-top: 50px; }
+  height: 100vh; }
   @media (max-width: 480px) {
     .bg-theme {
       padding-top: 0; } }
@@ -471,6 +471,31 @@ footer {
     margin: 5px 0; }
   .info__item {
     color: #c78735; }
+
+.withdraw {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  text-align: center; }
+  .withdraw__title {
+    font-size: 30px; }
+  .withdraw__form {
+    margin-top: 20px; }
+  .withdraw__btn {
+    box-sizing: border-box;
+    display: block;
+    padding: 10px 20px;
+    background: #4e3515;
+    color: #F4E23A;
+    border: 1px solid #4e3515;
+    border-radius: 100px;
+    transition: all .3s;
+    margin: 0 auto; }
+    .withdraw__btn:hover {
+      background-color: #F4E23A;
+      color: #4e3515;
+      border: 1px solid #4e3515; }
 
 .hero {
   background-image: url("../../memopa/dist/anastasiia-kamil--uQZPtoJ8nk-unsplash.jpg");

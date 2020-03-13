@@ -68,6 +68,7 @@ $form-width: 300px;
     }
   }
   &__submitBtn{
+    display: block;
     float: right;
     background: $color_sub;
     font-size: 20px;
@@ -129,7 +130,7 @@ $form-width: 300px;
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
-    padding-top: 50px;
+  
     @include mq() {
       padding-top: 0;
     }
