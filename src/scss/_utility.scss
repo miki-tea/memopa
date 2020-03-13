@@ -146,7 +146,10 @@ $form-width: 300px;
     font-size: 30px;
     margin-bottom: 15px;
   }
-
+  &__btn{
+  margin: 20px auto;
+  display: block;
+}
   &__navi{
     float: right;
     color: $color_main;

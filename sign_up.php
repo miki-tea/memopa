@@ -14,8 +14,7 @@ $app->run();
     require('head.php');
   ?>
 </head>
-<body>
-<div class="bg-theme">
+<body class="bg-theme">
 <?php require('header.php'); ?>
       <!-- ナビメニュー部分 -->
     <div class="menu">
@@ -33,57 +32,45 @@ $app->run();
   </div>
 </header>
 
-<div class="editPage">
+<div class="submit templete">
 
-  <h1 class="container-title title">新規登録</h1>
-      <div class="form">
-
-        <form action="" method="POST" class="container-form" novalidate>
-          <div class="err"><?= h($app->getErr('common')); ?></div>
-      
-          <div class="container-formItem">
+  <h1 class="templete__title">新規登録</h1>
+        <form action="" method="POST"  novalidate>
+          <span class="err"><?= h($app->getErr('common')); ?></span>
             <label for="email">
-              <p class="container-formItem-name">
+              <p class="form__title">
               Eメール
               <span class="err"><?= h($app->getErr('email')); ?></span>
               </p>
-              <input type="email" name="email" value="<?= isset($app->getVal()->email)? h($app->getVal()->email) : '' ?>" >
+              <input class="form__input" type="email" name="email" value="<?= isset($app->getVal()->email)? h($app->getVal()->email) : '' ?>" >
             </label>
-      
-          </div>
-          <div class="container-formItem">
+
             <label for="pass">
-              <p class="container-formItem-name">
+              <p class="form__title">
                 パスワード
                 <span class="err"><?= h($app->getErr('pass')); ?></span>
               </p>
-              <input type="pass" name="pass" >
+              <input class="form__input" type="pass" name="pass" >
       
             </label>
-          </div>
 
-          <div class="container-formItem">
             <label for="pass_re">
-              <p class="container-formItem-name">
+              <p class="form__title">
                 パスワード(再入力)
                 <span class="err"><?= h($app->getErr('pass_re')); ?></span>
               </p>
-              <input type="pass" name="pass_re">
+              <input class="form__input" type="pass" name="pass_re">
       
             </label>
-          </div>
 
-            <div class="container-btn">
-              <input type="submit" value="登録する" name="submit" class="btn btn-submit">
-
-            </div>
+              <input class="templete__btn btn__submit" type="submit" value="登録する" name="submit" class="btn btn-submit">
           <input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
         </form>
-        <a class="sign-up__link"href="login.php">ログインの方はこちらへ &gt;&gt;</a>
+        <a class="templete__navi" href="login.php">ログインの方はこちらへ &gt;&gt;</a>
       </div>
     
 </div>
-    </div>
-    <?php require('footer.php'); ?>
+
+<?php require('footer.php'); ?>
 </body>
 </html>

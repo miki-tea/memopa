@@ -160,6 +160,9 @@ textarea:focus {
   .templete__title {
     font-size: 30px;
     margin-bottom: 15px; }
+  .templete__btn {
+    margin: 20px auto;
+    display: block; }
   .templete__navi {
     float: right;
     color: #4e3515;
@@ -546,10 +549,6 @@ footer {
   transform: rotate(40deg);
   border-bottom: 2px solid red;
   border-right: 2px solid red; }
-
-.login__btn {
-  margin: 20px auto;
-  display: block; }
 
 .hero {
   background-image: url("../../memopa/dist/anastasiia-kamil--uQZPtoJ8nk-unsplash.jpg");
