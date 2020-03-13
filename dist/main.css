@@ -157,7 +157,6 @@ textarea:focus {
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
-  margin-top: 60px;
   padding-top: 50px; }
   @media (max-width: 480px) {
     .bg-theme {
@@ -386,7 +385,8 @@ footer {
   height: 20px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  width: 100%; }
   footer small {
     color: #F4E23A;
     font-size: 9px; }
