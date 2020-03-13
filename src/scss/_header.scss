@@ -1,129 +1,176 @@
 .header{
-  z-index: 5;
-  box-sizing: border-box;
-  width: 100%;
   height: $header-height;
-  display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-left: $space_3l;
-  padding-right: $space_3l;
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  transition: 1s;
+  // padding-left: $space_3l;
+  // padding-right: $space_3l;
+  // position: relative;
   background: $color_sub2;
-  @include mq() {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  z-index: 1;
+  @include mq(sm){
+    padding: 0 5px;
+  }
+
+  @include mq(md) {
     padding-left: 20px;
     padding-right: 20px;
   }
-  
-  &.float-active{
-    background-color: rgba($color_sub3, 0.9);
-    transition: .3s;
+  &__wrap{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: $header-height;
+    padding: 0 50px;
+    @include mq(lg) {
+      padding: 0;
+    }
   }
   
-  .title{
-    font-family: $font_family_corp;
-    padding-bottom: 11px;
-    @include mq() {
+  &__logo{
+    @include mq(sm) {
       text-align: center;
     }
-    a {
-      font-size: 45px;
-      color: $color_sub;
-    }
   }
 }
-.nav-menu{
-  display: block;
-  @include mq(md) {
-    display: none;
+.logo{
+  &__link{
+    font-family: $font_family_corp;
+    font-size: 45px;
+    color: $color_sub;
+    position: relative;
+    top: -5px;
   }
-  // @include mq() {
-  //   display: block;
-  //   position: absolute;
-  //   top: 0;
-  //   right: -100%;
-  //   background: white;
-  //   width: 100%;
-  //   height: 100vh;
-  //   padding-top: 50px;
-  //   transition: .5s;
-  //   &.active {
-  //     transition: .5s;
-  //     transform: translateX(-100%);
-  //     z-index: 6;
-  //   }
-  // }
-  .menu{
+}
+// headerクラスここまで
+
+.menu{
+  &__list{
     display: flex;
-    height: 75px;
-    
-    .menu-item{
-      display: block;
-    }
-    .menu-link{
-      color: $color_sub;
-      display: block;
-      height: 50px;
-      line-height: 50px;
-      padding: 0 30px;
-      border: 1px solid $color_sub;
-      margin-top: 10px;
-      margin-left: 15px;
-      border-radius: 30px;
-      transition: .3s;
-      @include mq(md){
-        display: none;
-      }
-      &:hover{
-        background-color: $color_sub;
-        color: $color_main;
-      }
-    }
+    padding: 0;
+    margin: 0 auto;
   }
-}
-.menu-trigger {
-  display: none;
-  @include mq(md) {
-    display: inline-block;
+  &__item{
   }
-  transition: all .4s;
-  box-sizing: border-box;
-  position: relative;
-  width: 40px;
-  height: 32px;
-  z-index: 3;
-  span {
-    display: inline-block;
-    transition: all .4s;
+  &__link{
+    border: 1px solid $color_sub;
+    margin-left: 20px;
+    padding: 10px 30px;
+    display: block;
     box-sizing: border-box;
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background-color: white;
-    border-radius: 4px;
-    &:nth-of-type(1) {
-      top: 0;
-    }
-    &:nth-of-type(2) {
-      top: 14px;
-    }
-    &:nth-of-type(3) {
-      bottom: 0;
+    color: $color_sub;
+    border-radius: 100px;
+    @include mq(lg){
+      border-radius: 0px;
+      border: none;
     }
   }
-  &.active span {
-    &:nth-of-type(1) {
-      transform: translateY(12px) rotate(-45deg);
-    }
-    &:nth-of-type(2) {
-      opacity: 0;
-    }
-    &:nth-of-type(3) {
-      transform: translateY(-15px) rotate(45deg);
-    }
-  }
+
+  
+}
+    @include mq(lg){
+      /*ナビメニューのスタイルを指定*/
+      .menu{
+        position: fixed; /*表示位置を固定*/
+        z-index: 2; /*重ね順を変更*/
+        top: 0; /*表示位置を指定*/
+        left: 0; /*表示位置を指定*/
+        background: $color_sub2;/*背景を白にする*/
+       /*文字色を黒にする*/
+        text-align: center; /*テキストを中央揃え*/
+        width: 100%; /*全幅表示*/
+        transform: translateX(100%); /*ナビを上に隠す*/
+        transition: all 0.6s; /*アニメーションの時間を指定*/
+      
+        &__list{
+          display: block;
+          background: $color_sub2; /*背景をグレーにする*/
+          width: 100%;
+          margin: 0 auto;
+          padding: 0;
+          
+        }
+      
+        &__item{
+          font-size: 1.1em;
+          list-style-type: none;
+          padding: 0;
+          width: 100%;
+          border-bottom: 1px dotted $color_sub;
+        }
+        
+        &__item:last-child{
+          padding-bottom: 0;
+          border-bottom: none; /*最後のメニュー項目のみ下線を消す*/
+        }
+        
+        &__link{
+          display: block; /*クリックできる領域を広げる*/
+          color:$color_sub;
+          padding: 1em 0;
+        }
+        
+        /*トグルボタンが押されたときに付与するクラス*/
+        &.active{
+          transform: translateX(0%);
+        }
+      }
+      /*トグルボタンのスタイルを指定*/
+      .toggle {
+        display: block;
+        position: fixed;    /* bodyに対しての絶対位置指定 */
+        right: 8px;
+        top: 7px;
+        width: 42px;
+        height: 42px;
+        cursor: pointer;
+        z-index: 3;
+        
+        &__ornament {
+            display: block;
+            position: absolute;
+            width: 30px;
+            border-bottom: solid 3px $color_sub;
+            border-radius: 3px;
+            -webkit-transition: .35s ease-in-out;	/*変化の速度を指定*/
+            -moz-transition: .35s ease-in-out;		/*変化の速度を指定*/
+            transition: .5s ease-in-out;			/*変化の速度を指定*/
+            left: 6px;
+            &:nth-child(1) {
+                top: 9px;
+            }
+              
+            &:nth-child(2) {
+                top: 18px;
+            }
+              
+            &:nth-child(3) {
+                top: 27px;
+            }
+        }
+        /* 最初のspanをマイナス45度に */
+        &.active &__ornament {
+      
+          &:nth-child(1){
+            top: 18px;
+            left: 6px;
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+            }
+            /* 2番目と3番目のspanを45度に */
+            &:nth-child(2) {
+              opacity: 0;
+            }
+            &:nth-child(3) {
+                top: 18px;
+                -webkit-transform: rotate(45deg);
+                -moz-transform: rotate(45deg);
+                transform: rotate(45deg);
+            }
+        }
+      }
 }

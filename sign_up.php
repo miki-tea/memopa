@@ -1,31 +1,25 @@
 <?php
+
 require_once(__DIR__ . '/config/config.php');
-$app = new MyApp\Controller\Login();
+$app = new MyApp\Controller\Signup();
 $app->run();
-// $app = new memopa\Controller\Signup();
 
-// $app->run();
-
-// require('function.php');
-// debug('＊Here is "login.php"*');
+// require('functions.php');
+// debug('＊This is "login.php"*');
 // debugLogStart();
 
 // require('auth.php');
 
 // if(!empty($_POST)){
-//   debug('ACCEPT::::POST');
-    
+//       debug('ACCEPT::::POST');
 //       $email = $_POST['email'];
 //       $pass = $_POST['pass'];
-
 //       validRequired($email, 'email');
 //       validRequired($pass, 'pass');
 
-//       if(empty($err)){
-
+//       if(empty($err)){ //どちらも空ではなかった場合
 //         validEmail($email, 'email');
 //         validMaxLen($email, 'email');
-
 //         validMaxLen($pass, 'pass');
 //         validMinLen($pass, 'pass');
 //         validHalf($pass, 'pass');
@@ -67,13 +61,13 @@ $app->run();
 //           }
 //         }
 //       }
-?>
+// ?>
 
 <!DOCTYPE html>
 <html>
 <head>
   <?php 
-    $subtitle = 'ログイン';
+    $subtitle = '新規登録';
     require('head.php');
   ?>
   <!-- <link type="text/css" rel="stylesheet" href="./css/auth.css"> -->
@@ -99,43 +93,52 @@ $app->run();
 
 <div class="editPage">
 
-  <h1 class="container-title title">ログイン</h1>
+  <h1 class="container-title title">新規登録</h1>
       <div class="form">
 
         <form action="" method="POST" class="container-form" novalidate>
-          <div class="err"><?php if(!empty($err['common'])) echo $err['common']; ?></div>
+          <div class="err"><?= h($app->getErr('common')); ?></div>
       
           <div class="container-formItem">
-            <span class="err"><?= h($app->getErr('login')); ?></span>
             <label for="email">
               <p class="container-formItem-name">
-                Eメール
-                <span class="err"><?= h($app->getErr('email')); ?></span>
+              Eメール
+              <span class="err"><?= h($app->getErr('email')); ?></span>
               </p>
-              <input type="email" name="email" value="<?= isset($app->getVal()->email)? h($app->getVal()->email) : '' ?>">
+              <input type="email" name="email" value="<?= isset($app->getVal()->email)? h($app->getVal()->email) : '' ?>" >
             </label>
+      
           </div>
           <div class="container-formItem">
             <label for="pass">
               <p class="container-formItem-name">
                 パスワード
-                <span class="err"><?= $app->getErr('pass');?></span>
+                <span class="err"><?= h($app->getErr('pass')); ?></span>
               </p>
-              <input type="pass" name="pass">
+              <input type="pass" name="pass" >
       
             </label>
           </div>
-          <div class="container-formItem">
-            <input type="checkbox" name="pass_skip" class="pass_skip" id="pass_skip">
-            <label for="pass_skip" class="label">ログイン状態を1日保持</label>
-          </div>
-            <div class="container-btn">
-              <input type="submit" value="ログイン" name="submit" class="btn btn-submit">
-            </div>
-            <p><a href="sign_up.php">新規登録の方はこちらへ</a></p>
-            <input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
 
+          <div class="container-formItem">
+            <label for="pass_re">
+              <p class="container-formItem-name">
+                パスワード(再入力)
+                <span class="err"><?= h($app->getErr('pass_re')); ?></span>
+              </p>
+              <input type="pass" name="pass_re">
+      
+            </label>
+          </div>
+
+            <div class="container-btn">
+              <input type="submit" value="登録する" name="submit" class="btn btn-submit">
+
+            </div>
+          <input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
         </form>
+        <p><a href="login.php">ログインの方はこちらへ</a></p>
+        <?php var_dump(filter_input(INPUT_POST,'email')); ?>
       </div>
     
 </div>

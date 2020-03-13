@@ -33,6 +33,6 @@ gulp.task("webpack", () => {
     .pipe(gulp.dest("dist"));
 });
 
-gulp.task("default", gulp.series("webpack", "minify-img", "watch", function (done) {
+gulp.task("default", gulp.series("webpack", "watch", function (done) {
   done();
 }));

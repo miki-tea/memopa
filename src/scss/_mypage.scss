@@ -1,133 +1,60 @@
-$add-form-width: 290px;
-.mypage{
-  // .bg-theme {
-  //   // overflow: hidden;
-  //   // margin-top: $header-height;
-  //   background-image: url("../images/hero-rotate.jpg");
-  //   background-attachment: fixed;
-  //   background-position: center;
-  //   background-size: cover;
-  //   background-repeat: no-repeat;
-  //   // height: 100vh;
-  //   margin-top: $header-height;
-  //   padding-top: 0;
-  //   @include mq() {
-  //     padding-top: 0;
-  //   }
-  // }
-}
 
-.mypage{
-  .container{
-    &-memoSub{
-      float: left;
-      background: $color_main;
-      height: 100vh;
-      width: $add-form-width;
-    }
-    &-memoList{
-      width: 1000px;
-      float: left;
+.memoList{
+  max-width: 1200px;
+  margin: 0 auto;
+  @include mq(md){
+    margin-right: 5px;
 
-      padding: 20px;
-    }
-    &-btn{
-      width: $add-form-width;
-      height: 80px;
-    }
-    &-config{
-      padding: 0;
-      margin: 50px 0 0;
-      
-    }
-    &-configItem{
-      text-align: center;
-      padding-bottom: 10px;
-    }
   }
-  .btn{
-    background-color: #f4e23a;
-    color: #4e3515;
-    display: block;
-    width: 100px;
-    margin: 20px;
+
+  &__title{
     box-sizing: border-box;
-    border: none;
-    padding: 5px 0;
-  }
-  .configItem{
-    a{
-      color: $color_sub;
-    }
-  }
-  
-  .input{
-    width: 100%;
-    border-radius: 10px;
-    .container{
-      width: 50%;
-      margin: 0 auto;
-      overflow: hidden;
-    }
-  
-    &-form{
-    border: 2px solid $color_main;
-    width: $add-form-width;
-    display: block;
-    height: $add-form-width;
-    box-sizing: border-box;
-    margin-top: 80px;
-    }
-  }
-  input[type="submit"]{
-    box-sizing: border-box;
-    background-color: #F4E23A;
-    width: 100px;
-    margin: 20px auto 0px;
-    font-size: 14px;
-    border-radius: 30px;
-    line-height: 30px;
-    transition: .3s;
-    float: right;
-    margin-right: 20px;
-    border: 1px #4e3515 solid;
-    &:hover{
-      border: $color_main 1px solid;
-      color: $color_main;
-      background-color: $color_sub;
-    }
-  }
-  .memo_list{
-    width: 960px;
-    overflow: hidden;
-    
-  }
-  .card{
-    box-sizing: border-box;
-    float: left;
-    width: calc(25% - 10px);
-    margin: 10px 10px 0 0 ;
-    height: 220px;
-    background-color: #fff;
-    border-radius: 10px;
-    display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    overflow-wrap: anywhere;
-    box-shadow: 0 0 2px rgba($color_main, 0.6);
-    padding: 15px;
-  }
-  span{
-    // margin: 20px;
-  }
-  a{
-    color: $color_main;
-  }
-}
-.flex{
-  overflow: hidden;
-}
-.paging {
-  width: 1000px;
+    padding: 10px 0;
     text-align: center;
+  }
+}
+.cardList{
+  overflow: hidden;
+  padding: 0 0 0 10px;
+  // margin-right: -5px;
+  margin-bottom: -5px;
+}
+.card{
+  box-sizing: border-box;
+  background-color: #fff;
+  border: $color_main 1px solid;
+  height: 200px;
+  float: left;
+  width: calc(100% / 4 - 15px);
+  margin-right: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @include mq(md) {
+    width: calc(100% / 3 - 10px);
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  @include mq(sm) {
+    width: calc(100% / 2 - 5px);
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+  &__body{
+    overflow-wrap: anywhere;
+    box-sizing: border-box;
+    line-height: 1.2em;
+    display: block;
+    padding: 8px;
+  }
+}
+.nav__wrap{
+     // 縦に積む
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  // 中央寄せ
+  justify-content: center;
+  align-items: center;
 }
