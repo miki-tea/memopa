@@ -387,8 +387,9 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center; }
-  footer span {
-    color: #F4E23A; }
+  footer small {
+    color: #F4E23A;
+    font-size: 9px; }
 
 .memoList {
   max-width: 1200px;
