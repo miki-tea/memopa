@@ -18,6 +18,16 @@ class User extends \MyApp\Model {
     }
   }
 
+  public function delete($values){
+    $stmt = $this->db->prepare('UPDATE users SET delete_flg = 1 WHERE user_id = :user_id');
+    $res = $stmt->execute([
+      ':user_id' => $values['user_id']
+    ]);
+    if($res === false){
+      throw new \Exception();
+    }
+  }
+
   // ログイン
   public function login($values){
     $stmt = $this->db->prepare('SELECT user_id,pass FROM users WHERE email = :email AND delete_flg = 0');
