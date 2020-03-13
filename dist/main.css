@@ -167,7 +167,12 @@ textarea:focus {
     float: right;
     color: #4e3515;
     text-decoration-style: double;
-    border-bottom: 1px dotted #4e3515; }
+    border-bottom: 1px dotted #4e3515;
+    font-weight: normal;
+    position: relative;
+    font-size: 12px;
+    top: 16px;
+    left: -5px; }
     .templete__navi:hover {
       cursor: pointer; }
 

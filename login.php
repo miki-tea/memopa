@@ -32,7 +32,8 @@ $app->run();
 </header>
 
 <div class="login templete">
-  <h1 class="templete__title">ログイン</h1>
+  <h1 class="templete__title">ログイン<a class="templete__navi" href="sign_up.php">新規登録の方はこちら  &gt;&gt;</a></h1>
+              
         <form action="" method="POST" novalidate>
             <span class="err"><?= h($app->getErr('login')); ?></span>
             <label for="email">
@@ -59,7 +60,8 @@ $app->run();
             <!-- <div class="container-btn"> -->
               <input type="submit" value="ログイン" name="submit" class="templete__btn btn__submit">
             <!-- <F/div> -->
-            <p><a class="templete__navi" href="sign_up.php">新規登録の方はこちらへ  &gt;&gt;</a></p>
+            <p><a class="templete__navi" href="passRemindSend.php">パスワードをお忘れの方はこちらへ  &gt;&gt;</a></p>
+
             <input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
 
         </form>

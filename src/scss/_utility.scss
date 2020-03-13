@@ -155,6 +155,11 @@ $form-width: 300px;
     color: $color_main;
     text-decoration-style: double;
     border-bottom: 1px dotted $color_main;
+    font-weight: normal;
+    position: relative;
+    font-size: 12px;
+    top: 16px;
+    left: -5px;
     &:hover{
       cursor: pointer;
     }
