@@ -63,7 +63,23 @@ $app->loadMemo();
 </head>
 <body>
   <!-- ヘッダー  -->
-  <?php require('header.php'); ?>
+<?php require('header.php'); ?>
+      <!-- ナビメニュー部分 -->
+    <div class="menu">
+      <ul class="menu__list">
+        <li class="menu__item"><a class="menu__link" href="profile.php">プロフィール編集</a></li>
+        <li class="menu__item"><a class="menu__link" href="logout.php">ログアウト</a></li>
+        <li class="menu__item"><a class="menu__link" href="withdraw.php">退会</a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- ハンバーガーメニュー部分 --> 
+  <div class="toggle">
+      <span class="toggle__ornament"></span>
+      <span class="toggle__ornament"></span>
+      <span class="toggle__ornament"></span>
+  </div>
+</header>
   <!-- メイン -->
 <main class="mypage">
 <div class="console">
