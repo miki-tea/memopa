@@ -152,7 +152,7 @@ h1 {
   opacity: 1; }
 
 .js-slideZoom {
-  transform: translate(0, 0) scale(0.8);
+  transform: translate(0, 0) scale(0.5);
   opacity: 0; }
 
 .header {
@@ -163,7 +163,8 @@ h1 {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%; }
+  width: 100%;
+  z-index: 1; }
   @media (max-width: 544px) {
     .header {
       padding: 0 5px; } }
@@ -495,7 +496,6 @@ textarea:focus {
     font-weight: bold;
     line-height: 1.5em;
     text-align: center;
-    z-index: 3;
     color: #F4E23A;
     font-family: "Arial Rounded MT Bold", "Arial Black", sans-serif; }
     @media (max-width: 544px) {

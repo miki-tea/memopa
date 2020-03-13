@@ -49,7 +49,7 @@ $(function () {
     });
   });
 
-  //上にスライドする
+  //ズームする
   $('.js-slideZoom-target').addClass('js-slideZoom');
   $(window).scroll(function () {
     $('.js-slideZoom-target').each(function () {

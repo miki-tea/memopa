@@ -25,7 +25,7 @@ $subtitle = "TOP";
   <section id="about" class="bg-color-sub">
     <div class="container">
       <div class="container-about">
-        <h2 class="container-title"><span class="container-ornament">"memopa!"とは？</span></h2>
+        <h2 class="container-title js-slideZoom-target"><span class="container-ornament">"memopa!"とは？</span></h2>
         <p class="container-body">シンプルで使いやすいメモアプリです。<br>
         「さっきいいアイデアが浮かんだのに、忘れてしまった・・・」なんて、<br>悔しい思いをしたことはありませんか？<br>
         「memopa!」を始めたら、メモする場所にはもう困りません。<br>全てのアイデアは「ぱっとメモ」できるから。<br>
@@ -37,7 +37,7 @@ $subtitle = "TOP";
   <!-- ここからよくある質問 -->
     <section id="question">
       <div class="container container-question">
-        <h2 class="container-title">
+        <h2 class="container-title js-slideZoom-target">
           <spann class="container-ornament">FAQ</span>
         </h2>
         <div class="container-body">
@@ -82,7 +82,7 @@ $subtitle = "TOP";
       <h1 class="container-title js-slideZoom-target">
         <span class="container-ornament">Let's "memopa!"</span>
       </h1>
-      <div class="container-body js-fadein">
+      <div class="container-body">
         <h2 class="head">さっそく、<br>始めてみましょう！</h2>
           <button class="btn container-btn btn-join"><a href="sign_up.php">無料会員登録</a></button>
       </div>
