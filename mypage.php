@@ -57,9 +57,9 @@ $app->loadMemo();
 <!DOCTYPE html>
 <html lang="ja">
   <!-- ヘッダー 情報 -->
-<head>
-  <?php require('head.php'); ?>
-  <?php $subtitle = 'マイページ'; ?>
+  <head>
+    <?php $subtitle = 'マイページ'; ?>
+    <?php require('head.php'); ?>
 </head>
 <body>
   <!-- ヘッダー  -->
@@ -82,8 +82,8 @@ $app->loadMemo();
 </header>
   <!-- メイン -->
 <main class="mypage">
-<div class="console">
-  <div class="console__wrap">
+<div class="console__wrapper">
+  <div class="console">
     <div class="form-wrap">
       <form action="" method="POST" class="form">
         <textarea name="memo" class="form__inputArea" placeholder="新規投稿"></textarea>
@@ -91,13 +91,6 @@ $app->loadMemo();
         <input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
         <span class="err"><?= $app->getErr('common');?></span>
       </form>
-    </div>
-    <div class="nav__wrap">
-      <ul class="nav">
-        <li class="nav__list"><a class="nav__link"href="profile.php" >プロフィール編集</a></li>
-        <li class="nav__list"><a class="nav__link"href="logout.php">ログアウト</a></li>
-        <li class="nav__list"><a class="nav__link"href="withdraw.php">退会する</a></li>
-      </ul>
     </div>
   </div>
 </div>
