@@ -109,7 +109,7 @@ $app->loadMemo();
     <div class="cardList">
       <?php foreach($app->getVal()->load as $load) : ?>
         <div class="card">
-          <a href="memoDetail.php<?php echo ( !empty(appendGetParam()) ? appendGetParam() . '&p_id=' . h($load->post_id) : '?p_id=' . h($load->post_id) ); ?> ">
+          <a href="memoDetail.php<?php echo ( !empty(appendGetParam()) )? appendGetParam() . '&p_id=' . $load->post_id : '?p_id=' . $load->post_id ?> ">
           <!-- もし既にあるパラメーターがあるならその'パラメーター'＋'&p_id=~~'をつける。ないなら'?p_id=~~'だけ -->
             <span class="card__body"><?= h($load->content); ?></span>
           </a>

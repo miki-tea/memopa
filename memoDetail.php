@@ -1,7 +1,8 @@
 <?php
   require_once(__DIR__ . '/config/config.php');
   $app = new MyApp\Controller\MemoDetail();
-  $app->run();
+  $app->edit();
+  $app->loadOneMemo();
   // $app->loadOnePost();
 ?>
 <!DOCTYPE html>
@@ -12,23 +13,32 @@
 </head>
 <body>
 <?php require('header.php'); ?>
+      <!-- ナビメニュー部分 -->
+    <div class="menu">
+      <ul class="menu__list">
+        <li class="menu__item"><a class="menu__link" href="mypage.php">マイページへ</a></li>
+        <li class="menu__item"><a class="menu__link" href="logout.php">ログアウト</a></li>
+        <li class="menu__item"><a class="menu__link" href="withdraw.php">退会</a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- ハンバーガーメニュー部分 --> 
+  <div class="toggle">
+      <span class="toggle__ornament"></span>
+      <span class="toggle__ornament"></span>
+      <span class="toggle__ornament"></span>
+  </div>
+</header>
 <main>
 <div class="console">
   <div class="console__wrap">
     <div class="form-wrap">
       <form action="" method="POST" class="form">
-        <textarea name="memo" class="form__inputArea" placeholder="新規投稿"></textarea>
-        <input class="form__submitBtn"type="submit" name="submit" value="投稿する">
+        <textarea name="memo" class="form__inputArea" placeholder="編集内容"></textarea>
+        <input class="form__submitBtn"type="submit" name="submit" value="編集する">
         <!-- <input type="hidden" name="token" value="< h($_SESSION['token']); ?>"> -->
         <!-- <span class="err">< $app->getErr('common');?></span> -->
       </form>
-    </div>
-    <div class="nav__wrap">
-      <ul class="nav">
-        <li class="nav__list"><a class="nav__link"href="profile.php" >プロフィール編集</a></li>
-        <li class="nav__list"><a class="nav__link"href="logout.php">ログアウト</a></li>
-        <li class="nav__list"><a class="nav__link"href="withdraw.php">退会する</a></li>
-      </ul>
     </div>
   </div>
 </div>
@@ -36,7 +46,7 @@
   <div class="editMemo__container">
     <div class="err"><span><?= h($app->getErr('common')); ?></span></div>
     <div class="editMemo__body">
-      <? h($this->me()->content); ?>
+      <?= $app->getVal()->content; ?>
     <div class="info editMemo__info">
       <ul class="info__list">
         <li class="info__item">更新日：2020/03/11 12:00:00</li>

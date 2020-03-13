@@ -15,6 +15,19 @@ class Post extends \MyApp\Model {
       throw new \MyApp\Exception\ResistError();
     }
   }
+  
+  public function edit($values){
+    $stmt = $this->db->prepare('UPDATE post SET content = :content WHERE post_id = :post_id');
+    $res = $stmt->execute([
+      ':content' => $values['content'],
+      ':post_id' => $values['post_id'],
+    ]);
+    header('location:mypage.php');
+
+    if($res === false){
+      throw new \MyApp\Exception\ResistError();
+    }
+  }
 
   public function getDbMemo($values) {
     //TODO:命名リファクタリング
@@ -25,6 +38,17 @@ class Post extends \MyApp\Model {
     $stmt->setFetchMode(\PDO::FETCH_CLASS, 'stdClass');
     // debug('$userの中身' . print_r($user, true));
     $res = $stmt->fetchAll();
+    return $res;
+  }
+
+  public function getOneDbMemo($values) {
+    //TODO:命名リファクタリング
+    $stmt = $this->db->prepare('SELECT content FROM post WHERE post_id = :post_id AND delete_flg = 0 ');
+    $stmt->execute([
+      ':post_id' => $values['post_id']
+    ]);
+    $res = $stmt->fetch(\PDO::FETCH_ASSOC);
+    debug('$res[content]の中身：' . $res['content']);
     return $res;
   }
 }

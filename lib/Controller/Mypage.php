@@ -58,7 +58,5 @@ class MyPage extends \MyApp\Controller {
     ]);
     $this->setVal('load',$load);
   }
-
-
   // ページング用の数値を取ってくる
 }
