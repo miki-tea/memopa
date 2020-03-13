@@ -49,7 +49,7 @@ $(function () {
     });
   });
 
-  //上にスライドする
+  //ズームする
   $('.js-slideZoom-target').addClass('js-slideZoom');
   $(window).scroll(function () {
     $('.js-slideZoom-target').each(function () {
@@ -65,13 +65,13 @@ $(function () {
   });
 
 
-  $('.Toggle').click(function () {
+  $('.toggle').click(function () {
     $(this).toggleClass('active');
 
     if ($(this).hasClass('active')) {
-      $('.NavMenu').addClass('active'); //クラスを付与
+      $('.menu').addClass('active'); //クラスを付与
     } else {
-      $('.NavMenu').removeClass('active'); //クラスを外す
+      $('.menu').removeClass('active'); //クラスを外す
     }
   });
 });
