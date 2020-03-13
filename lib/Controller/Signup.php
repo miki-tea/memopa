@@ -30,17 +30,33 @@ class Signup extends \MyApp\Controller {
         debug('バリデーションエラー');
         return;
       } else { //Success to validate
-        debug('ユーザーテーブルに接続します。');
+        debug('登録のため、ユーザーテーブルに接続します。');
           try{ 
             //create user
             $userModel = new \MyApp\Model\User();
-            $userModel->create([
+            $user = $userModel->create([
               'email' => $email,
               'pass' => $pass
             ]);
+            $_SESSION['me'] = $user;
           }catch(\MyApp\Exception\DuplicateEmail $e) {
             debug('DB接続でエラーが発生しました。');
             $this->setErr('common',$e->getMessage());
+            return;
+          }
+        debug('session["me"]取得のため、ユーザーテーブルに接続します。');
+          try{ 
+            // login
+            $userModel = new \MyApp\Model\User();
+            $user = $userModel->login([
+              'email' => $email,
+              'password' => $pass
+            ]);
+            $_SESSION['me'] = $user;
+            debug('$userの中身:' . var_dump($_SESSION['me']->pass));
+          }catch(\MyApp\Exception\UnmatchDbInfo $e) {
+            debug('DB接続でエラーが発生しました。');
+            $this->setErr('login',$e->getMessage());
             return;
           }
         // redirect to mypage
