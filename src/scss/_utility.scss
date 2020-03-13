@@ -129,7 +129,6 @@ $form-width: 300px;
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
-    margin-top: $header-height;
     padding-top: 50px;
     @include mq() {
       padding-top: 0;
