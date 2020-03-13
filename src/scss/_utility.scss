@@ -106,7 +106,7 @@ $form-width: 300px;
   &-join{
     border: 1px solid $color_sub;
   }
-  &-submit{
+  &__submit{
     background-color: #4e3515;
     color: $color_sub;
     width: 50%;
@@ -135,9 +135,45 @@ $form-width: 300px;
       padding-top: 0;
     }
 }
+.templete{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%)translateY(-50%);
+  width: 300px;
+
+  &__title{
+    font-size: 30px;
+    margin-bottom: 15px;
+  }
+
+  &__navi{
+    float: right;
+    color: $color_main;
+    text-decoration-style: double;
+    border-bottom: 1px dotted $color_main;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+}
+.form{
+  &__title{
+    margin: 0;
+  }
+  &__input{
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 10px;
+    height: 40px;
+    font-size: 16px;
+    width: 100%;
+    margin: 0 auto 15px;
+  }
+}
 .editPage {
-  background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 5px;
+  // background-color: rgba(255, 255, 255, 0.7);
+  // border-radius: 10px;
   width: 400px;
   margin: 0 auto;
   @include mq() {
@@ -158,6 +194,7 @@ $form-width: 300px;
       }
     }
     &-formItem {
+      border-radius: 10px;
       
       &-name{
         margin-bottom: 7px; 
@@ -185,5 +222,6 @@ $form-width: 300px;
 
 .err {
   color: red;
+  font-size: 10px;
 font-weight: bold; }
 

@@ -66,7 +66,6 @@ class Signup extends \MyApp\Controller {
     }
   }
   
-  
   protected function _validate(){
     $email = filter_input(INPUT_POST,'email');
     $pass = filter_input(INPUT_POST,'pass');
@@ -122,61 +121,5 @@ class Signup extends \MyApp\Controller {
       $this->setErr($key,'パスワード(再)と一致しません。');
     }
   }
-//   protected function emailDup($email,$key) {
-//     try{ //create user
-//       global $email;
-//       global $pass;
-//         $userModel = new \MyApp\Model\User();
-//         $userModel->create([
-//           'email' => $email,
-//           'pass' => $pass
-//         ]);
-//       } catch (\MyApp\Exception\CommonErr $e) {
-//         $this->setErr('common',$e->getMessage());
-//         return;
-//       }
-//   }
+  
 }
-
-  // protected function postProcess(){
-  //   //validation
-  //   try {
-  //     $this->_validate();
-  //   } catch (\MyApp\Exception\InvalidEmail $e){
-  //     $this->setErr('email',$e->getMessage());
-      
-  //   } catch (\MyApp\Exception\InvalidPassword $e){
-  //     $this->setErr('pass',$e->getMessage());
-
-  //   } catch (\MyApp\Exception\UnmatchPass $e){
-  //     $this->setErr('pass_re',$e->getMessage());
-  //   }
-
-
-  //   if($this->hasErr()){ // Fail to validate
-  //     return;
-  //   }else{ //Success to validate
-
-  //     //create user
-  //     //redirect to mypage
-
-  //   }
-  // }
-
-  // private function _validate() {
-  //   if(empty($_POST['email'])){
-  //     throw new \MyApp\Exception\InvalidEmail('入力必須です。');
-  //   }
-  //   if(empty($pass)){
-  //     throw new \MyApp\Exception\InvalidPassword('入力必須です。');
-  //   }
-  //   if(!filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)){
-  //     throw new \MyApp\Exception\InvalidEmail('Eメールが無効な形式です');
-  //   }
-  //   if(!preg_match('/\A[a-zA-Z0-9]+\z/', $pass)){
-  //     throw new \MyApp\Exception\InvalidPassword();
-  //   }
-  //   if($pass !== $_POST['pass_re']){
-  //     throw new \MyApp\Exception\UnmatchPass();
-  //   }
-  // }

@@ -4,64 +4,7 @@ require_once(__DIR__ . '/config/config.php');
 $app = new MyApp\Controller\Signup();
 $app->run();
 
-// require('functions.php');
-// debug('＊This is "login.php"*');
-// debugLogStart();
-
-// require('auth.php');
-
-// if(!empty($_POST)){
-//       debug('ACCEPT::::POST');
-//       $email = $_POST['email'];
-//       $pass = $_POST['pass'];
-//       validRequired($email, 'email');
-//       validRequired($pass, 'pass');
-
-//       if(empty($err)){ //どちらも空ではなかった場合
-//         validEmail($email, 'email');
-//         validMaxLen($email, 'email');
-//         validMaxLen($pass, 'pass');
-//         validMinLen($pass, 'pass');
-//         validHalf($pass, 'pass');
-
-//         if(empty($err)){
-//           debug('OK:VALIDATE');
-//             try {
-//               $dbh = dbConnect();
-//               $sql = 'SELECT pass,user_id FROM users WHERE email = :email AND delete_flg = 0';
-//               $data = array(':email' => $email );
-//               $stmt = queryPost($dbh, $sql, $data);
-//               $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-//               debug('CONTENT：'.print_r($result,true));
-
-//               if(!empty($result) && password_verify($pass, $result['pass'])){
-//                 debug('CORRECT::::PASS');
-
-//                 //ログインセッション期限の管理
-                
-//                 $_SESSION['login_date'] = time();
-
-//                 if($_POST['pass_skip']){
-//                   //ログインセッション期限を1日に延長
-//                   $_SESSION['login_limit'] = 60 * 60 * 24;
-//                 } else {
-//                   $_SESSION['login_limit'] = 60 * 60;
-//                 }
-//                 $_SESSION['user_id'] = $result['user_id'];
-//                 header('Location:mypage.php');
-//               }else{
-//                 debug('INCORRECT::::PASS');
-//                 $err['common'] = MSG08;
-//               }
-//             } catch(Exception $e) {
-//               $err['common'] = CMNERR;
-//               error_log('エラー発生：'.$e->getMessage());
-//             }
-//           }
-//         }
-//       }
-// ?>
+ ?>
 
 <!DOCTYPE html>
 <html>
@@ -70,7 +13,6 @@ $app->run();
     $subtitle = '新規登録';
     require('head.php');
   ?>
-  <!-- <link type="text/css" rel="stylesheet" href="./css/auth.css"> -->
 </head>
 <body>
 <div class="bg-theme">
@@ -137,8 +79,7 @@ $app->run();
             </div>
           <input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
         </form>
-        <p><a href="login.php">ログインの方はこちらへ</a></p>
-        <?php var_dump(filter_input(INPUT_POST,'email')); ?>
+        <a class="sign-up__link"href="login.php">ログインの方はこちらへ &gt;&gt;</a>
       </div>
     
 </div>
