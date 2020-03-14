@@ -1,8 +1,8 @@
 <?php
 require_once(__DIR__ . '/config/config.php');
 debug('HELLO:passRemindReceive.php');
-// $app = new MyApp\Controller\PassRemindSend();
-// $app->run();
+$app = new MyApp\Controller\PassRemindReceive();
+$app->run();
 ?>
 <!DOCTYPE html>
 <html lang="en">

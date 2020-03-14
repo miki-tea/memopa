@@ -85,7 +85,7 @@ class Controller {
         }
     }
   }
-  private function _randomKey() {
+  public function randomKey() {
     return substr(bin2hex(random_bytes(8)), 0, 8);
   }
 

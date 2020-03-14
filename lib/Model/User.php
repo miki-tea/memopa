@@ -70,11 +70,11 @@ class User extends \MyApp\Model {
     }
   }
 
-  public function passEdit($values){
-    $stmt = $this->db->prepare('UPDATE users SET pass = :pass WHERE user_id = :user_id');
+  public function generatePass($values){
+    $stmt = $this->db->prepare('UPDATE users SET pass = :pass WHERE email = :email AND delete_flg = 0');
     $res = $stmt->execute([
       ':pass' => password_hash($values['pass'], PASSWORD_DEFAULT),
-      ':user_id' => $values['user_id']
+      ':email' => $values['email']
     ]);
     if(empty($res)){
       throw new \MyApp\Exception\UnmatchDbInfo();

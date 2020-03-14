@@ -49,8 +49,8 @@ class PassRemindSend extends \MyApp\Controller {
         $userModel->emailAlive([
           'email' => $email
         ]);
-        debug('DBに登録がありました。ランダムパスワードを生成します。');
-        $sessKey = $this->_randomKey();
+        debug('DBに登録がありました。ランダム認証キーを生成します。');
+        $sessKey = $this->randomKey();
 
         debug('入力されたEメールに送ります。');
 
@@ -94,8 +94,5 @@ EOT;
         }
       }
     }
-  }
-  private function _randomKey() {
-    return substr(bin2hex(random_bytes(8)), 0, 8);
   }
 }

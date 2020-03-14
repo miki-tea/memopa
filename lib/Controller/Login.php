@@ -5,12 +5,12 @@ namespace MyApp\Controller;
 class Login extends \MyApp\Controller {
   
   public function run() {
+    debug('Login->runを開始');
     $email = filter_input(INPUT_POST,'email');
     $pass = filter_input(INPUT_POST,'pass');
     $pass_skip = filter_input(INPUT_POST,'pass_skip');
 
-    debug(filter_input(INPUT_POST,'email'));
-    debug('$emailのなかみ：'.$email);
+    debug('$emailの中身：'.$email);
     debug('$passの中身：'.$pass);
     debug('$pass_skipのなかみ：'.$pass_skip);
 
@@ -69,6 +69,7 @@ class Login extends \MyApp\Controller {
         exit;
       }
     }
+    debug('Login->runを終了');
   }
   
   protected function _validate(){

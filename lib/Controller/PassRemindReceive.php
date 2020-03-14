@@ -2,7 +2,7 @@
 namespace MyApp\Controller;
 
 // $token = filter_input(INPUT_POST,'token');
-class PassRemindSend extends \MyApp\Controller {
+class PassRemindReceive extends \MyApp\Controller {
   
   public function run() {
     // if($this->isLoggedIn()){ // valid session
@@ -13,60 +13,71 @@ class PassRemindSend extends \MyApp\Controller {
     //POST送信があった場合→バリデーション→DBでemail照会→あったらEmail送信→入力ページへ遷移
     //POST送信がなかったた場合→何もしない
     //
+    // セッション確認
+    debug('PassRemindReceive->run()を開始');
+
+    if(empty($_SESSION['ses_key'])){
+      header("Location:passRemindSend.php");
+    }
+
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-      $email = filter_input(INPUT_POST, 'email');
+      $auth_key = $_POST['auth'];
+      $email = $_SESSION['email'];
       // token
-      if(!isset($_POST['token']) || $_POST['token'] !== $_SESSION['token']){
-        echo "invalid Token!";
-        exit;
-      }
+      // if(!isset($_POST['token']) || $_POST['token'] !== $_SESSION['token']){
+      //   echo "invalid Token!";
+      //   exit;
+      // }
       // バリデーション
-      debug('$email:'.$email);
+      debug('$auth_key:'.$auth_key);
 
-      $this->InvalidRequired($email,'email');
+      // 未入力
+      $this->InvalidRequired($auth_key,'auth_key'); 
+      // 固定長
+      $this->_InvalidLength($auth_key);
+      // 半角
+      $this->InvalidHalf($auth_key,'auth_key');
 
-      if(empty($this->hasErr())){
-        $this->InvalidMinLen($email,'email');
-      }
-
-      if(empty($this->hasErr())){
-        $this->InvalidMaxLen($email,'email');
-      }
-
-      if(empty($this->hasErr())){
-        $this->InvalidEmail($email,'email');
-      }
-
+      // バリデーションエラー
       if($this->hasErr()){
         debug('バリデーションエラーです');
         return;
       }else{
+        // セッション認証
+        if( $_SESSION['ses_limit'] < time() ){
+          $this->setErr('認証キーの有効期限切れです。','auth');
+          return;
+        }
+        if( $_SESSION['ses_key'] !== $auth_key ){
+          $this->setErr('認証キーが違います。', 'auth');
+          return;
+        }
+        if(empty($this->hasErr())){
+          debug('認証OK');
+        }
+        // バリデーションOK
+        debug('ユーザーテーブルに接続します。');
+        $pass = $this->randomKey();
+        try{ 
+          $userModel = new \MyApp\Model\User();
+          $userModel->generatePass([
+            'pass' => $pass,
+            'email' => $email
+          ]);
+          debug('DBに登録がありました。ランダムパスワードを生成します。');
 
-      debug('ユーザーテーブルに接続します。');
-      try{ 
-        //create user
-        $userModel = new \MyApp\Model\User();
-        $userModel->emailAlive([
-          'email' => $email
-        ]);
-        debug('DBに登録がありました。ランダムパスワードを生成します。');
-        $sessKey = $this->_randomKey();
+          debug('入力されたEメールに送ります。');
 
-        debug('入力されたEメールに送ります。');
-
-        $from = 'miki.ishii16@gmail.com';
-        $to = $email;
-        $subject = '【memopa!】認証キーをお送りします。';
-        $comment = <<<EOT
+          $from = 'miki.ishii16@gmail.com';
+          $to = $email;
+          $subject = '【memopa!】仮パスワードを再発行しました。';
+          $comment = <<<EOT
 いつもmemopa!をご利用くださりありがとうございます。
-パスワード再設定用の認証キーをお送りします。
-認証キーの有効期限は30分となりますので、お早めに以下のURLから認証キーでログイン後、パスワードの再設定を行ってください。
+認証キーの確認ができたので、再発行用の仮パスワードをお送りします。
+これは仮パスワードなのでログイン後、パスワードの再設定を行ってください。
 
-URL：http://localhost:8888/memopa/passRemindRecieve.php
-認証キー：{$sessKey}
-
-認証キーを再発行されたい場合は下記ページより再度再発行をお願い致します。
-http://localhost:8888/memopa/passRemindSend.php
+ログインURL：http://localhost:8888/memopa/login.php
+仮パスワード：{$pass}
 
 ☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯
 memopa!
@@ -76,26 +87,25 @@ E-mail memopa_memopa@gmail.com
 EOT;
           $this->sendMail($from, $to, $subject, $comment);
 
-          debug('セッションにEメール、パスワード、有効期限を渡します。');
-
-          $_SESSION['email'] = $email;
-          $_SESSION['ses_key'] = $sessKey;
-          $_SESSION['ses_limit'] = time() + 60 * 30;
-          debug('$_SESSIONの中身：' . print_r($_SESSION,true));
-          debug('passRemindReceive.phpに遷移します。');
-          header('location: ' . SITE_URL . '/memopa/passRemindReceive.php');
+          
+          session_unset();
+          header('location: ' . SITE_URL . '/memopa/login.php');
 
         }catch(\Exception $e) {
 
-          debug('DB接続でエラーが発生しました。');
+          debug('エラーが発生しました。');
           $this->setErr('email',$e->getMessage());
           return;
 
         }
       }
     }
+    debug('PassRemindReceive->run()を終了');
   }
-  private function _randomKey() {
-    return substr(bin2hex(random_bytes(8)), 0, 8);
+
+  private function _InvalidLength($str) {
+    if( mb_strlen($str) !== 8 ){
+      $this->setErr('auth','文字数が違います。');
+    }
   }
 }
