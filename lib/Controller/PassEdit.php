@@ -29,7 +29,6 @@ class PassEdit extends \MyApp\Controller {
       debug('$pass_new:'.$pass_new);
       debug('$pass_new_re:'.$pass_new_re);
 
-      //TODO:validation
       $this->InvalidRequired($pass_old,'pass_old');
       $this->InvalidRequired($pass_new,'pass_new');
       $this->InvalidRequired($pass_new_re,'pass_new_re');
@@ -53,7 +52,7 @@ class PassEdit extends \MyApp\Controller {
       }
 
       if(empty($this->hasErr())){
-        $this->InvalidHalf($pass_new,$pass_new_re,'pass_new');
+        $this->diffVal($pass_new,$pass_new_re,'pass_new');
       }
 
       if($this->hasErr()){

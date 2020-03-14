@@ -20,6 +20,28 @@ class PassRemindSend extends \MyApp\Controller {
         echo "invalid Token!";
         exit;
       }
+      // バリデーション
+      debug('$email:'.$email);
+
+      $this->InvalidRequired($email,'email');
+
+      if(empty($this->hasErr())){
+        $this->InvalidMinLen($email,'email');
+      }
+
+      if(empty($this->hasErr())){
+        $this->InvalidMaxLen($email,'email');
+      }
+
+      if(empty($this->hasErr())){
+        $this->InvalidEmail($email,'email');
+      }
+
+      if($this->hasErr()){
+        debug('バリデーションエラーです');
+        return;
+      }else{
+
       debug('ユーザーテーブルに接続します。');
       try{ 
         //create user
@@ -28,20 +50,20 @@ class PassRemindSend extends \MyApp\Controller {
           'email' => $email
         ]);
         debug('DBに登録がありました。ランダムパスワードを生成します。');
-        $tempKey = $this->_randomKey();
+        $sessKey = $this->_randomKey();
 
         debug('入力されたEメールに送ります。');
 
         $from = 'miki.ishii16@gmail.com';
         $to = $email;
-        $title = '【memopa!】認証キーをお送りします。';
-        $content = <<<EOT
+        $subject = '【memopa!】認証キーをお送りします。';
+        $comment = <<<EOT
 いつもmemopa!をご利用くださりありがとうございます。
 パスワード再設定用の認証キーをお送りします。
 認証キーの有効期限は30分となりますので、お早めに以下のURLから認証キーでログイン後、パスワードの再設定を行ってください。
 
 URL：http://localhost:8888/memopa/passRemindRecieve.php
-認証キー：{$tempKey}
+認証キー：{$sessKey}
 
 認証キーを再発行されたい場合は下記ページより再度再発行をお願い致します。
 http://localhost:8888/memopa/passRemindSend.php
@@ -52,59 +74,28 @@ URL  http://memopa.com/
 E-mail memopa_memopa@gmail.com
 ☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯
 EOT;
-        $this->_sendEMail($from, $to, $title, $content);
+          $this->sendMail($from, $to, $subject, $comment);
 
-        debug('セッションにEメール、パスワード、有効期限を渡します。');
+          debug('セッションにEメール、パスワード、有効期限を渡します。');
 
-        $_SESSION['email'] = $email;
-        $_SESSION['pass'] = $tempKey;
-        $_SESSION['ses_limit'] = time() + 60 * 30;
-        debug('$_SESSIONの中身：' . print_r($_SESSION,true));
+          $_SESSION['email'] = $email;
+          $_SESSION['ses_key'] = $sessKey;
+          $_SESSION['ses_limit'] = time() + 60 * 30;
+          debug('$_SESSIONの中身：' . print_r($_SESSION,true));
+          debug('passRemindReceive.phpに遷移します。');
+          header('location: ' . SITE_URL . '/memopa/passRemindReceive.php');
 
-        debug('passRemindReceive.phpに遷移します。');
-        header('location: ' . SITE_URL . '/memopa/passRemindReceive.php');
+        }catch(\Exception $e) {
 
-      }catch(\Exception $e) {
-        debug('DB接続でエラーが発生しました。');
-        $this->setErr('common',$e->getMessage());
-        return;
+          debug('DB接続でエラーが発生しました。');
+          $this->setErr('email',$e->getMessage());
+          return;
+
+        }
       }
     }
   }
-
   private function _randomKey() {
     return substr(bin2hex(random_bytes(8)), 0, 8);
   }
-
-  private function _sendEmail($from, $to, $title, $content){
-    if(!empty($to) && !empty($subject) && !empty($subject) && !empty($content)){
-        mb_language("Japanese");
-        mb_internal_encoding("UTF-8");
-
-        $result = mb_send_mail($to, $subject, $comment, "From: " . $from);
-
-        if($result){
-          debug('メール送信完了');
-        }else{
-          debug('メール送信失敗');
-        }
-    }
-  }
-
-}
-
-function sendMail($from, $to, $title, $content){
-    if(!empty($from) &&!empty($to) && !empty($title) && !empty($content)){
-        //文字化けしないように設定（お決まりパターン）
-        mb_language("Japanese"); //現在使っている言語を設定する
-        mb_internal_encoding("UTF-8"); //内部の日本語をどうエンコーディング（機械が分かる言葉へ変換）するかを設定
-        //メールを送信（送信結果はtrueかfalseで返ってくる）
-        $result = mb_send_mail($to, $subject, $content, "From: ".$from);
-        //送信結果を判定
-        if ($result) {
-          debug('メールを送信しました。');
-        } else {
-          debug('【エラー発生】メールの送信に失敗しました。');
-        }
-    }
 }

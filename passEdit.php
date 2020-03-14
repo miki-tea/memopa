@@ -11,12 +11,9 @@ $subtitle = 'パスワード変更';
 require('head.php'); 
 ?>
 <body class="bg-theme">
-    
-    <!-- メニュー -->
-    <?php
-      require('header.php'); 
-    ?>
-            <!-- ナビメニュー部分 -->
+<!-- メニュー -->
+<?php require('header.php'); ?>
+<!-- ナビメニュー部分 -->
     <div class="menu">
       <ul class="menu__list">
         <li class="menu__item"><a class="menu__link" href="mypage.php">マイページへ</a></li>
