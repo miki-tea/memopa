@@ -11,7 +11,7 @@ class Login extends \MyApp\Controller {
 
     debug(filter_input(INPUT_POST,'email'));
     debug('$emailのなかみ：'.$email);
-    debug('$passのなかみ：'.$pass);
+    debug('$passの中身：'.$pass);
     debug('$pass_skipのなかみ：'.$pass_skip);
 
     if($this->isLoggedIn()){ // valid session
@@ -21,16 +21,15 @@ class Login extends \MyApp\Controller {
     }
 
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-      debug('ポスト送信あります');
+      debug('POS送信あり');
 
         // token
       if(!isset($_POST['token']) || $_POST['token'] !== $_SESSION['token']){
         echo "invalid Token!";
         exit;
-        // TODO: $tokenへfilter_input格納
-        
       }
       //start validation
+      debug('バリデーションはじめます。');
       $this->_validate();
       $this->setVal('email',$email);
 
@@ -38,7 +37,7 @@ class Login extends \MyApp\Controller {
         debug('バリデーションエラーです');
         return;
       } else { //Success to validate
-        debug('ユーザーテーブルに接続します。');
+        debug('バリデーション成功。ユーザーテーブルに接続します。');
           try{ 
             // login
             $userModel = new \MyApp\Model\User();
@@ -47,7 +46,7 @@ class Login extends \MyApp\Controller {
               'password' => $pass
             ]);
             $_SESSION['me'] = $user;
-            debug('$userの中身:' . var_dump($_SESSION['me']->pass));
+
           }catch(\MyApp\Exception\UnmatchDbInfo $e) {
             debug('DB接続でエラーが発生しました。');
             $this->setErr('login',$e->getMessage());
@@ -64,8 +63,6 @@ class Login extends \MyApp\Controller {
             }else{
               $_SESSION['login_limit'] = $sesLimit;
             }
-            
-            debug('$_SESSION["me"]の中身' . var_dump($user));
 
         // redirect to mypage
         header('location: ' . SITE_URL . '/memopa/mypage.php');
@@ -75,13 +72,8 @@ class Login extends \MyApp\Controller {
   }
   
   protected function _validate(){
-    debug('バリデーションはじめます。');
     $email = filter_input(INPUT_POST,'email');
     $pass = filter_input(INPUT_POST,'pass');
-
-    debug('$emailの中身：' . $email);
-    debug('$passの中身：' . $pass);
-
 
     // All: Required
     $this->InvalidRequired($email,'email');

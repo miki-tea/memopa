@@ -1,13 +1,16 @@
 <?php
 require_once(__DIR__ . '/config/config.php');
-// $app = new MyApp\Controller\passRemindSend();
-// $app->run();
+
+debug('HELLO:passRemindSend.php');
+
+$app = new MyApp\Controller\PassRemindSend();
+$app->run();
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <?php $subtitle = 'パスワード再設定'; ?>
   <?php require('head.php'); ?>
-  <? $subtitle = '退会'; ?>
 <body class="bg-theme">
   <?php require('header.php'); ?>
         <!-- ナビメニュー部分 -->

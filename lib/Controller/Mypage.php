@@ -6,7 +6,7 @@ class MyPage extends \MyApp\Controller {
   public function run() {
     $memo = filter_input(INPUT_POST,'memo');
     $user_id = $this->me()->user_id;
-    debug('$user_idの中身::' . $this->me()->user_id);
+    // debug('$user_idの中身::' . $this->me()->user_id);
 
     // loginしてるか確認
     // if($this->isLoggedIn()){
@@ -51,7 +51,7 @@ class MyPage extends \MyApp\Controller {
   // データベースにアクセスしてメモ情報を取ってくる。
   public function loadMemo() {
     $user_id = $this->me()->user_id;
-    debug('user_idー＞'. $user_id);
+    // debug('user_idー＞'. $user_id);
     $postModel = new \MyApp\Model\Post();
     $load = $postModel->getDbMemo([
       'user_id' => $user_id

@@ -30,21 +30,16 @@ class User extends \MyApp\Model {
 
   // ログイン
   public function login($values){
-    $stmt = $this->db->prepare('SELECT user_id,pass FROM users WHERE email = :email AND delete_flg = 0');
+    $stmt = $this->db->prepare('SELECT * FROM users WHERE email = :email AND delete_flg = 0');
     $stmt->execute([
       ':email' => $values['email']
     ]);
     $stmt->setFetchMode(\PDO::FETCH_CLASS, 'stdClass');
     $user = $stmt->fetch();
-     debug('$user->passの中身:' . $user->pass);
-    
     if(empty($user)){
       throw new \MyApp\Exception\UnmatchDbInfo();
     }
     if(!password_verify($values['password'], $user->pass)){
-      throw new \MyApp\Exception\UnmatchDbInfo();
-    }
-    if($user === false){
       throw new \MyApp\Exception\UnmatchDbInfo();
     }
     return $user;
@@ -59,6 +54,28 @@ class User extends \MyApp\Model {
     $result = $stmt->fetch(\PDO::FETCH_ASSOC);
     if(!empty(array_shift($result))){
      throw new \MyApp\Exception\DuplicateEmail();
+    }
+  }
+
+  public function emailAlive($values){
+    $stmt = $this->db->prepare('SELECT count(*) FROM users WHERE email = :email AND delete_flg = 0');
+    $stmt->execute([
+      ':email' => $values['email']
+    ]);
+    $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+    if(empty(array_shift($result))){
+     throw new \MyApp\Exception\DeadEmail();
+    }
+  }
+
+  public function passEdit($values){
+    $stmt = $this->db->prepare('UPDATE users SET pass = :pass WHERE user_id = :user_id');
+    $res = $stmt->execute([
+      ':pass' => $values['pass'],
+      ':user_id' => $values['user_id']
+    ]);
+    if(empty($res)){
+      throw new \MyApp\Exception\UnmatchDbInfo();
     }
   }
 }
