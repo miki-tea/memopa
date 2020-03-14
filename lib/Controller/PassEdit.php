@@ -25,7 +25,37 @@ class PassEdit extends \MyApp\Controller {
       $user_id = $this->me()->user_id;
       $email = $this->me()->email;
 
+      debug('$pass_old:'.$pass_old);
+      debug('$pass_new:'.$pass_new);
+      debug('$pass_new_re:'.$pass_new_re);
+
       //TODO:validation
+      $this->InvalidRequired($pass_old,'pass_old');
+      $this->InvalidRequired($pass_new,'pass_new');
+      $this->InvalidRequired($pass_new_re,'pass_new_re');
+
+      if(empty($this->hasErr())){
+        $this->InvalidMinLen($pass_old,'pass_old');
+        $this->InvalidMinLen($pass_new,'pass_new');
+        $this->InvalidMinLen($pass_new_re,'pass_new_re');
+      }
+
+      if(empty($this->hasErr())){
+        $this->InvalidMaxLen($pass_old,'pass_old');
+        $this->InvalidMaxLen($pass_new,'pass_new');
+        $this->InvalidMaxLen($pass_new_re,'pass_new_re');
+      }
+
+      if(empty($this->hasErr())){
+        $this->InvalidHalf($pass_old,'pass_old');
+        $this->InvalidHalf($pass_new,'pass_new');
+        $this->InvalidHalf($pass_new_re,'pass_new_re');
+      }
+
+      if(empty($this->hasErr())){
+        $this->InvalidHalf($pass_new,$pass_new_re,'pass_new');
+      }
+
       if($this->hasErr()){
         debug('バリデーションエラーです');
         return;
@@ -33,26 +63,25 @@ class PassEdit extends \MyApp\Controller {
 
         debug('バリデーションOK。ユーザーテーブルに接続します。');
         try{ 
-          //create user
           $userModel = new \MyApp\Model\User();
           $userModel->passEdit([
             'pass' => $pass_new,
             'user_id' => $user_id
           ]);
-
           
           //メールを送信
           $from = 'miki.ishii16@gmail.com';
           $to = $email;
           $subject = 'パスワード変更通知｜memopa';
           $comment = <<<EOT
-パスワードが変更されました。
+こんにちは！memopaです。
+パスワードが変更されたことをお知らせいたします。
                       
-////////////////////////////////////////
-memopa
-URL  
-E-mail
-////////////////////////////////////////
+☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯
+memopa!
+URL  http://memopa.com/
+E-mail miki.ishii16@gmail.com
+☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯
 EOT;
           $this->sendMail($from, $to, $subject, $comment);
           
@@ -67,39 +96,4 @@ EOT;
     }
   }
 
-  private function _randomKey() {
-    return substr(bin2hex(random_bytes(8)), 0, 8);
-  }
-
-  private function _sendEmail($from, $to, $title, $content){
-    if(!empty($to) && !empty($subject) && !empty($subject) && !empty($content)){
-        mb_language("Japanese");
-        mb_internal_encoding("UTF-8");
-
-        $result = mb_send_mail($to, $subject, $comment, "From: " . $from);
-
-        if($result){
-          debug('メール送信完了');
-        }else{
-          debug('メール送信失敗');
-        }
-    }
-  }
-
-}
-
-function sendMail($from, $to, $title, $content){
-    if(!empty($from) &&!empty($to) && !empty($title) && !empty($content)){
-        //文字化けしないように設定（お決まりパターン）
-        mb_language("Japanese"); //現在使っている言語を設定する
-        mb_internal_encoding("UTF-8"); //内部の日本語をどうエンコーディング（機械が分かる言葉へ変換）するかを設定
-        //メールを送信（送信結果はtrueかfalseで返ってくる）
-        $result = mb_send_mail($to, $subject, $content, "From: ".$from);
-        //送信結果を判定
-        if ($result) {
-          debug('メールを送信しました。');
-        } else {
-          debug('【エラー発生】メールの送信に失敗しました。');
-        }
-    }
 }

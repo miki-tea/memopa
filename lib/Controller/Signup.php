@@ -113,13 +113,6 @@ class Signup extends \MyApp\Controller {
     // Pass = Pass_re
     if(empty($this->getErr('pass'))){
         $this->diffVal($pass,$pass_re,'pass');
-      }
-  }
-
-  protected function diffVal($str1, $str2, $key) {
-    if($str1 !== $str2){
-      $this->setErr($key,'パスワード(再)と一致しません。');
     }
   }
-  
 }

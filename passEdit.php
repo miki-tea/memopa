@@ -10,8 +10,7 @@ $app->run();
 $subtitle = 'パスワード変更';
 require('head.php'); 
 ?>
-
-  <body class="">
+<body class="bg-theme">
     
     <!-- メニュー -->
     <?php
@@ -23,6 +22,7 @@ require('head.php');
         <li class="menu__item"><a class="menu__link" href="mypage.php">マイページへ</a></li>
         <li class="menu__item"><a class="menu__link" href="prifile.php">プロフィール編集</a></li>
         <li class="menu__item"><a class="menu__link" href="logout.php">ログアウト</a></li>
+        <li class="menu__item"><a class="menu__link" href="withdraw.php">退会</a></li>
       </ul>
     </div>
   </div>
@@ -34,48 +34,34 @@ require('head.php');
   </div>
 </header>
 
+<!-- メインコンテンツ -->
+<main>
+  <div class="passEdit templete">
+    <h1 class="templete__title">パスワード変更</h1>
+    <!-- Main -->
+    <form action="" method="post" class="form">
+      <label for="pass_old">
+        <p class="form__title">古いパスワード<span class="err"><?= h($app->getErr('pass_old')); ?></span></p>
+        <input class="form__input" type="password" name="pass_old" value="">
+      </label>
+      <label for="pass_new">
+        <p class="form__title">新しいパスワード<span class="err"><?= h($app->getErr('pass_new')); ?></span></p>
+        <input class="form__input" type="password" name="pass_new" value="">
+      </label>
+      <label for="pass_new_re">
+        <p class="form__title">新しいパスワード（再入力）<span class="err"><?= h($app->getErr('pass_new_re')); ?></span></p>
+        <input class="form__input" type="password" name="pass_new_re" value="">
+      </label>
+      <div class="area-msg">
+        <?php 
+        ?>
+      </div>
+        <input type="submit" value="変更する" name="submit" class="templete__btn btn__submit">
 
-    <!-- メインコンテンツ -->
-    <div id="contents" class="templete">
-      <h1 class="page-title">パスワード変更</h1>
-      <!-- Main -->
-      <section id="main" >
-        <div class="form-container">
-          <form action="" method="post" class="form">
-           <div class="area-msg">
-
-           </div>
-            <label class="<?php if(!empty($err_msg['pass_old'])) echo 'err'; ?>">
-              古いパスワード
-              <input type="password" name="pass_old" value="">
-            </label>
-            <div class="area-msg">
-            </div>
-            <label class="">
-              新しいパスワード
-              <input type="password" name="pass_new" value="">
-            </label>
-            <div class="area-msg">
-            </div>
-            <label class="">
-              新しいパスワード（再入力）
-              <input type="password" name="pass_new_re" value="">
-            </label>
-            <div class="area-msg">
-              <?php 
-              ?>
-            </div>
-            <div class="btn-container">
-              <input type="submit" class="btn btn-mid" value="変更する">
-            </div>
-            <input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
-          </form>
-        </div>
-      </section>
-      
-    </div>
-
-    <!-- footer -->
-    <?php
-    require('footer.php'); 
-    ?>
+      <input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
+    </form>
+  </div>
+</main>
+<?php require('footer.php'); ?>
+  </body>
+</html>

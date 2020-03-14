@@ -37,9 +37,11 @@ class User extends \MyApp\Model {
     $stmt->setFetchMode(\PDO::FETCH_CLASS, 'stdClass');
     $user = $stmt->fetch();
     if(empty($user)){
+      debug('$userが空です。');
       throw new \MyApp\Exception\UnmatchDbInfo();
     }
     if(!password_verify($values['password'], $user->pass)){
+      debug('パスワードが一致しません。');
       throw new \MyApp\Exception\UnmatchDbInfo();
     }
     return $user;
@@ -71,7 +73,7 @@ class User extends \MyApp\Model {
   public function passEdit($values){
     $stmt = $this->db->prepare('UPDATE users SET pass = :pass WHERE user_id = :user_id');
     $res = $stmt->execute([
-      ':pass' => $values['pass'],
+      ':pass' => password_hash($values['pass'], PASSWORD_DEFAULT),
       ':user_id' => $values['user_id']
     ]);
     if(empty($res)){
