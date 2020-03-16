@@ -18,16 +18,24 @@ function appendGetParam( $arr_del_key = array() ) {
   }
 }
 
+function showFlashMsg($key) {
+  if(!empty($_SESSION[$key])){
+    $data = $_SESSION[$key];
+    $_SESSION[$key] = '';
+    return $data;
+  }
+}
+
 function paging($totalPage, $currentPage = 1){
   $currentPage = (int)h($currentPage);
   $prev = max($currentPage - 1, 1);
   $next = min($currentPage + 1, $totalPage);
 
   if($currentPage != 1){
-    print '<a href=?p_id=' . $prev . '>&laquo; 前へ</a>';
+    print '<a href=?page=' . $prev . '>&laquo; 前へ</a>';
   }
   if($currentPage < $totalPage){
-    print '<a href=?p_id=' . $next . '>次へ &raquo;</a>';
+    print '<a href=?page=' . $next . '>次へ &raquo;</a>';
   }
 }
 
