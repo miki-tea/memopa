@@ -15,7 +15,7 @@ session_start();
 // DB ini
 define('DSN', 'mysql:host=localhost;dbname=memopa');
 define('DB_USERNAME', 'dbuser');
-define('DB_PASSWORD', 'nowak2020');
+define('DB_PASSWORD', 'memopa');
 
 // locale
 define('SITE_URL', 'http://' . $_SERVER['HTTP_HOST']);
