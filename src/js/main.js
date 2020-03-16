@@ -1,83 +1,96 @@
-import jQuery from 'jquery';
+import jQuery from "jquery";
 
 const $ = jQuery;
 
-console.log('read jQuery File!');
+console.log("read jQuery File!");
 
-$(function () {
+$(function() {
   //右にスライドする
-  $('.js-slideRight-target').addClass('js-slideRight');
-  $(window).scroll(function () {
-    $('.js-slideRight-target').each(function () {
+  $(".js-slideRight-target").addClass("js-slideRight");
+  $(window).scroll(function() {
+    $(".js-slideRight-target").each(function() {
       let elemPos = $(this).offset().top,
         scroll = $(window).scrollTop(),
         windowHeight = $(window).height();
       if (scroll > elemPos - windowHeight + windowHeight / 6) {
-        $(this).removeClass('js-slideRight');
+        $(this).removeClass("js-slideRight");
       } else {
-        $(this).addClass('js-slideRight');
+        $(this).addClass("js-slideRight");
       }
     });
   });
   //左にスライドする
-  $('.js-slideLeft-target').addClass('js-slideLeft');
-  $(window).scroll(function () {
-    $('.js-slideLeft-target').each(function () {
+  $(".js-slideLeft-target").addClass("js-slideLeft");
+  $(window).scroll(function() {
+    $(".js-slideLeft-target").each(function() {
       let elemPos = $(this).offset().top,
         scroll = $(window).scrollTop(),
         windowHeight = $(window).height();
       if (scroll > elemPos - windowHeight + windowHeight / 6) {
-        $(this).removeClass('js-slideLeft');
+        $(this).removeClass("js-slideLeft");
       } else {
-        $(this).addClass('js-slideLeft');
+        $(this).addClass("js-slideLeft");
       }
     });
   });
 
   //上にスライドする
-  $('.js-slideTop-target').addClass('js-slideTop');
-  $(window).scroll(function () {
-    $('.js-slideTop-target').each(function () {
+  $(".js-slideTop-target").addClass("js-slideTop");
+  $(window).scroll(function() {
+    $(".js-slideTop-target").each(function() {
       let elemPos = $(this).offset().top,
         scroll = $(window).scrollTop(),
         windowHeight = $(window).height();
       if (scroll > elemPos - windowHeight + windowHeight / 6) {
-        $(this).removeClass('js-slideTop');
+        $(this).removeClass("js-slideTop");
       } else {
-        $(this).addClass('js-slideTop');
+        $(this).addClass("js-slideTop");
       }
     });
   });
 
   //ズームする
-  $('.js-slideZoom-target').addClass('js-slideZoom');
-  $(window).scroll(function () {
-    $('.js-slideZoom-target').each(function () {
+  $(".js-slideZoom-target").addClass("js-slideZoom");
+  $(window).scroll(function() {
+    $(".js-slideZoom-target").each(function() {
       let elemPos = $(this).offset().top,
         scroll = $(window).scrollTop(),
         windowHeight = $(window).height();
       if (scroll > elemPos - windowHeight + windowHeight / 6) {
-        $(this).removeClass('js-slideZoom');
+        $(this).removeClass("js-slideZoom");
       } else {
-        $(this).addClass('js-slideZoom');
+        $(this).addClass("js-slideZoom");
       }
     });
   });
 
+  $(".toggle").click(function() {
+    $(this).toggleClass("active");
 
-  $('.toggle').click(function () {
-    $(this).toggleClass('active');
-
-    if ($(this).hasClass('active')) {
-      $('.menu').addClass('active'); //クラスを付与
+    if ($(this).hasClass("active")) {
+      $(".menu").addClass("active"); //クラスを付与
     } else {
-      $('.menu').removeClass('active'); //クラスを外す
+      $(".menu").removeClass("active"); //クラスを外す
     }
   });
 
-  var $ftr = $('.js-footer');
+  var $ftr = $(".js-footer");
   if (window.innerHeight > $ftr.offset().top + $ftr.outerHeight()) {
-    $ftr.attr({ 'style': 'position:fixed; top:' + (window.innerHeight - $ftr.outerHeight()) + 'px;' });
-  };
+    $ftr.attr({
+      style:
+        "position:fixed; top:" +
+        (window.innerHeight - $ftr.outerHeight()) +
+        "px;"
+    });
+  }
 
+  // フラッシュメッセージ表示
+  let $jsShowMsg = $("#js-show-msg");
+  let msg = $jsShowMsg.text();
+  if (msg.replace(/^[\s　]+|[\s　]+$/g, "").length) {
+    $jsShowMsg.slideToggle("slow");
+    setTimeout(function() {
+      $jsShowMsg.slideToggle("slow");
+    }, 2000);
+  }
 });
