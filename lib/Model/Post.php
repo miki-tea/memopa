@@ -53,4 +53,15 @@ class Post extends \MyApp\Model {
     
     return $res;
   }
+
+  public function delete($values){
+  $stmt = $this->db->prepare('UPDATE post SET delete_flg = 1 WHERE post_id = :post_id');
+  $res = $stmt->execute([
+    ':post_id' => $values['post_id']
+  ]);
+  if($res === false){
+    throw new \MyApp\Exception\DeleteError();
+  }
+}
+  
 }

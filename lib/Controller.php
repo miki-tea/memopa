@@ -49,18 +49,18 @@ class Controller {
 
   protected function InvalidHalf($str, $key){
     if(!preg_match("/^[0-9a-zA-Z]*$/",$str)){
-      $this->setErr($key, '半角英数字６文字以上で。');
+      $this->setErr($key, '必須:半角英数字６文字以上');
     }
   }
   protected function InvalidMaxLen($str, $key, $max=255){
     if(mb_strlen($str) >= $max){
-      $this->setErr($key, $max.'文字未満で。');
+      $this->setErr($key, '文字数制限超過:' . $max . '文字');
     }
   }
 
   protected function InvalidMinLen($str, $key, $min=6){
     if(mb_strlen($str) < $min){
-      $this->setErr($key, '6文字以上で。');
+      $this->setErr($key, '必須:6文字以上');
     }
   }
   // End of validation functions
@@ -79,9 +79,9 @@ class Controller {
         mb_internal_encoding("UTF-8"); 
         $result = mb_send_mail($to, $subject, $comment, "From: ".$from);
         if ($result) {
-          debug('メール送信完了。');
+          // debug('メール送信完了。');
         } else {
-          debug('メール送信失敗。');
+          // debug('メール送信失敗。');
         }
     }
   }
