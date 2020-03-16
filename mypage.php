@@ -1,6 +1,7 @@
 <?php
 require_once(__DIR__ . '/config/config.php');
 debug('HELLO:mypage.php');
+debug('フラッシュメッセの中身'.$_SESSION['success']);
 
 
 $app = new MyApp\Controller\Mypage();
@@ -12,7 +13,7 @@ $cards = $app->getVal()->load;
 $num = count($cards);
 $perPage = 12;
 $totalPage = ceil($num / $perPage);
-$currentPage = empty($_GET['p_id'])? 1 : (int)$_GET['p_id'];
+$currentPage = empty($_GET['page'])? 1 : (int)$_GET['page'];
 
 // debug('$cards:'.var_dump($cards));
 // debug('$num:'.$num);
@@ -52,21 +53,26 @@ $splitList = splitList($currentPage, $perPage, $cards);
       <span class="toggle__ornament"></span>
   </div>
 </header>
+    <p id="js-show-msg" style="display:none;" class="msg-slide">
+        <?php echo showFlashMsg('success'); ?>
+        <?php print_r(showFlashMsg('success')); ?>
   <!-- メイン -->
-<main class="mypage">
-<div class="console__wrapper">
-  <div class="console">
-    <div class="form-wrap">
-      <form action="" method="POST" class="form">
-        <textarea name="memo" class="form__inputArea" placeholder="新規投稿"></textarea>
-        <input class="form__submitBtn"type="submit" name="submit" value="投稿する">
-        <input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
-        <span class="err"><?= $app->getErr('common');?></span>
-      </form>
+  <main class="mypage">
+    <div class="console__wrapper">
+      <div class="console">
+        <div class="form-wrap">
+          <form action="" method="POST" class="form">
+            <textarea name="memo" class="form__inputArea" placeholder="新規投稿"></textarea>
+            <input class="form__submitBtn"type="submit" name="submit" value="投稿する">
+            <input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
+            <span class="err"><?= $app->getErr('common');?></span>
+          </form>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+    
 
+    </p>
 
 <!-- 記事一覧部分 -->
   <div class="memoList">
@@ -74,8 +80,8 @@ $splitList = splitList($currentPage, $perPage, $cards);
     <div class="cardList">
       <?php foreach($splitList as $list) : ?>
         <div class="card">
-          <a href="memoDetail.php<?php echo ( !empty(appendGetParam()) )? appendGetParam() . '&p_id=' . $list->post_id : '?p_id=' . $list->post_id ?> ">
-          <!-- もし既にあるパラメーターがあるならその'パラメーター'＋'&p_id=~~'をつける。ないなら'?p_id=~~'だけ -->
+          <a href="memoDetail.php<?php echo ( !empty(appendGetParam()) )? appendGetParam() . '&memo_id=' . $list->post_id : '?memo_id=' . $list->post_id ?> ">
+          <!-- もし既にあるパラメーターがあるならその'パラメーター'＋'&memo_id=~~'をつける。ないなら'?memo_id=~~'だけ -->
             <span class="card__body"><?= h($list->content); ?></span>
           </a>
         </div>
