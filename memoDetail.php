@@ -56,12 +56,15 @@
     <div class="info editMemo__info">
       <ul class="info__list">
         <li class="info__item">
-          <form action="" method="POST" class="">
-            <input type="submit" name="delete" value="削除する">
-          </form>
+          <a class="info__link" href="mypage.php<?php echo appendGetParam(array('memo_id')); ?>">戻る &raquo;</a> 
         </li>
         <li class="info__item">更新日：<?= h($app->getVal()->res['update_date']); ?></li>
         <li class="info__item">作成日：<?= h($app->getVal()->res['create_date']); ?></li>
+        <li class="info__item">
+          <form action="" method="POST" class="deleteBtn__wrapper">
+            <input type="submit" name="delete" value="削除する" class="deleteBtn__form">
+          </form>
+        </li>
       </ul>
     </div>
   </div>
