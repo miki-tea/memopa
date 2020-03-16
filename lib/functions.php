@@ -17,3 +17,22 @@ function appendGetParam( $arr_del_key = array() ) {
     return $str;
   }
 }
+
+function paging($totalPage, $currentPage = 1){
+  $currentPage = (int)h($currentPage);
+  $prev = max($currentPage - 1, 1);
+  $next = min($currentPage + 1, $totalPage);
+
+  if($currentPage != 1){
+    print '<a href=?p_id=' . $prev . '>&laquo; 前へ</a>';
+  }
+  if($currentPage < $totalPage){
+    print '<a href=?p_id=' . $next . '>次へ &raquo;</a>';
+  }
+}
+
+function splitList($currentPage, $perPage, $cards){
+  return array_filter($cards, function($i) use ($currentPage, $perPage){
+    return $i >= ($currentPage - 1 ) * $perPage && $i < $currentPage * $perPage;
+  }, ARRAY_FILTER_USE_KEY);
+}

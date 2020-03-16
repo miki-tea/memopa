@@ -461,7 +461,8 @@ footer {
     box-sizing: border-box;
     line-height: 1.2em;
     display: block;
-    padding: 8px; }
+    padding: 8px;
+    color: #4e3515; }
 
 .nav__wrap {
   display: flex;
@@ -469,6 +470,19 @@ footer {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center; }
+
+.memoList-paging {
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px; }
+  .memoList-paging a {
+    border-radius: 100px;
+    color: #4e3515;
+    display: inline-block;
+    padding: 5px 10px; }
+    .memoList-paging a:hover {
+      background: #F4E23A; }
 
 .editMemo__wrapper {
   display: flex;

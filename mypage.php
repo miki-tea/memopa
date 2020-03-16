@@ -6,53 +6,24 @@ debug('HELLO:mypage.php');
 $app = new MyApp\Controller\Mypage();
 
 $app->run();
-// $app->me();
-// $app->getvValues()->users;
 $app->loadMemo();
 
+$cards = $app->getVal()->load;
+$num = count($cards);
+$perPage = 12;
+$totalPage = ceil($num / $perPage);
+$currentPage = empty($_GET['p_id'])? 1 : (int)$_GET['p_id'];
 
+// debug('$cards:'.var_dump($cards));
+// debug('$num:'.$num);
+// debug('$perPage:'.$perPage);
+// debug('$totalPage:'.$totalPage);
+// debug('$currentPage:'.$currentPage);
 
-// require('function.php');
-// debug('LOCATION::::mypage.php');
-// debugLogStart();
+$splitList = splitList($currentPage, $perPage, $cards);
+// debug('$splitList'.print_r($splitList));
 
-// require('auth.php');
-// debug('セッションの中身：'.print_r($_SESSION,true));
-
-// $u_id = $_SESSION['user_id'];
-// if(!empty($_POST['new_memo'])){
-//   $formContent = $_POST['new_memo'];
-// }
-
-
-// //TODO: POST情報のバリデーション
-
-// //メモをDBにインサートする
-// if(!empty($formContent)){
-//   debug('post送信がありました。');
-//   debug(print_r($_POST,true));
-//   //debug('バリデーションOK。DBへの登録を試みます。');  
-//   if($_SESSION['new_memo'] !== $_POST['new_memo']){
-//     try{
-//       $_SESSION['new_memo'] = $formContent;
-//       $dbh = dbConnect();
-//       $sql = 'INSERT INTO post (`content`, `user_id`, `create_date`) 
-//               VALUES (:content, :user_id, :date)';
-//       $data = array( ':content' =>$formContent, ':user_id' =>$u_id, ':date' => date('Y-m-d H:i:s') );
-//       $stmt = queryPost($dbh, $sql, $data);
-      
-//     }catch(Exception $e){
-//       error_log('エラーが発生しました。'.$e->getMessage());
-//     }
-//   }
-// } 
-//   debug('post送信はありません。');
-
-// //メモリストの表示処理
-// $dbMemoList = getMemoList($u_id);
-// // debug('$dbMemoListの中身:'.print_r($dbMemoList,true));
-
-// ?>
+?>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -101,17 +72,16 @@ $app->loadMemo();
   <div class="memoList">
     <h1 class="memoList__title">Memo List</h1>
     <div class="cardList">
-      <?php foreach($app->getVal()->load as $load) : ?>
+      <?php foreach($splitList as $list) : ?>
         <div class="card">
-          <a href="memoDetail.php<?php echo ( !empty(appendGetParam()) )? appendGetParam() . '&p_id=' . $load->post_id : '?p_id=' . $load->post_id ?> ">
+          <a href="memoDetail.php<?php echo ( !empty(appendGetParam()) )? appendGetParam() . '&p_id=' . $list->post_id : '?p_id=' . $list->post_id ?> ">
           <!-- もし既にあるパラメーターがあるならその'パラメーター'＋'&p_id=~~'をつける。ないなら'?p_id=~~'だけ -->
-            <span class="card__body"><?= h($load->content); ?></span>
+            <span class="card__body"><?= h($list->content); ?></span>
           </a>
         </div>
       <?php endforeach; ?>
     </div>
-    <div class=""></div>
-    <div class=" memoList-paging"><< 1 2 3 >></div>
+    <div class="memoList-paging"><?= paging($totalPage, $currentPage); ?></div>
   </div>  
 </main>
 

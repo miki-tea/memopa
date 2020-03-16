@@ -1,25 +1,23 @@
-
-.memoList{
+.memoList {
   max-width: 1200px;
   margin: 0 auto;
-  @include mq(md){
+  @include mq(md) {
     margin-right: 5px;
-
   }
 
-  &__title{
+  &__title {
     box-sizing: border-box;
     padding: 10px 0;
     text-align: center;
   }
 }
-.cardList{
+.cardList {
   overflow: hidden;
   padding: 0 0 0 10px;
   // margin-right: -5px;
   margin-bottom: -5px;
 }
-.card{
+.card {
   box-sizing: border-box;
   background-color: #fff;
   border: $color_main 1px solid;
@@ -41,20 +39,36 @@
     margin-right: 5px;
     margin-bottom: 5px;
   }
-  &__body{
+  &__body {
     overflow-wrap: anywhere;
     box-sizing: border-box;
     line-height: 1.2em;
     display: block;
     padding: 8px;
+    color: $color_main;
   }
 }
-.nav__wrap{
-     // 縦に積む
+.nav__wrap {
+  // 縦に積む
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   // 中央寄せ
   justify-content: center;
   align-items: center;
+}
+.memoList-paging {
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  a {
+    border-radius: 100px;
+    color: $color_main;
+    display: inline-block;
+    padding: 5px 10px;
+    &:hover {
+      background: $color_sub;
+    }
+  }
 }
