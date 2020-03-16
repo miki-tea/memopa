@@ -484,6 +484,19 @@ footer {
     .memoList-paging a:hover {
       background: #F4E23A; }
 
+.msg-slide {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 40px;
+  background: #F4E23A;
+  color: #4e3515;
+  text-align: center;
+  font-size: 16px;
+  line-height: 40px;
+  z-index: 1000;
+  margin: 0; }
+
 .editMemo__wrapper {
   display: flex;
   justify-content: center;
@@ -492,6 +505,10 @@ footer {
   @media (max-width: 544px) {
     .editMemo__wrapper {
       margin: 0 0; } }
+
+@media (max-width: 544px) {
+  .editMemo__container {
+    width: 100%; } }
 
 .editMemo__body {
   width: 480px;
@@ -503,15 +520,43 @@ footer {
   padding: 15px; }
   @media (max-width: 544px) {
     .editMemo__body {
-      min-height: calc(100vh - 260px); } }
+      min-height: 300px;
+      width: 95%;
+      margin: 5px auto; } }
 
 .info {
-  overflow: hidden; }
+  overflow: hidden;
+  width: 95%;
+  margin: 0 auto; }
   .info__list {
     float: right;
     margin: 5px 0; }
   .info__item {
     color: #c78735; }
+  .info__link {
+    text-align: right;
+    text-align: right;
+    display: block;
+    color: #4e3515; }
+
+.deleteBtn__form {
+  appearance: none;
+  padding: 2px 8px;
+  border: none;
+  outline: none;
+  color: #F4E23A;
+  display: inline;
+  border-radius: 5px;
+  display: block;
+  float: right;
+  background: #4e3515;
+  transition: 0.3s all; }
+  .deleteBtn__form:hover {
+    background: #ce0000;
+    color: #fff; }
+
+.deleteBtn__wrapper {
+  overflow: hidden; }
 
 .withdraw {
   position: absolute;
