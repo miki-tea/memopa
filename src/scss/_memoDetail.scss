@@ -1,17 +1,19 @@
-.editMemo{
-  &__wrapper{
+.editMemo {
+  &__wrapper {
     display: flex;
     justify-content: center;
     margin-top: 30px;
     margin-bottom: 30px;
-    @include mq(sm){
+    @include mq(sm) {
       margin: 0 0;
     }
   }
-  &__container{
-    
+  &__container {
+    @include mq(sm) {
+      width: 100%;
+    }
   }
-  &__body{
+  &__body {
     width: 480px;
     box-sizing: border-box;
     border-radius: 5px;
@@ -20,20 +22,51 @@
     min-height: 300px;
     background: #fff;
     padding: 15px;
-    @include mq(sm){
-      min-height: calc(100vh - 260px);
+    @include mq(sm) {
+      min-height: 300px;
+      width: 95%;
+      margin: 5px auto;
     }
   }
-
 }
 
-.info{
+.info {
   overflow: hidden;
-  &__list{
+  width: 95%;
+  margin: 0 auto;
+  &__list {
     float: right;
     margin: 5px 0;
   }
-  &__item{
-    color: lighten($color_main, 30%)
+  &__item {
+    color: lighten($color_main, 30%);
+  }
+  &__link {
+    text-align: right;
+    text-align: right;
+    display: block;
+    color: $color_main;
+  }
+}
+.deleteBtn {
+  &__form {
+    appearance: none;
+    padding: 2px 8px;
+    border: none;
+    outline: none;
+    color: $color_sub;
+    display: inline;
+    border-radius: 5px;
+    display: block;
+    float: right;
+    background: $color_main;
+    transition: 0.3s all;
+    &:hover {
+      background: rgb(206, 0, 0);
+      color: #fff;
+    }
+  }
+  &__wrapper {
+    overflow: hidden;
   }
 }
