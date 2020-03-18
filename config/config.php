@@ -12,11 +12,6 @@ ini_set('session.gc_maxlifetime', 60*60*24*30); //30日間
 ini_set('session.cookie_lifetime ', 60*60*24*30);
 session_start();
 
-// DB ini
-define('DSN', 'mysql:host=localhost;dbname=memopa');
-define('DB_USERNAME', 'dbuser');
-define('DB_PASSWORD', 'memopa');
-
 // locale
 define('SITE_URL', 'http://' . $_SERVER['HTTP_HOST']);
 
@@ -26,7 +21,7 @@ require_once(__DIR__ . '/autoload.php');
 
 
 // Debug
-$debug_flg = true;
+$debug_flg = false;
 
 function debug($str){
   global $debug_flg;
