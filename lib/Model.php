@@ -26,12 +26,6 @@ class Model {
         //DBへ接続
         $dbh = new \PDO($dsn, $user, $password, $options);
     } catch (\PDOException $e) {
-        throw new \PDOException($e->getMessage(), (int) $e->getCode());
-    }
-
-    try{
-      $this->db = new \PDO(DSN, DB_USERNAME, DB_PASSWORD);
-    }catch(\PDOException $e){
       echo $e->getMessage();
       exit;
     }
