@@ -15,9 +15,9 @@ class Model {
     $password = getenv('pass'); //ユーザーのパスワード
 
     $options = [
-        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION, //SQLでエラーが表示された場合、画面にエラーが出力される
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, //DBから取得したデータを連想配列の形式で取得する
-        PDO::ATTR_EMULATE_PREPARES   => false, //SQLインジェクション対策
+        \PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION, //SQLでエラーが表示された場合、画面にエラーが出力される
+        \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC, //DBから取得したデータを連想配列の形式で取得する
+        \PDO::ATTR_EMULATE_PREPARES   => false, //SQLインジェクション対策
     ];
 
     //DBへの接続設定
