@@ -71,20 +71,20 @@ class PassRemindReceive extends \MyApp\Controller {
           $from = 'miki.ishii16@gmail.com';
           $to = $email;
           $subject = '【memopa!】仮パスワードを再発行しました。';
-          $comment = <<<EOT
+          $comment = <<<EOM
 いつもmemopa!をご利用くださりありがとうございます。
 認証キーの確認ができたので、再発行用の仮パスワードをお送りします。
 これは仮パスワードなのでログイン後、パスワードの再設定を行ってください。
 
-ログインURL：http://localhost:8888/memopa/login.php
+ログインURL：https://memopa.herokuapp.com/login.php
 仮パスワード：{$pass}
 
 ☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯
 memopa!
-URL  http://memopa.com/
-E-mail memopa_memopa@gmail.com
+URL  https://memopa.herokuapp.com
+E-mail miki.ishii16@gmail.com
 ☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯
-EOT;
+EOM;
           $this->sendMail($from, $to, $subject, $comment);
 
           
