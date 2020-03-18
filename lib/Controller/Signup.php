@@ -60,7 +60,7 @@ class Signup extends \MyApp\Controller {
             return;
           }
         // redirect to mypage
-        header('location: ' . SITE_URL . '/memopa/mypage.php');
+        header('location:mypage.php');
         exit;
       }
     }

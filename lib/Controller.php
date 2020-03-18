@@ -40,7 +40,7 @@ class Controller {
       //ログインユーザー
       if( time() > $_SESSION['login_date'] + $_SESSION['login_limit']){ //ログイン期限切れ
         session_destroy();
-        header('location: ' . SITE_URL . '/memopa/login.php');
+        header('location:login.php');
       }else{ //ログイン期限以内
         $_SESSION['login_date'] = time();
         if(basename($_SERVER['PHP_SELF']) === 'login.php'){
@@ -52,7 +52,7 @@ class Controller {
       debug('未ログインユーザーです');
       debug(basename($_SERVER['PHP_SELF']));
       if(basename($_SERVER['PHP_SELF']) !== 'login.php'){
-        header('location: ' . SITE_URL . '/memopa/index.php');
+        header('location:index.php');
       }
     }
   }

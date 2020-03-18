@@ -83,7 +83,7 @@ EOT;
           $_SESSION['ses_limit'] = time() + 60 * 30;
           debug('$_SESSIONの中身：' . print_r($_SESSION,true));
           debug('passRemindReceive.phpに遷移します。');
-          header('location: ' . SITE_URL . '/memopa/passRemindReceive.php');
+          header('location: passRemindReceive.php');
 
         }catch(\Exception $e) {
 

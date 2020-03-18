@@ -29,7 +29,7 @@ class Withdraw extends \MyApp\Controller {
         return;
       }
       // redirect to mypage
-      header('location: ' . SITE_URL . '/memopa/index.php');
+      header('location:index.php');
       exit;
     }
   }

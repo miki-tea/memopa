@@ -89,7 +89,7 @@ EOT;
 
           
           session_unset();
-          header('location: ' . SITE_URL . '/memopa/login.php');
+          header('location:login.php');
 
         }catch(\Exception $e) {
 

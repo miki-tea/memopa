@@ -40,7 +40,7 @@ class MyPage extends \MyApp\Controller {
           $this->setErr('common',$e->getMessage());
           return;
         }
-        header('location: ' . SITE_URL . '/memopa/mypage.php');
+        header('location:mypage.php');
         exit;
       }
     }

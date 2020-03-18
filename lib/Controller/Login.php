@@ -43,7 +43,7 @@ class Login extends \MyApp\Controller {
           $_SESSION['login_limit'] = $sesLimit;
         }
         // mypageへ遷移。
-        header('location: ' . SITE_URL . '/memopa/mypage.php');
+        header('location:mypage.php');
 
       }catch(\MyApp\Exception\UnmatchDbInfo $e) {
         debug('DB接続でエラーが発生しました。');
