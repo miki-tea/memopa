@@ -29,9 +29,9 @@ class Controller {
   public function getVal(){
     return $this->_values;
   }
- 
+
   protected function hasErr(){
-   return !empty(get_object_vars($this->_errors));
+    return !empty(get_object_vars($this->_errors));
   }
 
   // validation
