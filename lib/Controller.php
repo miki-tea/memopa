@@ -34,7 +34,45 @@ class Controller {
     return !empty(get_object_vars($this->_errors));
   }
 
-  // validation
+  //ログイン認証
+  public function auth(){
+    if(!empty($_SESSION['login_date'])){
+      //ログインユーザー
+      if( time() > $_SESSION['login_date'] + $_SESSION['login_limit']){ //ログイン期限切れ
+        session_destroy();
+        header('location: ' . SITE_URL . '/memopa/login.php');
+      }else{ //ログイン期限以内
+        $_SESSION['login_date'] = time();
+        if(basename($_SERVER['PHP_SELF']) === 'login.php'){
+          header("Location:mypage.php"); 
+        }
+      }
+    }else{
+      //未ログインユーザー
+      debug('未ログインユーザーです');
+      debug(basename($_SERVER['PHP_SELF']));
+      if(basename($_SERVER['PHP_SELF']) !== 'login.php'){
+        header('location: ' . SITE_URL . '/memopa/index.php');
+      }
+    }
+  }
+  // バリデーションセット
+  // Eメール
+  public function validateEmail($email){
+    $this->InvalidRequired($email,'email');
+    $this->InvalidMaxLen($email,'email');
+    $this->InvalidEmail($email,'email');
+  }
+  // パスワード
+  public function validatePass($pass){
+    $this->InvalidRequired($pass,'pass');
+    $this->InvalidMaxLen($pass,'pass');
+    $this->InvalidMinLen($pass,'pass');
+    $this->InvalidHalf($pass, 'pass');
+  }
+
+  // バリデーション単体
+
   protected function InvalidRequired($str, $key){
     if($str === ''){
       $this->setErr($key, '入力必須です。');
@@ -52,6 +90,7 @@ class Controller {
       $this->setErr($key, '必須:半角英数字６文字以上');
     }
   }
+
   protected function InvalidMaxLen($str, $key, $max=255){
     if(mb_strlen($str) >= $max){
       $this->setErr($key, '文字数制限超過:' . $max . '文字');
@@ -63,8 +102,16 @@ class Controller {
       $this->setErr($key, '必須:6文字以上');
     }
   }
-  // End of validation functions
 
+  public function diffVal($str1, $str2, $key) {
+    if($str1 !== $str2){
+      $this->setErr($key,'パスワード(再)と一致しません。');
+    }
+  }
+
+  //バリデーションここまで
+
+  // ログイン管理
   protected function isLoggedIn(){
   return isset($_SESSION['me']) && !empty($_SESSION['me']);
   }
@@ -73,6 +120,7 @@ class Controller {
   return $this->isLoggedIn()? $_SESSION['me'] : null;
   }
 
+  //Eメール管理
   public function sendMail($from, $to, $subject, $comment){
     if(!empty($to) && !empty($subject) && !empty($comment)){
         mb_language("Japanese"); 
@@ -87,12 +135,6 @@ class Controller {
   }
   public function randomKey() {
     return substr(bin2hex(random_bytes(8)), 0, 8);
-  }
-
-  public function diffVal($str1, $str2, $key) {
-    if($str1 !== $str2){
-      $this->setErr($key,'パスワード(再)と一致しません。');
-    }
   }
   
 }

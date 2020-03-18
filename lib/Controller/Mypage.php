@@ -6,13 +6,11 @@ class MyPage extends \MyApp\Controller {
   public function run() {
     $memo = filter_input(INPUT_POST,'memo');
     $user_id = $this->me()->user_id;
-    // debug('$user_idの中身::' . $this->me()->user_id);
+    debug('$user_idの中身:' . $this->me()->user_id);
 
-    // loginしてるか確認
-    // if($this->isLoggedIn()){
-    //   header('Location:' . SITE_URL . '/memopa/mypage.php');
-    //   exit;
-    // }
+    //loginしてるか確認
+    $this->auth();
+    
     // メモ登録POST送信があったら登録する。
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
       //空文字だったら何も処理しない。

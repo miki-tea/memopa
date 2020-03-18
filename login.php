@@ -1,7 +1,10 @@
 <?php
 require_once(__DIR__ . '/config/config.php');
 $app = new MyApp\Controller\Login();
-$app->run();
+$app->auth();
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+$app->login();
+}
 ?>
 
 <!DOCTYPE html>
@@ -15,21 +18,6 @@ $app->run();
 </head>
 <body class="bg-theme">
 <?php require('header.php'); ?>
-      <!-- ナビメニュー部分 -->
-    <div class="menu">
-      <ul class="menu__list">
-        <li class="menu__item"><a class="menu__link" href="sign_up.php">会員登録</a></li>
-        <li class="menu__item"><a class="menu__link" href="login.php">ログイン</a></li>
-      </ul>
-    </div>
-  </div>
-  <!-- ハンバーガーメニュー部分 --> 
-  <div class="toggle">
-      <span class="toggle__ornament"></span>
-      <span class="toggle__ornament"></span>
-      <span class="toggle__ornament"></span>
-  </div>
-</header>
 
 <div class="login templete">
   <h1 class="templete__title">ログイン<a class="templete__navi" href="sign_up.php">新規登録の方はこちら  &gt;&gt;</a></h1>
@@ -57,9 +45,7 @@ $app->run();
               <span class="pass-skip__statement">ログイン状態を1日保持</span>
             </label>
           </div>
-            <!-- <div class="container-btn"> -->
               <input type="submit" value="ログイン" name="submit" class="templete__btn btn__submit">
-            <!-- <F/div> -->
             <p><a class="templete__navi" href="passRemindSend.php">パスワードをお忘れの方はこちらへ  &gt;&gt;</a></p>
 
             <input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">

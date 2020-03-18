@@ -1,10 +1,15 @@
 <?php
-//DBにアクセスしてメモidが合致するメモのcontentを取得して表示
+
 namespace MyApp\Controller;
 
 class MemoDetail extends \MyApp\Controller {
 
   public function edit() {
+    // token
+    if(!isset($_POST['token']) || $_POST['token'] !== $_SESSION['token']){
+      echo "Token is invalid.Please input informataion from correct page.";
+      exit;
+    }
     $post_id = $_GET['memo_id'];
     $memo = filter_input(INPUT_POST, 'memo');
     // debug('バリデーションチェックを始めます。');
@@ -20,7 +25,6 @@ class MemoDetail extends \MyApp\Controller {
         // debug('バリデーションチェック終了。OKです。');
         // debug('Postテーブルに接続を試みます。');
         $PostDetail = new \MyApp\Model\Post();
-        //TODO: \MyApp\Model\Post()の作成
         $res = $PostDetail->edit([
           'post_id' => $post_id,
           'content' => $memo
@@ -35,6 +39,7 @@ class MemoDetail extends \MyApp\Controller {
       }
     }
   }
+
   public function loadOneMemo() {
     $memo_id = $_GET['memo_id'];
     try{
@@ -51,7 +56,13 @@ class MemoDetail extends \MyApp\Controller {
       return;
     }
   }
+  
   public function delete() {
+    // token
+    if(!isset($_POST['token']) || $_POST['token'] !== $_SESSION['token']){
+      echo "Token is invalid.Please input informataion from correct page.";
+      exit;
+    }
     try{
       // debug('DBに接続します。');
       $postModel = new \MyApp\Model\Post();

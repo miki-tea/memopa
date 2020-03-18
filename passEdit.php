@@ -4,6 +4,7 @@ require_once(__DIR__ . '/config/config.php');
 debug('HELLO:HELLO:HELLO:HELLO:passEdit.php');
 
 $app = new MyApp\Controller\PassEdit();
+$app->auth();
 $app->run();
 ?>
 <?php
@@ -13,23 +14,6 @@ require('head.php');
 <body class="bg-theme">
 <!-- メニュー -->
 <?php require('header.php'); ?>
-<!-- ナビメニュー部分 -->
-    <div class="menu">
-      <ul class="menu__list">
-        <li class="menu__item"><a class="menu__link" href="mypage.php">マイページへ</a></li>
-        <li class="menu__item"><a class="menu__link" href="prifile.php">プロフィール編集</a></li>
-        <li class="menu__item"><a class="menu__link" href="logout.php">ログアウト</a></li>
-        <li class="menu__item"><a class="menu__link" href="withdraw.php">退会</a></li>
-      </ul>
-    </div>
-  </div>
-  <!-- ハンバーガーメニュー部分 --> 
-  <div class="toggle">
-      <span class="toggle__ornament"></span>
-      <span class="toggle__ornament"></span>
-      <span class="toggle__ornament"></span>
-  </div>
-</header>
 
 <!-- メインコンテンツ -->
 <main>

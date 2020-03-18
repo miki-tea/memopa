@@ -62,7 +62,7 @@ class PassRemindSend extends \MyApp\Controller {
 パスワード再設定用の認証キーをお送りします。
 認証キーの有効期限は30分となりますので、お早めに以下のURLから認証キーでログイン後、パスワードの再設定を行ってください。
 
-URL：http://localhost:8888/memopa/passRemindRecieve.php
+URL：http://localhost:8888/memopa/passRemindReceive.php
 認証キー：{$sessKey}
 
 認証キーを再発行されたい場合は下記ページより再度再発行をお願い致します。

@@ -118,7 +118,7 @@ textarea:focus {
   line-height: 50px;
   padding: 0 30px;
   border-radius: 30px;
-  transition: .3s;
+  transition: 0.3s;
   background-color: #4e3515; }
   .btn a {
     color: #F4E23A; }
@@ -134,7 +134,7 @@ textarea:focus {
     font-size: 20px;
     height: 60px;
     border-radius: 60px;
-    transition: .3s; }
+    transition: 0.3s; }
     .btn__submit:hover {
       border: #4e3515 1px solid;
       color: #4e3515;
@@ -221,6 +221,11 @@ textarea:focus {
       .editPage .container .title {
         font-size: 30px; } }
 
+.title__ornament {
+  border-bottom: 2px dashed #4e3515;
+  display: inline-block;
+  padding: 0 15px; }
+
 .err {
   color: red;
   font-size: 10px;
@@ -295,117 +300,96 @@ textarea:focus {
   position: relative;
   top: -5px; }
 
-.menu__list {
-  display: flex;
-  padding: 0;
-  margin: 0 auto; }
-
-.menu__link {
-  border: 1px solid #F4E23A;
-  margin-left: 20px;
-  padding: 10px 30px;
-  display: block;
-  box-sizing: border-box;
-  color: #F4E23A;
-  border-radius: 100px; }
-  @media (max-width: 992px) {
-    .menu__link {
-      border-radius: 0px;
-      border: none; } }
-
-@media (max-width: 992px) {
-  /*ナビメニューのスタイルを指定*/
-  .menu {
-    position: fixed;
-    /*表示位置を固定*/
-    z-index: 2;
-    /*重ね順を変更*/
-    top: 0;
-    /*表示位置を指定*/
-    left: 0;
-    /*表示位置を指定*/
-    background: #2b1d0c;
-    /*背景を白にする*/
-    /*文字色を黒にする*/
-    text-align: center;
-    /*テキストを中央揃え*/
-    width: 100%;
-    /*全幅表示*/
-    transform: translateX(100%);
-    /*ナビを上に隠す*/
-    transition: all 0.6s;
-    /*アニメーションの時間を指定*/
-    /*トグルボタンが押されたときに付与するクラス*/ }
-    .menu__list {
-      display: block;
-      background: #2b1d0c;
-      /*背景をグレーにする*/
+/*ナビメニューのスタイルを指定*/
+.menu {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  background: #2b1d0c;
+  text-align: center;
+  width: 25%;
+  -webkit-transform: translateX(400%);
+  -moz-transform: translateX(400%);
+  -ms-transform: translateX(400%);
+  transform: translateX(400%);
+  transition: all 0.4s; }
+  @media (max-width: 768px) {
+    .menu {
       width: 100%;
-      margin: 0 auto;
-      padding: 0; }
-    .menu__item {
-      font-size: 1.1em;
-      list-style-type: none;
-      padding: 0;
-      width: 100%;
-      border-bottom: 1px dotted #F4E23A; }
-    .menu__item:last-child {
-      padding-bottom: 0;
-      border-bottom: none;
-      /*最後のメニュー項目のみ下線を消す*/ }
-    .menu__link {
-      display: block;
-      /*クリックできる領域を広げる*/
-      color: #F4E23A;
-      padding: 1em 0; }
-    .menu.active {
-      transform: translateX(0%); }
-  /*トグルボタンのスタイルを指定*/
-  .toggle {
+      -webkit-transform: translateX(100%);
+      -moz-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+      transform: translateX(100%); } }
+  .menu__list {
     display: block;
-    position: fixed;
-    /* bodyに対しての絶対位置指定 */
-    right: 8px;
-    top: 7px;
-    width: 42px;
-    height: 42px;
-    cursor: pointer;
-    z-index: 3;
-    /* 最初のspanをマイナス45度に */ }
-    .toggle__ornament {
-      display: block;
-      position: absolute;
-      width: 30px;
-      border-bottom: solid 3px #F4E23A;
-      border-radius: 3px;
-      -webkit-transition: .35s ease-in-out;
-      /*変化の速度を指定*/
-      -moz-transition: .35s ease-in-out;
-      /*変化の速度を指定*/
-      transition: .5s ease-in-out;
-      /*変化の速度を指定*/
-      left: 6px; }
-      .toggle__ornament:nth-child(1) {
-        top: 9px; }
-      .toggle__ornament:nth-child(2) {
-        top: 18px; }
-      .toggle__ornament:nth-child(3) {
-        top: 27px; }
-    .toggle.active .toggle__ornament {
-      /* 2番目と3番目のspanを45度に */ }
-      .toggle.active .toggle__ornament:nth-child(1) {
-        top: 18px;
-        left: 6px;
-        -webkit-transform: rotate(-45deg);
-        -moz-transform: rotate(-45deg);
-        transform: rotate(-45deg); }
-      .toggle.active .toggle__ornament:nth-child(2) {
-        opacity: 0; }
-      .toggle.active .toggle__ornament:nth-child(3) {
-        top: 18px;
-        -webkit-transform: rotate(45deg);
-        -moz-transform: rotate(45deg);
-        transform: rotate(45deg); } }
+    background: #2b1d0c;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0; }
+  .menu__item {
+    font-size: 1.1em;
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    border-bottom: 1px dotted #F4E23A; }
+  .menu__item:last-child {
+    padding-bottom: 0;
+    border-bottom: none; }
+  .menu__link {
+    display: block;
+    color: #F4E23A;
+    padding: 1em 0; }
+  .menu.active {
+    -webkit-transform: translateX(300%);
+    -moz-transform: translateX(300%);
+    -ms-transform: translateX(300%);
+    transform: translateX(300%); }
+    @media (max-width: 768px) {
+      .menu.active {
+        -webkit-transform: translateX(0%);
+        -moz-transform: translateX(0%);
+        -ms-transform: translateX(0%);
+        transform: translateX(0%); } }
+
+.toggle {
+  display: block;
+  position: fixed;
+  right: 8px;
+  top: 7px;
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+  z-index: 3; }
+  .toggle__ornament {
+    display: block;
+    position: absolute;
+    width: 30px;
+    border-bottom: solid 3px #F4E23A;
+    border-radius: 3px;
+    transition: 0.5s ease-in-out;
+    left: 6px; }
+    .toggle__ornament:nth-child(1) {
+      top: 9px; }
+    .toggle__ornament:nth-child(2) {
+      top: 18px; }
+    .toggle__ornament:nth-child(3) {
+      top: 27px; }
+  .toggle.active .toggle__ornament:nth-child(1) {
+    top: 18px;
+    left: 6px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg); }
+  .toggle.active .toggle__ornament:nth-child(2) {
+    opacity: 0; }
+  .toggle.active .toggle__ornament:nth-child(3) {
+    top: 18px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg); }
 
 footer {
   background-color: #2b1d0c;
@@ -421,18 +405,28 @@ footer {
 .memoList {
   max-width: 1200px;
   margin: 0 auto; }
-  @media (max-width: 768px) {
-    .memoList {
-      margin-right: 5px; } }
   .memoList__title {
     box-sizing: border-box;
-    padding: 10px 0;
-    text-align: center; }
+    padding: 10px 20px;
+    text-align: center;
+    margin-bottom: 10px;
+    font-family: "Arial Rounded MT Bold", "Arial Black", sans-serif; }
+    @media (max-width: 544px) {
+      .memoList__title {
+        display: none; } }
 
 .cardList {
   overflow: hidden;
-  padding: 0 0 0 10px;
-  margin-bottom: -5px; }
+  padding-left: 15px;
+  margin-bottom: -5px;
+  max-width: 900px;
+  margin: 0 auto; }
+  @media (max-width: 768px) {
+    .cardList {
+      padding-left: 10px; } }
+  @media (max-width: 544px) {
+    .cardList {
+      padding-left: 5px; } }
 
 .card {
   box-sizing: border-box;

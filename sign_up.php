@@ -16,21 +16,6 @@ $app->run();
 </head>
 <body class="bg-theme">
 <?php require('header.php'); ?>
-      <!-- ナビメニュー部分 -->
-    <div class="menu">
-      <ul class="menu__list">
-        <li class="menu__item"><a class="menu__link" href="sign_up.php">会員登録</a></li>
-        <li class="menu__item"><a class="menu__link" href="login.php">ログイン</a></li>
-      </ul>
-    </div>
-  </div>
-  <!-- ハンバーガーメニュー部分 --> 
-  <div class="toggle">
-      <span class="toggle__ornament"></span>
-      <span class="toggle__ornament"></span>
-      <span class="toggle__ornament"></span>
-  </div>
-</header>
 
 <div class="submit templete">
 

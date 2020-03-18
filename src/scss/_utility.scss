@@ -1,4 +1,4 @@
-textarea{
+textarea {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
@@ -13,17 +13,16 @@ textarea{
   width: 100%;
 }
 
-
 textarea:focus {
   border: 1px solid rgba(0, 0, 0, 0.32);
   box-shadow: none;
   outline: none;
 }
 $form-width: 300px;
-.mypage{
+.mypage {
   margin-top: 60px;
 }
-.console{
+.console {
   background-color: $color_main;
   overflow: hidden;
   max-width: 768px;
@@ -31,40 +30,40 @@ $form-width: 300px;
   padding: 20px;
   display: flex;
   justify-content: center;
-  &__wrapper{
+  &__wrapper {
     background-color: $color_main;
   }
 }
-.nav{
+.nav {
   @include mq(sm) {
     display: none;
   }
-  &__link{
+  &__link {
     color: $color_sub;
   }
 }
-.form-wrap{
+.form-wrap {
   float: left;
   max-width: 100%;
   box-sizing: border-box;
 }
-.form{
+.form {
   overflow: hidden;
   width: 480px;
-    max-width: 100%;
-  &__inputArea{
+  max-width: 100%;
+  &__inputArea {
     background-color: #fff;
     height: 15vh;
     display: block;
-    box-sizing:border-box;
-    border:none;
+    box-sizing: border-box;
+    border: none;
     padding: 10px;
     border-radius: 5px;
-    @include mq(sm){
+    @include mq(sm) {
       width: 100%;
     }
   }
-  &__submitBtn{
+  &__submitBtn {
     display: block;
     float: right;
     background: $color_sub;
@@ -74,47 +73,45 @@ $form-width: 300px;
     padding: 10px 30px;
     margin-top: 20px;
     border-radius: 100px;
-    @include mq(sm){
+    @include mq(sm) {
       width: 100%;
-      padding:20px 0;
-    margin-top: 12px;
-
-      
+      padding: 20px 0;
+      margin-top: 12px;
     }
-    &:hover{
+    &:hover {
       background-color: lighten($color_sub, 20%);
     }
   }
 }
-.btn{
+.btn {
   display: block;
   line-height: 50px;
   padding: 0 30px;
   border-radius: 30px;
-  transition: .3s;
+  transition: 0.3s;
   background-color: $color_main;
   a {
     color: $color_sub;
   }
-  &:hover{
+  &:hover {
     background-color: $color_sub;
     color: $color_main;
   }
-  &-join{
+  &-join {
     border: 1px solid $color_sub;
   }
-  &__submit{
+  &__submit {
     background-color: #4e3515;
     color: $color_sub;
     width: 50%;
     font-size: 20px;
     height: 60px;
     border-radius: 60px;
-    transition: .3s; 
-      &:hover {
+    transition: 0.3s;
+    &:hover {
       border: #4e3515 1px solid;
       color: #4e3515;
-      background-color: $color_sub; 
+      background-color: $color_sub;
     }
   }
 }
@@ -122,32 +119,32 @@ $form-width: 300px;
 .bg-theme {
   // margin-top: $header-height;
   background-image: url("../../memopa/dist/anastasiia-kamil--uQZPtoJ8nk-unsplash.jpg");
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100vh;
-  
-    @include mq() {
-      padding-top: 0;
-    }
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+
+  @include mq() {
+    padding-top: 0;
+  }
 }
-.templete{
+.templete {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translateX(-50%)translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
   width: 300px;
 
-  &__title{
+  &__title {
     font-size: 30px;
     margin-bottom: 15px;
   }
-  &__btn{
-  margin: 20px auto;
-  display: block;
-}
-  &__navi{
+  &__btn {
+    margin: 20px auto;
+    display: block;
+  }
+  &__navi {
     float: right;
     color: $color_main;
     text-decoration-style: double;
@@ -157,16 +154,16 @@ $form-width: 300px;
     font-size: 12px;
     top: 16px;
     left: -5px;
-    &:hover{
+    &:hover {
       cursor: pointer;
     }
   }
 }
-.form{
-  &__title{
+.form {
+  &__title {
     margin: 0;
   }
-  &__input{
+  &__input {
     border-radius: 5px;
     background-color: #fff;
     padding: 10px;
@@ -184,15 +181,15 @@ $form-width: 300px;
   @include mq() {
     width: 100%;
   }
-  .container{
-    &-title{
+  .container {
+    &-title {
       padding: 30px 0 0;
       margin: 0;
       text-align: center;
     }
     &-form {
       width: 90%;
-      margin: 10px auto; 
+      margin: 10px auto;
       // padding-bottom: 30px;
       @include mq() {
         width: 100%;
@@ -200,21 +197,19 @@ $form-width: 300px;
     }
     &-formItem {
       border-radius: 10px;
-      
-      &-name{
-        margin-bottom: 7px; 
+
+      &-name {
+        margin-bottom: 7px;
         margin-left: 7px;
-  
       }
     }
-    &-btn{
+    &-btn {
       display: flex;
-    justify-content: center;
-    
-    padding: 30px 0;
+      justify-content: center;
 
+      padding: 30px 0;
     }
-    .title{
+    .title {
       font-weight: bold;
       text-align: center;
       font-size: 36px;
@@ -225,8 +220,15 @@ $form-width: 300px;
   }
 }
 
+.title {
+  &__ornament {
+    border-bottom: 2px dashed $color_main;
+    display: inline-block;
+    padding: 0 15px;
+  }
+}
 .err {
   color: red;
   font-size: 10px;
-font-weight: bold; }
-
+  font-weight: bold;
+}

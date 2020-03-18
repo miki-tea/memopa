@@ -1,18 +1,14 @@
 <?php
 namespace MyApp\Controller;
 
-// $token = filter_input(INPUT_POST,'token');
 class PassEdit extends \MyApp\Controller {
   
   public function run() {
-    // if($this->isLoggedIn()){ // valid session
-    //   header('Location:' .SITE_URL . '/memopa/mypage.php');
-    //   exit;
-    // }
-
-    //POST送信があった場合→バリデーション→DBでemail照会→あったらEmail送信→入力ページへ遷移
-    //POST送信がなかったた場合→何もしない
-    //
+    if(!$this->isLoggedIn()){ 
+      header('Location:' . SITE_URL . '/memopa/index.php');
+      exit;
+    }
+  
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
       // token
       if(!isset($_POST['token']) || $_POST['token'] !== $_SESSION['token']){
@@ -72,16 +68,17 @@ class PassEdit extends \MyApp\Controller {
           $from = 'miki.ishii16@gmail.com';
           $to = $email;
           $subject = 'パスワード変更通知｜memopa';
-          $comment = <<<EOT
-こんにちは！memopaです。
-パスワードが変更されたことをお知らせいたします。
+          $comment = <<<EOM
+こんにちは！memopa!です。
+{$from} 様からのお手続きにより、パスワードが変更されたことをお知らせいたします。
+引き続き、memopa!で楽しいメモライフをお送りください。
                       
 ☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯
 memopa!
 URL  http://memopa.com/
-E-mail miki.ishii16@gmail.com
+E-mail memopa@memopa.com
 ☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯☆★●◯
-EOT;
+EOM;
           $this->sendMail($from, $to, $subject, $comment);
           
           header("Location:mypage.php"); //マイページへ

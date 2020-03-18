@@ -1,6 +1,7 @@
 <?php
   require_once(__DIR__ . '/config/config.php');
   $app = new MyApp\Controller\MemoDetail();
+  $app->auth();
   $app->loadOneMemo();
 
   if(!empty($_POST['edit'])){
@@ -11,7 +12,7 @@
     debug('$_POST["delete"]の送信がありました。');
     $app->delete();
   }
-  // $app->loadOnePost();
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -21,29 +22,14 @@
 </head>
 <body>
 <?php require('header.php'); ?>
-      <!-- ナビメニュー部分 -->
-    <div class="menu">
-      <ul class="menu__list">
-        <li class="menu__item"><a class="menu__link" href="mypage.php">マイページへ</a></li>
-        <li class="menu__item"><a class="menu__link" href="logout.php">ログアウト</a></li>
-        <li class="menu__item"><a class="menu__link" href="withdraw.php">退会</a></li>
-      </ul>
-    </div>
-  </div>
-  <!-- ハンバーガーメニュー部分 --> 
-  <div class="toggle">
-      <span class="toggle__ornament"></span>
-      <span class="toggle__ornament"></span>
-      <span class="toggle__ornament"></span>
-  </div>
-</header>
+
 <main>
 <div class="console__wrapper">
   <div class="console">
     <form action="" method="POST" class="form">
       <textarea name="memo" class="form__inputArea" placeholder="編集内容"></textarea>
       <input class="form__submitBtn"type="submit" name="edit" value="編集する">
-      <!-- <input type="hidden" name="token" value="< h($_SESSION['token']); ?>"> -->
+      <input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
       <span class="err"><?= h($app->getErr('common')); ?></span>
     </form>
   </div>
@@ -63,6 +49,7 @@
         <li class="info__item">
           <form action="" method="POST" class="deleteBtn__wrapper">
             <input type="submit" name="delete" value="削除する" class="deleteBtn__form">
+            <input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
           </form>
         </li>
       </ul>

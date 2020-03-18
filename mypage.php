@@ -1,11 +1,11 @@
 <?php
 require_once(__DIR__ . '/config/config.php');
 debug('HELLO:mypage.php');
-debug('フラッシュメッセの中身'.$_SESSION['success']);
+// debug('フラッシュメッセの中身'.$_SESSION['success']);
 
 
 $app = new MyApp\Controller\Mypage();
-
+$app->auth();
 $app->run();
 $app->loadMemo();
 
@@ -15,14 +15,7 @@ $perPage = 12;
 $totalPage = ceil($num / $perPage);
 $currentPage = empty($_GET['page'])? 1 : (int)$_GET['page'];
 
-// debug('$cards:'.var_dump($cards));
-// debug('$num:'.$num);
-// debug('$perPage:'.$perPage);
-// debug('$totalPage:'.$totalPage);
-// debug('$currentPage:'.$currentPage);
-
 $splitList = splitList($currentPage, $perPage, $cards);
-// debug('$splitList'.print_r($splitList));
 
 ?>
 
@@ -36,23 +29,6 @@ $splitList = splitList($currentPage, $perPage, $cards);
 <body>
   <!-- ヘッダー  -->
 <?php require('header.php'); ?>
-      <!-- ナビメニュー部分 -->
-    <div class="menu">
-      <ul class="menu__list">
-        <li class="menu__item"><a class="menu__link" href="profile.php">プロフィール編集</a></li>
-        <li class="menu__item"><a class="menu__link" href="passEdit.php">パスワード編集</a></li>
-        <li class="menu__item"><a class="menu__link" href="logout.php">ログアウト</a></li>
-        <li class="menu__item"><a class="menu__link" href="withdraw.php">退会</a></li>
-      </ul>
-    </div>
-  </div>
-  <!-- ハンバーガーメニュー部分 --> 
-  <div class="toggle">
-      <span class="toggle__ornament"></span>
-      <span class="toggle__ornament"></span>
-      <span class="toggle__ornament"></span>
-  </div>
-</header>
     <p id="js-show-msg" style="display:none;" class="msg-slide">
         <?php echo showFlashMsg('success'); ?>
         <?php print_r(showFlashMsg('success')); ?>
@@ -76,7 +52,7 @@ $splitList = splitList($currentPage, $perPage, $cards);
 
 <!-- 記事一覧部分 -->
   <div class="memoList">
-    <h1 class="memoList__title">Memo List</h1>
+    <h1 class="memoList__title title"><span class="title__ornament">Memo List</span></h1>
     <div class="cardList">
       <?php foreach($splitList as $list) : ?>
         <div class="card">
