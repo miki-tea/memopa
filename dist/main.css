@@ -615,7 +615,7 @@ footer {
       width: 90%; } }
 
 .hero {
-  background-image: url("../../memopa/dist/anastasiia-kamil--uQZPtoJ8nk-unsplash.jpg");
+  background-image: image-url("/dist/anastasiia-kamil--uQZPtoJ8nk-unsplash.jpg");
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
@@ -724,7 +724,7 @@ section {
 
 .panel {
   box-sizing: border-box;
-  width: calc(96%/3);
+  width: calc(96% / 3);
   min-height: 550px;
   margin: 20px auto 0;
   padding: 0 auto;
@@ -772,7 +772,11 @@ section {
 
 .bg-color-sub {
   background-color: #4e3515; }
-  .bg-color-sub h1, .bg-color-sub h2, .bg-color-sub h3, .bg-color-sub p, .bg-color-sub span {
+  .bg-color-sub h1,
+  .bg-color-sub h2,
+  .bg-color-sub h3,
+  .bg-color-sub p,
+  .bg-color-sub span {
     color: white; }
   .bg-color-sub .container-ornament {
     border-bottom: 2px #F4E23A dashed; }
