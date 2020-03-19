@@ -25,9 +25,11 @@
   margin: 0 auto;
   @include mq(md) {
     padding-left: 10px;
+    padding-top: 10px;
   }
   @include mq(sm) {
     padding-left: 5px;
+    padding-top: 5px;
   }
 }
 .card {

@@ -53,6 +53,7 @@
             <li class="menu__item"><a class="menu__link" href="login.php">ログイン</a></li>';
           }else{
             echo'
+            <li class="menu__item"><a class="menu__link" href="mypage.php">マイページ</a></li>
             <li class="menu__item"><a class="menu__link" href="passEdit.php">パスワード編集</a></li>
             <li class="menu__item"><a class="menu__link" href="logout.php">ログアウト</a></li>
             <li class="menu__item"><a class="menu__link" href="withdraw.php">退会</a></li>';
