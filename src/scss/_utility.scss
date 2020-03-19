@@ -137,6 +137,10 @@ $form-width: 300px;
   }
   &.memoList {
     height: 100%;
+    min-height: 100vh;
+  }
+  &.editMemo {
+    height: 100%;
   }
 }
 .templete {

@@ -34,24 +34,26 @@
     </form>
   </div>
 </div>
-<div class="editMemo editMemo__wrapper">
+<div class="bg-theme editMemo editMemo__wrapper">
   <div class="editMemo__container">
     <div class="editMemo__body">
       <?= h($app->getVal()->res['content']); ?>
     </div>
     <div class="info editMemo__info">
-      <ul class="info__list">
-        <li class="info__item">
-          <a class="info__link" href="mypage.php<?php echo appendGetParam(array('memo_id')); ?>">戻る &raquo;</a> 
-        </li>
-        <li class="info__item">更新日：<?= h($app->getVal()->res['update_date']); ?></li>
-        <li class="info__item">作成日：<?= h($app->getVal()->res['create_date']); ?></li>
-        <li class="info__item">
+      <div class="info__console">
+        <div class="info__item">
           <form action="" method="POST" class="deleteBtn__wrapper">
             <input type="submit" name="delete" value="削除する" class="deleteBtn__form">
             <input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
           </form>
-        </li>
+        </div>
+        <div class="info__item">
+          <a class="info__link" href="mypage.php<?php echo appendGetParam(array('memo_id')); ?>">戻る &raquo;</a> 
+        </div>
+      </div>
+      <ul class="info__list">
+        <li class="info__item">更新日：<?= h($app->getVal()->res['update_date']); ?></li>
+        <li class="info__item">作成日：<?= h($app->getVal()->res['create_date']); ?></li>
       </ul>
     </div>
   </div>
