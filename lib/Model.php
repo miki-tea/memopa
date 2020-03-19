@@ -15,7 +15,6 @@ class Model {
       $user = getenv('user_name'); //MySQLにログインするユーザー名
       $password = getenv('pass'); //ユーザーのパスワード
 
-
       // $host = 'localhost'; //MySQLがインストールされてるコンピュータ
       // $dbname = 'memopa'; //使用するDB
       // $charset = "utf8"; //文字コード
