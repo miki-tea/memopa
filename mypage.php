@@ -32,6 +32,7 @@ $splitList = splitList($currentPage, $perPage, $cards);
     <p id="js-show-msg" style="display:none;" class="msg-slide">
         <?php echo showFlashMsg('success'); ?>
         <?php print_r(showFlashMsg('success')); ?>
+    </p>
   <!-- メイン -->
   <main class="mypage">
     <div class="console__wrapper">
@@ -46,12 +47,8 @@ $splitList = splitList($currentPage, $perPage, $cards);
         </div>
       </div>
     </div>
-    
-
-    </p>
-
 <!-- 記事一覧部分 -->
-  <div class="memoList">
+  <div class="memoList bg-theme">
     <h1 class="memoList__title title"><span class="title__ornament">Memo List</span></h1>
     <div class="cardList">
       <?php foreach($splitList as $list) : ?>
