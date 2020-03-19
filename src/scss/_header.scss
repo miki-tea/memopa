@@ -39,11 +39,10 @@
 }
 .logo {
   &__link {
-    font-family: $font_family_corp;
-    font-size: 45px;
-    color: $color_sub;
-    position: relative;
-    top: -5px;
+  }
+  &__img {
+    height: 50px;
+    margin: 0 0 -6px 0;
   }
 }
 // headerクラスここまで

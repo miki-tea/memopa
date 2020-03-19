@@ -7,8 +7,8 @@ $app->run();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <?php require('head.php'); ?>
   <? $subtitle = '退会'; ?>
+  <?php require('head.php'); ?>
 <body class="bg-theme">
   <?php require('header.php'); ?>
 <main>

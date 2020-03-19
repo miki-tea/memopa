@@ -187,7 +187,7 @@ textarea:focus {
       cursor: pointer; }
 
 .form__title {
-  margin: 0; }
+  margin-bottom: 2px; }
 
 .form__input {
   border-radius: 5px;
@@ -307,12 +307,9 @@ textarea:focus {
       .header__logo {
         padding-left: 10px; } }
 
-.logo__link {
-  font-family: "Arial Rounded MT Bold", "Arial Black", sans-serif;
-  font-size: 45px;
-  color: #F4E23A;
-  position: relative;
-  top: -5px; }
+.logo__img {
+  height: 50px;
+  margin: 0 0 -6px 0; }
 
 /*ナビメニューのスタイルを指定*/
 @media (max-width: 768px) {
@@ -441,7 +438,6 @@ footer {
     font-size: 9px; }
 
 .memoList {
-  max-width: 1200px;
   margin: 0 auto; }
   .memoList__title {
     box-sizing: border-box;
@@ -600,11 +596,13 @@ footer {
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  text-align: center; }
+  text-align: center;
+  width: 100%; }
   .withdraw__title {
     font-size: 30px; }
   .withdraw__form {
-    margin-top: 20px; }
+    margin-top: 20px;
+    width: 100%; }
   .withdraw__btn {
     box-sizing: border-box;
     display: block;
@@ -613,7 +611,7 @@ footer {
     color: #F4E23A;
     border: 1px solid #4e3515;
     border-radius: 100px;
-    transition: all .3s;
+    transition: all 0.3s;
     margin: 0 auto; }
     .withdraw__btn:hover {
       background-color: #F4E23A;

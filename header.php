@@ -23,7 +23,20 @@
 <header class="header">
   <div class="header__wrap">
     <div class="header__logo logo">
-      <a href="index.php" class="logo__link">memopa!</a>
+      <a href="
+          <?php if(
+          basename($_SERVER['PHP_SELF']) === 'index.php' ||
+          basename($_SERVER['PHP_SELF']) === 'login.php' ||
+          basename($_SERVER['PHP_SELF']) === 'sign_up.php' ||
+          basename($_SERVER['PHP_SELF']) === 'passRemindReceive.php' ||
+          basename($_SERVER['PHP_SELF']) === 'passRemindSend.php'
+          ){
+            echo 'index.php';
+          }else{
+            echo'mypage.php';
+          }
+          ?>
+      " class="logo__link"><img src="dist/memopa_logo.png" alt=""class="logo__img"></a>
     </div>
     <!-- ナビメニュー部分 -->
     <div class="menu">
