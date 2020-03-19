@@ -8,14 +8,11 @@
   left: 0;
   width: 100%;
   z-index: 1;
-  @include mq(sm) {
-    padding: 0 5px;
-  }
 
   @include mq(md) {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 0px;
   }
+
   &__wrap {
     display: flex;
     justify-content: space-between;
@@ -23,13 +20,20 @@
     height: $header-height;
     padding: 0 50px;
     @include mq(lg) {
+      padding: 0 30px;
+    }
+    @include mq(md) {
+      padding: 0px;
+    }
+    @include mq(sm) {
       padding: 0;
     }
   }
 
   &__logo {
-    @include mq(sm) {
-      text-align: center;
+    padding-left: 10px;
+    @include mq(md) {
+      padding-left: 10px;
     }
   }
 }
@@ -68,19 +72,21 @@
 // }
 /*ナビメニューのスタイルを指定*/
 .menu {
-  position: fixed;
-  z-index: 2;
-  top: 0;
-  left: 0;
-  background: $color_sub2;
-  text-align: center;
-  width: 25%;
-  -webkit-transform: translateX(400%);
-  -moz-transform: translateX(400%);
-  -ms-transform: translateX(400%);
-  transform: translateX(400%);
-  transition: all 0.4s;
   @include mq(md) {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    background: $color_sub2;
+    text-align: center;
+    width: 40%;
+    -webkit-transform: translateX(250%);
+    -moz-transform: translateX(250%);
+    -ms-transform: translateX(250%);
+    transform: translateX(250%);
+    transition: all 0.4s;
+  }
+  @include mq(sm) {
     width: 100%;
     -webkit-transform: translateX(100%);
     -moz-transform: translateX(100%);
@@ -100,27 +106,43 @@
     font-size: 1.1em;
     list-style-type: none;
     padding: 0;
-    width: 100%;
-    border-bottom: 1px dotted $color_sub;
+    display: inline-block;
+    transition: 0.5s all;
+    border-bottom: 1px dotted rgba(0, 0, 0, 0);
+    &:hover {
+      border-bottom: 1px dotted $color_sub;
+    }
+    @include mq(md) {
+      width: 100%;
+      border-bottom: 1px dotted $color_sub;
+    }
   }
 
   &__item:last-child {
-    padding-bottom: 0;
-    border-bottom: none;
+    @include mq(md) {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
   }
 
   &__link {
-    display: block;
+    display: inline-block;
+    padding: 5px 10px;
     color: $color_sub;
-    padding: 1em 0;
+    @include mq(md) {
+      padding: 1em 0;
+      display: block;
+    }
   }
 
   &.active {
-    -webkit-transform: translateX(300%);
-    -moz-transform: translateX(300%);
-    -ms-transform: translateX(300%);
-    transform: translateX(300%);
     @include mq(md) {
+      -webkit-transform: translateX(150%);
+      -moz-transform: translateX(150%);
+      -ms-transform: translateX(150%);
+      transform: translateX(150%);
+    }
+    @include mq(sm) {
       -webkit-transform: translateX(0%);
       -moz-transform: translateX(0%);
       -ms-transform: translateX(0%);
@@ -129,14 +151,17 @@
   }
 }
 .toggle {
-  display: block;
-  position: fixed;
-  right: 8px;
-  top: 7px;
-  width: 42px;
-  height: 42px;
-  cursor: pointer;
-  z-index: 3;
+  display: none;
+  @include mq(md) {
+    display: block;
+    position: fixed;
+    right: 8px;
+    top: 7px;
+    width: 42px;
+    height: 42px;
+    cursor: pointer;
+    z-index: 3;
+  }
 
   &__ornament {
     display: block;

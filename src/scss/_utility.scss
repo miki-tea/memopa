@@ -53,7 +53,7 @@ $form-width: 300px;
   max-width: 100%;
   &__inputArea {
     background-color: #fff;
-    height: 15vh;
+    height: 150px;
     display: block;
     box-sizing: border-box;
     border: none;
@@ -99,6 +99,13 @@ $form-width: 300px;
   }
   &-join {
     border: 1px solid $color_sub;
+    &:hover {
+      border: #4e3515 1px solid;
+      background-color: $color_sub;
+      a {
+        color: #4e3515;
+      }
+    }
   }
   &__submit {
     background-color: #4e3515;

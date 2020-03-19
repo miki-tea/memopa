@@ -168,7 +168,7 @@ section {
   background-color: rgba(255, 255, 255, 0.6);
   border-radius: $radius_m;
   border: 3px $color_sub solid;
-  @include mq() {
+  @include mq(md) {
     width: 85%;
     margin: 0 auto 10px;
     text-align: center;
@@ -178,7 +178,7 @@ section {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    @include mq() {
+    @include mq(md) {
       margin-right: 0;
       display: block;
     }

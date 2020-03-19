@@ -31,6 +31,7 @@ $subtitle = "TOP";
         「memopa!」を始めたら、メモする場所にはもう困りません。<br>全てのアイデアは「ぱっとメモ」できるから。<br>
         登録も退会も簡単。ノンストレスなメモライフをお楽しみください。</p>
       </div>
+      <button class="btn container-btn btn-join"><a href="sign_up.php">無料会員登録</a></button>
     </div>
   </section>
   <!-- ここまでABOUT -->
