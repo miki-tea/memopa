@@ -23,7 +23,7 @@
 <body>
 <?php require('header.php'); ?>
 
-<main>
+<main class="bg-theme">
 <div class="console__wrapper">
   <div class="console">
     <form action="" method="POST" class="form">
@@ -34,7 +34,7 @@
     </form>
   </div>
 </div>
-<div class="bg-theme editMemo editMemo__wrapper">
+<div class="editMemo editMemo__wrapper">
   <div class="editMemo__container">
     <div class="editMemo__body">
       <?= h($app->getVal()->res['content']); ?>

@@ -151,15 +151,11 @@ textarea:focus {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh; }
+  min-height: 100vh;
+  height: 100%; }
   @media (max-width: 414px) {
     .bg-theme {
       padding-top: 0; } }
-  .bg-theme.memoList {
-    height: 100%;
-    min-height: 100vh; }
-  .bg-theme.editMemo {
-    height: 100%; }
 
 .templete {
   position: absolute;
