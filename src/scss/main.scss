@@ -131,7 +131,7 @@ section {
       }
     }
     &-btn {
-      margin: 100px auto 0;
+      margin: 0 auto;
     }
   }
 }
@@ -174,7 +174,7 @@ section {
     text-align: center;
     min-height: 400px;
   }
-  &-group {
+  &__group {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -183,11 +183,11 @@ section {
       display: block;
     }
   }
-  &-head {
+  &__head {
     font-size: 25px;
     font-weight: bold;
   }
-  &-body {
+  &__body {
     overflow: hidden;
     img {
       width: 100%;
@@ -204,7 +204,7 @@ section {
       }
     }
   }
-  &-foot {
+  &__foot {
     padding: 10px 15px;
     font-size: 19px;
     line-height: 1.4em;

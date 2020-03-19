@@ -1,41 +1,37 @@
 import jQuery from "jquery";
-
 const $ = jQuery;
-
-console.log("read jQuery File!");
 
 $(function() {
   //右にスライドする
-  $(".js-slideRight-target").addClass("js-slideRight");
-  $(window).scroll(function() {
-    $(".js-slideRight-target").each(function() {
-      let elemPos = $(this).offset().top,
-        scroll = $(window).scrollTop(),
-        windowHeight = $(window).height();
-      if (scroll > elemPos - windowHeight + windowHeight / 6) {
-        $(this).removeClass("js-slideRight");
-      } else {
-        $(this).addClass("js-slideRight");
-      }
-    });
-  });
+  // $(".js-slideRight-target").addClass("js-slideRight");
+  // $(window).scroll(function() {
+  //   $(".js-slideRight-target").each(function() {
+  //     let elemPos = $(this).offset().top,
+  //       scroll = $(window).scrollTop(),
+  //       windowHeight = $(window).height();
+  //     if (scroll > elemPos - windowHeight + windowHeight / 6) {
+  //       $(this).removeClass("js-slideRight");
+  //     } else {
+  //       $(this).addClass("js-slideRight");
+  //     }
+  //   });
+  // });
   //左にスライドする
-  $(".js-slideLeft-target").addClass("js-slideLeft");
-  $(window).scroll(function() {
-    $(".js-slideLeft-target").each(function() {
-      let elemPos = $(this).offset().top,
-        scroll = $(window).scrollTop(),
-        windowHeight = $(window).height();
-      if (scroll > elemPos - windowHeight + windowHeight / 6) {
-        $(this).removeClass("js-slideLeft");
-      } else {
-        $(this).addClass("js-slideLeft");
-      }
-    });
-  });
+  // $(".js-slideLeft-target").addClass("js-slideLeft");
+  // $(window).scroll(function() {
+  //   $(".js-slideLeft-target").each(function() {
+  //     let elemPos = $(this).offset().top,
+  //       scroll = $(window).scrollTop(),
+  //       windowHeight = $(window).height();
+  //     if (scroll > elemPos - windowHeight + windowHeight / 6) {
+  //       $(this).removeClass("js-slideLeft");
+  //     } else {
+  //       $(this).addClass("js-slideLeft");
+  //     }
+  //   });
+  // });
 
   //上にスライドする
-  $(".js-slideTop-target").addClass("js-slideTop");
   $(window).scroll(function() {
     $(".js-slideTop-target").each(function() {
       let elemPos = $(this).offset().top,
@@ -43,14 +39,23 @@ $(function() {
         windowHeight = $(window).height();
       if (scroll > elemPos - windowHeight + windowHeight / 6) {
         $(this).removeClass("js-slideTop");
-      } else {
-        $(this).addClass("js-slideTop");
       }
     });
   });
 
-  //ズームする
-  $(".js-slideZoom-target").addClass("js-slideZoom");
+  //少しずつ大きくなりながらゆっくりフェードインする
+  $(window).scroll(function() {
+    $(".js-slideIn-target").each(function() {
+      let elemPos = $(this).offset().top,
+        scroll = $(window).scrollTop(),
+        windowHeight = $(window).height();
+      if (scroll > elemPos - windowHeight + windowHeight / 6) {
+        $(this).removeClass("js-slideIn");
+      }
+    });
+  });
+
+  //大きくなりながら素早くフェードインする
   $(window).scroll(function() {
     $(".js-slideZoom-target").each(function() {
       let elemPos = $(this).offset().top,
@@ -58,12 +63,11 @@ $(function() {
         windowHeight = $(window).height();
       if (scroll > elemPos - windowHeight + windowHeight / 6) {
         $(this).removeClass("js-slideZoom");
-      } else {
-        $(this).addClass("js-slideZoom");
       }
     });
   });
 
+  // スマホ・タブレット向けトグルメニューの制御
   $(".toggle").click(function() {
     $(this).toggleClass("active");
 
@@ -74,6 +78,7 @@ $(function() {
     }
   });
 
+  //コンテンツが短すぎてフッターが上にずれてこないように制御
   var $ftr = $(".js-footer");
   if (window.innerHeight > $ftr.offset().top + $ftr.outerHeight()) {
     $ftr.attr({
