@@ -615,7 +615,7 @@ footer {
       width: 90%; } }
 
 .hero {
-  background-image: image-url("https://memopa.herokuapp.com/dist/anastasiia-kamil--uQZPtoJ8nk-unsplash.jpg");
+  background-image: url("anastasiia-kamil--uQZPtoJ8nk-unsplash.jpg");
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
