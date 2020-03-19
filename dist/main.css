@@ -658,6 +658,7 @@ footer {
       width: 90%; } }
 
 .hero {
+  margin-top: 60px;
   background-image: url("anastasiia-kamil--uQZPtoJ8nk-unsplash.jpg");
   background-attachment: fixed;
   background-position: center;
