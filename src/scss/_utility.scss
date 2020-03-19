@@ -125,7 +125,7 @@ $form-width: 300px;
 
 .bg-theme {
   // margin-top: $header-height;
-  background-image: url("../../memopa/dist/anastasiia-kamil--uQZPtoJ8nk-unsplash.jpg");
+  background-image: url("anastasiia-kamil--uQZPtoJ8nk-unsplash.jpg");
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
@@ -134,6 +134,9 @@ $form-width: 300px;
 
   @include mq() {
     padding-top: 0;
+  }
+  &.memoList {
+    height: 100%;
   }
 }
 .templete {

@@ -146,7 +146,7 @@ textarea:focus {
       background-color: #F4E23A; }
 
 .bg-theme {
-  background-image: url("../../memopa/dist/anastasiia-kamil--uQZPtoJ8nk-unsplash.jpg");
+  background-image: url("anastasiia-kamil--uQZPtoJ8nk-unsplash.jpg");
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
@@ -155,6 +155,8 @@ textarea:focus {
   @media (max-width: 414px) {
     .bg-theme {
       padding-top: 0; } }
+  .bg-theme.memoList {
+    height: 100%; }
 
 .templete {
   position: absolute;
@@ -502,14 +504,14 @@ footer {
   width: 100%;
   text-align: center;
   margin-top: 10px;
-  margin-bottom: 10px; }
+  padding-bottom: 10px; }
   .memoList-paging a {
-    border-radius: 100px;
     color: #4e3515;
-    display: inline-block;
-    padding: 5px 10px; }
+    padding: 5px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0);
+    transition: 0.3s all; }
     .memoList-paging a:hover {
-      background: #F4E23A; }
+      border-bottom: 1px solid #4e3515; }
 
 .msg-slide {
   position: fixed;
