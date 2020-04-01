@@ -53,12 +53,19 @@ class Signup extends \MyApp\Controller {
               'password' => $pass
             ]);
             $_SESSION['me'] = $user;
-            debug('$userの中身:' . var_dump($_SESSION['me']->pass));
+            // ログイン付加情報を与える
+            session_regenerate_id(true);
+            $sesLimit = 60*60;
+            $_SESSION['login_date'] = time();
+            $_SESSION['login_limit'] = $sesLimit;
+        
+            debug('$userの中身:' . var_dump($user));
           }catch(\MyApp\Exception\UnmatchDbInfo $e) {
             debug('DB接続でエラーが発生しました。');
             $this->setErr('login',$e->getMessage());
             return;
           }
+        
         // redirect to mypage
         header('location:mypage.php');
         exit;

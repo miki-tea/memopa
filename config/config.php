@@ -21,7 +21,7 @@ require_once(__DIR__ . '/autoload.php');
 
 
 // Debug
-$debug_flg = false;
+$debug_flg = true;
 
 function debug($str){
   global $debug_flg;

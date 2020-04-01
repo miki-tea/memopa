@@ -2,6 +2,21 @@ import jQuery from "jquery";
 const $ = jQuery;
 
 $(function() {
+  //モーダル機能
+  $(".js-modalOpen").on("click", function() {
+    $(".js-modal").fadeIn();
+    return false;
+  });
+  $(".js-modalClose").on("click", function() {
+    $(".js-modal").fadeOut();
+    return false;
+  });
+
+  //簡単ログイン機能
+  $("#js-easyLoginBtn").click(function() {
+    $("#js-email").val("sample@123.com");
+    $("#js-pass").val("sample");
+  });
   //右にスライドする
   // $(".js-slideRight-target").addClass("js-slideRight");
   // $(window).scroll(function() {

@@ -35,7 +35,7 @@ $app->run();
                 パスワード
                 <span class="err"><?= h($app->getErr('pass')); ?></span>
               </p>
-              <input class="form__input" type="pass" name="pass" >
+              <input class="form__input" type="password" name="pass" >
       
             </label>
 
@@ -44,7 +44,7 @@ $app->run();
                 パスワード(再入力)
                 <span class="err"><?= h($app->getErr('pass_re')); ?></span>
               </p>
-              <input class="form__input" type="pass" name="pass_re">
+              <input class="form__input" type="password" name="pass_re">
       
             </label>
 

@@ -18,7 +18,7 @@ textarea:focus {
   box-shadow: none;
   outline: none;
 }
-$form-width: 300px;
+
 .mypage {
   margin-top: 60px;
 }
@@ -121,6 +121,23 @@ $form-width: 300px;
       background-color: $color_sub;
     }
   }
+  &__accept {
+    background-color: #4e3515;
+    color: $color_sub;
+    font-size: 14px;
+    height: 30px;
+    border-radius: 60px;
+    transition: 0.3s;
+    border: 1px solid #4e3515;
+    padding: 0 20px;
+    display: block;
+    margin: 0 auto;
+    &:hover {
+      border: #4e3515 1px solid;
+      color: #4e3515;
+      background-color: $color_sub;
+    }
+  }
 }
 
 .bg-theme {
@@ -152,6 +169,7 @@ $form-width: 300px;
     display: block;
   }
   &__navi {
+    padding: 5px 10px;
     float: right;
     color: $color_main;
     text-decoration-style: double;
@@ -283,4 +301,36 @@ $form-width: 300px;
   color: red;
   font-size: 10px;
   font-weight: bold;
+}
+
+.modal {
+  display: none;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  &__bg {
+    background: rgba(0, 0, 0, 0.4);
+    height: 100vh;
+    position: absolute;
+    width: 100%;
+  }
+  &__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 50px;
+    width: 30%;
+    border-radius: 3px;
+    @include mq(sm) {
+      width: 70%;
+      padding: 30px;
+    }
+  }
+  &__title {
+    font-size: 20px;
+    text-align: center;
+  }
 }
