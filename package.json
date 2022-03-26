@@ -24,7 +24,7 @@
     "webpack-cli": "^3.3.11",
     "webpack-stream": "^5.2.1",
     "acorn": ">=6.4.1",
-    "minimist": ">=1.2.2"
+    "minimist": ">=1.2.6"
   },
   "dependencies": {
     "jquery": "^3.4.1"
